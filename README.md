@@ -1,1 +1,1 @@
-# equerest1
+# equerest webdriver tests
