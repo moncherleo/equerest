@@ -17,14 +17,13 @@ public class EditProjectOnDashboard1 extends BaseTest{
 
     @Test
     public void EditProjectOnDashboard(){
-
-
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
         ProjectsPage projectsPage = mainPage.open()
                                             .navigateToLoginPage()
                                             .loginAs(LOGIN, PASSWORD);
 
         projectsPage.navigateToProjectPageViaMenuItem()
+                    .selectModerationFilter()
                     .searchProjectByName(PROJECT_NAME);
 
 
