@@ -9,7 +9,7 @@ import org.junit.Test;
 /**
  * Created by cherleo on 9/19/16.
  */
-public class EditProjectOnDashboard1 extends BaseTest{
+public class EditProjectOnDashboard1 extends BaseTest {
 
     private final static String LOGIN = "olegftzi@gmail.com";
     private final static String PASSWORD = "Oleg1234";
@@ -17,22 +17,22 @@ public class EditProjectOnDashboard1 extends BaseTest{
 
 
     @Test
-    public void EditProjectOnDashboard(){
+    public void EditProjectOnDashboard() {
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
         ProjectsPage projectsPage = mainPage.open()
-                                            .navigateToLoginPage()
-                                            .loginAs(LOGIN, PASSWORD);
+                .navigateToLoginPage()
+                .loginAs(LOGIN, PASSWORD);
 
         SelectedProjectPage selectedProject = projectsPage.navigateToProjectPageViaMenuItem()
-                    .selectModerationFilter()
-                    .searchProjectByName(PROJECT_NAME)
-                    .editSelectedProject();
+                .selectModerationFilter()
+                .searchProjectByName(PROJECT_NAME)
+                .editSelectedProject();
 
-
-
+        selectedProject.editProjectDescription("Новый проект - промежуточный")
+                .discardChanges()
+                .editProjectDescription("Новый проект")
+                .applyChanges();
 
     }
-
-
 
 }
