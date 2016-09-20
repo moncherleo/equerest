@@ -1,6 +1,7 @@
 package com.equerest.tests.webdriver.dashboard;
 
 import com.equerest.pages.adminpanel.ProjectsPage;
+import com.equerest.pages.adminpanel.SelectedProjectPage;
 import com.equerest.pages.common.MainPage;
 import com.equerest.tests.BaseTest;
 import org.junit.Test;
@@ -22,9 +23,11 @@ public class EditProjectOnDashboard1 extends BaseTest{
                                             .navigateToLoginPage()
                                             .loginAs(LOGIN, PASSWORD);
 
-        projectsPage.navigateToProjectPageViaMenuItem()
+        SelectedProjectPage selectedProject = projectsPage.navigateToProjectPageViaMenuItem()
                     .selectModerationFilter()
-                    .searchProjectByName(PROJECT_NAME);
+                    .searchProjectByName(PROJECT_NAME)
+                    .editSelectedProject();
+
 
 
 
