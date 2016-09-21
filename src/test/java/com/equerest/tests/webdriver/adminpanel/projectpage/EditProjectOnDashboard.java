@@ -2,6 +2,7 @@ package com.equerest.tests.webdriver.adminpanel.projectpage;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -34,7 +35,7 @@ public class EditProjectOnDashboard {
 
         driver.get(baseUrl + "register#/");
     }
-
+    @Ignore
     @Test
     public void editAndSaveStandardProjectField(){
         driver.findElement(emailField).sendKeys(LOGIN);
