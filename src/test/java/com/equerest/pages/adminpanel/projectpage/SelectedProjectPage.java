@@ -31,25 +31,29 @@ public class SelectedProjectPage extends ProjectsPage {
 
     public SelectedProjectPage(WebDriver driver) {
         super(driver);
-        if (actions == null){
+        if (actions == null) {
             actions = new Actions(driver);
         }
     }
 
+    private void scrollToElement(By element) {
+        actions.moveToElement(driver.findElement(element)).perform();
+    }
+
     public DescriptionSection editProjectDescription() {
+        /*move to the element in the end of page, move to the higher element for correct displaying of needed one*/
+        scrollToElement(saveProjectButton);
+        scrollToElement(addNumbersLink);
         driver.findElement(descriptionEditButton).click();
         return new DescriptionSection(driver, this);
     }
 
-    public FinanceModelSection editFinanceModel(){
+    public FinanceModelSection editFinanceModel() {
         /*move to the higher element for correct displaying of needed one*/
-        actions.moveToElement(driver.findElement(achievementsEditButton)).perform();
+        scrollToElement(achievementsEditButton);
         driver.findElement(financeModelEditButton).click();
         return new FinanceModelSection(driver, this);
     }
-
-
-
 
 
 }
