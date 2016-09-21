@@ -1,4 +1,4 @@
-package com.equerest.tests;
+package com.equerest.tests.webdriver;
 
 import org.junit.After;
 import org.junit.Before;

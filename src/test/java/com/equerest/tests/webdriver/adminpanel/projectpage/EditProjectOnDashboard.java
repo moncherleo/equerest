@@ -1,4 +1,4 @@
-package com.equerest.tests.webdriver.dashboard;
+package com.equerest.tests.webdriver.adminpanel.projectpage;
 
 import org.junit.After;
 import org.junit.Before;

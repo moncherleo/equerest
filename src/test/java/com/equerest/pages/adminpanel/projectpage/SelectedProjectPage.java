@@ -1,7 +1,8 @@
-package com.equerest.pages.adminpanel;
+package com.equerest.pages.adminpanel.projectpage;
 
-import com.equerest.pages.adminpanel.projectsections.DescriptionSection;
-import com.equerest.pages.adminpanel.projectsections.FinanceModelSection;
+import com.equerest.pages.adminpanel.ProjectsPage;
+import com.equerest.pages.adminpanel.projectpage.projectsections.DescriptionSection;
+import com.equerest.pages.adminpanel.projectpage.projectsections.FinanceModelSection;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;

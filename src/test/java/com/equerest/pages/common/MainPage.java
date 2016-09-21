@@ -25,4 +25,10 @@ public class MainPage extends AbstractPage {
         driver.navigate().to(url+LOGIN_PAGE_URL);
         return new LoginPage(driver);
     }
+
+    /** Method consolidate actions needed for typical flow of opening login page*/
+    public LoginPage openLoginPage(){
+        open();
+        return navigateToLoginPage();
+    }
 }
