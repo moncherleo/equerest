@@ -7,9 +7,9 @@ import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Test;
 
 /**
- * Created by cherleo on 9/19/16.
+ * Created by aBulgakoff on 9/21/16.
  */
-public class EditProjectDescription extends BaseTest {
+public class EditProjectDescriptionDeclineChanges extends BaseTest {
 
     private final static String LOGIN = "olegftzi@gmail.com";
     private final static String PASSWORD = "Oleg1234";
@@ -25,9 +25,7 @@ public class EditProjectDescription extends BaseTest {
                 .editProjectByName(PROJECT_NAME);
 
         selectedProject.editProjectDescription()
-                .editText("Новый проект")
-                .applyChanges();
-
+                .editText("Временное описание")
+                .discardChanges();
     }
-
 }
