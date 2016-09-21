@@ -15,6 +15,7 @@ public class EditProjectOnDashboard1 extends BaseTest {
     private final static String PASSWORD = "Oleg1234";
     private final static String PROJECT_NAME = "Интернет киоски \"Инетик\"";
 
+    protected SelectedProjectPage selectedProject;
 
     @Test
     public void EditProjectOnDashboard() {
@@ -23,14 +24,17 @@ public class EditProjectOnDashboard1 extends BaseTest {
                 .navigateToLoginPage()
                 .loginAs(LOGIN, PASSWORD);
 
-        SelectedProjectPage selectedProject = projectsPage.navigateToProjectPageViaMenuItem()
+        selectedProject = projectsPage.navigateToProjectPageViaMenuItem()
                 .selectModerationFilter()
                 .searchProjectByName(PROJECT_NAME)
                 .editSelectedProject();
 
-        selectedProject.editProjectDescription("Новый проект - промежуточный")
+        //TODO: move to separate test
+        selectedProject.editProjectDescription()
+                .editText("Промежуточное описание")
                 .discardChanges()
-                .editProjectDescription("Новый проект")
+                .editProjectDescription()
+                .editText("Новый проект")
                 .applyChanges();
 
     }
