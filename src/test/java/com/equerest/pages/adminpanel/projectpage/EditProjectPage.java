@@ -3,9 +3,16 @@ package com.equerest.pages.adminpanel.projectpage;
 import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.adminpanel.projectpage.projectsections.DescriptionSection;
 import com.equerest.pages.adminpanel.projectpage.projectsections.FinanceModelSection;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 /**
  * Created by aBulgakoff on 9/20/16.
@@ -25,6 +32,9 @@ public class EditProjectPage extends ProjectsPage {
     protected final By descriptionEditButton = By.xpath("//*[@id='anchor-full_description']" + commonSmallEditButton);
     protected final By achievementsEditButton = By.xpath("//*[@id='anchor-achievements']" + commonSmallEditButton);
     protected final By financeModelEditButton = By.xpath("//*[@id='anchor-fmodel']" + commonSmallEditButton);
+    protected final By editorInputAreaWindows = By.cssSelector(".quick-editor.input-textarea-group");
+    protected final By projectSavedAlert = By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Проект сохранен')]]");
+    protected final By projectDescriptionTextArea = By.id("anchor-full_description");
 
     /*left bar's buttons*/
     private final By financeModelEditThruLeftBar = By.xpath("//ul[contains(concat(' ', @class, ' '), ' left-nav ')]//a[normalize-space(.)='Финансовая модель']");
@@ -55,5 +65,23 @@ public class EditProjectPage extends ProjectsPage {
         return new FinanceModelSection(driver, this);
     }
 
+    public EditProjectPage verifyEditWindowNotPresent(){
 
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(editorInputAreaWindows)));
+        return this;
+    }
+
+    public EditProjectPage verifyProjectSavedAlertDisplayed(){
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(projectSavedAlert)));
+        return this;
+    }
+
+
+    public EditProjectPage assertProjectDescriptionUpdate(String s) {
+        Assert.assertTrue(driver.findElement(projectDescriptionTextArea).getText().contains(s));
+        return this;
+    }
 }
