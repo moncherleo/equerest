@@ -1,22 +1,22 @@
 package com.equerest.pages.adminpanel.projectpage.projectsections;
 
-import com.equerest.pages.adminpanel.projectpage.SelectedProjectPage;
+import com.equerest.pages.adminpanel.projectpage.EditProjectPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
  * Created by aBulgakoff on 9/21/16.
  */
-public class FinanceModelSection extends SelectedProjectPage implements CommonProjectSectionStructure{
-    private SelectedProjectPage parentPage;
+public class FinanceModelSection extends EditProjectPage implements CommonProjectSectionStructure{
+    private EditProjectPage parentPage;
 
     private final By applyChangesButton = By.xpath("");
     private final By discardChangesButton = By.xpath("");
 
 
-    public FinanceModelSection(WebDriver driver, SelectedProjectPage selectedProjectPage) {
+    public FinanceModelSection(WebDriver driver, EditProjectPage editProjectPage) {
         super(driver);
-        parentPage = selectedProjectPage;
+        parentPage = editProjectPage;
     }
 
 
@@ -27,14 +27,14 @@ public class FinanceModelSection extends SelectedProjectPage implements CommonPr
     }
 
     @Override
-    public SelectedProjectPage applyChanges() {
+    public EditProjectPage applyChanges() {
         scrollPage();
         driver.findElement(applyChangesButton).click();
         return parentPage;
     }
 
     @Override
-    public SelectedProjectPage discardChanges() {
+    public EditProjectPage discardChanges() {
         scrollPage();
         driver.findElement(discardChangesButton).click();
         return parentPage;

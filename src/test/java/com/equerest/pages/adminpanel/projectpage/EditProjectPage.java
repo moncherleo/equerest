@@ -10,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 /**
  * Created by aBulgakoff on 9/20/16.
  */
-public class SelectedProjectPage extends ProjectsPage {
+public class EditProjectPage extends ProjectsPage {
     protected Actions actions;
 
     private final String commonSmallEditButton = "//button[@class='edit-btn']";
@@ -29,7 +29,7 @@ public class SelectedProjectPage extends ProjectsPage {
     /*left bar's buttons*/
     private final By financeModelEditThruLeftBar = By.xpath("//ul[contains(concat(' ', @class, ' '), ' left-nav ')]//a[normalize-space(.)='Финансовая модель']");
 
-    public SelectedProjectPage(WebDriver driver) {
+    public EditProjectPage(WebDriver driver) {
         super(driver);
         if (actions == null) {
             actions = new Actions(driver);

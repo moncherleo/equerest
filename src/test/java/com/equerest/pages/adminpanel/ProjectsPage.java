@@ -1,6 +1,6 @@
 package com.equerest.pages.adminpanel;
 
-import com.equerest.pages.adminpanel.projectpage.SelectedProjectPage;
+import com.equerest.pages.adminpanel.projectpage.EditProjectPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -28,14 +28,14 @@ public class ProjectsPage extends BaseAdminPanelPage {
         return this;
     }
 
-    public SelectedProjectPage editSelectedProject(){
+    public EditProjectPage editSelectedProject(){
         driver.findElement(editProjectButton).click();
-        return new SelectedProjectPage(driver);
+        return new EditProjectPage(driver);
     }
 
     /** Method consolidate actions needed for typical flow of editing a project
      * @param projectName name of project that should be edited*/
-    public SelectedProjectPage editProjectByName(String projectName){
+    public EditProjectPage editProjectByName(String projectName){
         selectModerationFilter();
         searchProjectByName(projectName);
         return editSelectedProject();

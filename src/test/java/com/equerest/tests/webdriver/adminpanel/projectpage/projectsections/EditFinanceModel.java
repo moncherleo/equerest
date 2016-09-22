@@ -1,7 +1,7 @@
 package com.equerest.tests.webdriver.adminpanel.projectpage.projectsections;
 
 import com.equerest.pages.adminpanel.ProjectsPage;
-import com.equerest.pages.adminpanel.projectpage.SelectedProjectPage;
+import com.equerest.pages.adminpanel.projectpage.EditProjectPage;
 import com.equerest.pages.common.MainPage;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Ignore;
@@ -23,7 +23,7 @@ public class EditFinanceModel extends BaseTest {
         ProjectsPage projectsPage = mainPage.openLoginPage()
                 .loginAs(LOGIN, PASSWORD);
 
-        SelectedProjectPage selectedProject = projectsPage.navigateToProjectPageViaMenuItem()
+        EditProjectPage selectedProject = projectsPage.navigateToProjectPageViaMenuItem()
                 .editProjectByName(PROJECT_NAME);
 
         selectedProject.editFinanceModel()
