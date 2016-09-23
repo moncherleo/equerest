@@ -70,6 +70,7 @@ public class EditProjectPage extends ProjectsPage {
         return new FinanceModelSection(driver, this);
     }
 
+    // "Применить" button
     public EditProjectPage verifyEditWindowNotPresent(){
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -77,6 +78,7 @@ public class EditProjectPage extends ProjectsPage {
         return this;
     }
 
+    // Alert massage "Проект сохранен"
     public EditProjectPage verifyProjectSavedAlertDisplayed(){
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
