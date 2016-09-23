@@ -1,6 +1,7 @@
 package com.equerest.pages.adminpanel;
 
 import com.equerest.pages.adminpanel.projectpage.EditProjectPage;
+import com.equerest.pages.adminpanel.projectpage.InArchivePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,6 +14,9 @@ public class ProjectsPage extends BaseAdminPanelPage {
     private By projectSearchField = By.xpath("//*[@id='wrapper']/main/div/div/div/div[2]/div/div[2]/div[1]/div[2]/label/../*[@id='searchModerate']");
 
     private By editProjectButton = By.cssSelector(".btn.btn-primary");
+
+    //added project-card at "В архив" button
+    private final By projectInArchiveButton = By.xpath("//*[@id='wrapper']/main/div/div/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[3]//*[text()[contains(.,'В архив')]]");
 
     public ProjectsPage(WebDriver driver) {
         super(driver);
@@ -39,6 +43,13 @@ public class ProjectsPage extends BaseAdminPanelPage {
         selectModerationFilter();
         searchProjectByName(projectName);
         return editSelectedProject();
+    }
+    //added project-card at "В архив" button
+    public InArchivePage addedSelectedProject(String projectName){
+        selectModerationFilter();
+        searchProjectByName(projectName);
+        driver.findElement(projectInArchiveButton).click();
+        return new InArchivePage(driver);
     }
 
 }
