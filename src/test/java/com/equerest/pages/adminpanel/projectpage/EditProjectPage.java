@@ -3,21 +3,20 @@ package com.equerest.pages.adminpanel.projectpage;
 import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.adminpanel.projectpage.projectsections.DescriptionSection;
 import com.equerest.pages.adminpanel.projectpage.projectsections.FinanceModelSection;
+import com.equerest.pages.adminpanel.projectpage.projectsections.UploadVideoSelection;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.List;
 
 /**
  * Created by aBulgakoff on 9/20/16.
  */
 public class EditProjectPage extends ProjectsPage {
+    private final static String UPLOADVIDEO = "https://www.youtube.com/watch?v=QH2-TGUlwu4";
+
     protected Actions actions;
 
     private final String commonSmallEditButton = "//button[@class='edit-btn']";
@@ -38,6 +37,12 @@ public class EditProjectPage extends ProjectsPage {
 
     /*left bar's buttons*/
     private final By financeModelEditThruLeftBar = By.xpath("//ul[contains(concat(' ', @class, ' '), ' left-nav ')]//a[normalize-space(.)='Финансовая модель']");
+
+    //added link at "Видео"
+    protected final By editUploadVideoButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]//*[@class='edit-btn']");
+    protected final By pasteVideoLinksField = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div/label/../*[@id='yt_link']");
+    protected final By applyVideoLinksButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div/label/../*[text()[contains(.,'Применить')]]");
+    protected final By videoButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]//*[text()[contains(.,'Видео')]]");
 
     public EditProjectPage(WebDriver driver) {
         super(driver);
@@ -83,5 +88,15 @@ public class EditProjectPage extends ProjectsPage {
     public EditProjectPage assertProjectDescriptionUpdate(String s) {
         Assert.assertTrue(driver.findElement(projectDescriptionTextArea).getText().contains(s));
         return this;
+    }
+
+    //added link at "Видео"
+    public UploadVideoSelection uploadVideo() {
+        driver.findElement(editUploadVideoButton).click();
+        driver.findElement(pasteVideoLinksField).clear();
+        driver.findElement(pasteVideoLinksField).sendKeys(UPLOADVIDEO);
+        driver.findElement(applyVideoLinksButton).click();
+        driver.findElement(videoButton).click();
+        return new UploadVideoSelection(driver, this);
     }
 }
