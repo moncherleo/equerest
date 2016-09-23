@@ -33,7 +33,6 @@ public class UploadVideoSelection extends EditProjectPage {
         driver.findElement(discardChangesButton).click();
         return parentPage;
     }
-
     private void scrollPage() {
     }*/
 }
