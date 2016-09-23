@@ -30,7 +30,7 @@ public class ArchiveProjectButtonTest extends BaseTest {
 
     //added project-card at "В архив"
     @Test
-    @FileParameters("src/test/java/com/eduardaliiev/app/equerest/resources/login_project_inArchiveButton_info.csv")
+    @FileParameters("src/test/resources/login_project_inArchiveButton_info.csv")
     public void inArchiveProjectPage(String login, String password, String projectName) {
         InArchivePage selectedProject = inArchivePage(login, password, projectName);
 
