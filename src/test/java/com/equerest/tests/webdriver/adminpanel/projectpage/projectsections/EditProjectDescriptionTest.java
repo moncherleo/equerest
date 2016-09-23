@@ -6,6 +6,7 @@ import com.equerest.pages.common.MainPage;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -27,6 +28,7 @@ public class EditProjectDescriptionTest extends BaseTest {
                 .editProjectByName(projectName);
     }
 
+    @Ignore
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
     public void editProjectDescriptionPositive(String login, String password, String projectName) {
@@ -43,7 +45,7 @@ public class EditProjectDescriptionTest extends BaseTest {
                 .assertProjectDescriptionUpdate(currentDate);
 
     }
-
+@Ignore
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
     public void editProjectDescriptionDeclineChanges(String login, String password, String projectName) {
@@ -56,7 +58,7 @@ public class EditProjectDescriptionTest extends BaseTest {
 
     //upload "Видео" into the project-card
     @Test
-    @FileParameters("src/test/java/com/eduardaliiev/app/equerest/resources/login_project_info.csv")
+    @FileParameters("src/test/resources/login_project_info.csv")
     public void uploadVideoInProject(String login, String password, String projectName) {
         EditProjectPage selectedProject = editProject(login, password, projectName);
 
