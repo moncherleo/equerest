@@ -2,8 +2,11 @@ package com.equerest.pages.adminpanel;
 
 import com.equerest.pages.adminpanel.projectpage.EditProjectPage;
 import com.equerest.pages.adminpanel.projectpage.InArchivePage;
+<<<<<<< HEAD
 import com.equerest.pages.adminpanel.projectpage.ToModeratePage;
+=======
 import com.equerest.pages.adminpanel.projectpage.activesection.EditActiveProjectPage;
+>>>>>>> investment
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -14,13 +17,20 @@ public class ProjectsPage extends BaseAdminPanelPage {
     //'Moderation' section "Модерация"
     private By projectFilterModerationButton = By.xpath("//*[@class='projects-list container ng-isolate-scope']//div[1]//*[text()='Модерация']");
     private By projectSearchField = By.xpath("//*[@id='wrapper']/main/div/div/div/div[2]/div/div[2]/div[1]/div[2]/label/../*[@id='searchModerate']");
+<<<<<<< HEAD
     private By projectSearchFieldForNewStatus = By.xpath("//*[@id='wrapper']/main/div/div/div/div[2]/div/div[1]/div[1]/div[2]/*[@id='searchModerate']");
+=======
+
     //"Редактировать" button on 'Moderation' section
+>>>>>>> investment
     private By editProjectButton = By.cssSelector(".btn.btn-primary");
 
     //added project-card at "В архив" button on 'Moderation' section
     private final By projectInArchiveButton = By.xpath("//*[@id='wrapper']/main/div/div/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[3]//*[text()[contains(.,'В архив')]]");
+<<<<<<< HEAD
     private final By projectToModerationButton = By.xpath("//*[@id='wrapper']/main/div/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[3]//*[text()[contains(.,'На модерацию')]]");
+=======
+
 
     //'Active' section "Активные"
     private final By projectFilterActiveButton = By.xpath("//*[@class='projects-list container ng-isolate-scope']//div[1]//*[text()='Активные']");
@@ -30,6 +40,7 @@ public class ProjectsPage extends BaseAdminPanelPage {
     private By editActiveProjectButton = By.cssSelector(".btn.btn-primary");
 
 
+>>>>>>> investment
     public ProjectsPage(WebDriver driver) {
         super(driver);
     }
@@ -84,13 +95,13 @@ public class ProjectsPage extends BaseAdminPanelPage {
         driver.findElement(projectInArchiveButton).click();
         return new InArchivePage(driver);
     }
-
+<<<<<<< HEAD
     public ToModeratePage toModerateProject(String projectName){
         searchProjectByNameForNewStatus(projectName);
         driver.findElement(projectToModerationButton).click();
         return new ToModeratePage(driver);
     }
-
+=======
 
     //'Active' section "Активные"
     //in the "Инвестиционный доход" section is edited values.
@@ -101,4 +112,5 @@ public class ProjectsPage extends BaseAdminPanelPage {
     }
 
 
+>>>>>>> investment
 }
