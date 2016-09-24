@@ -6,14 +6,14 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Eduard Aliiev on 9/24/16;
  */
-public class EditInvestmentIncomeInProject extends EditActiveProjectPage {
+public class EditInvestmentIncomeSection extends EditActiveProjectPage {
     //implements CommonProjectActionSectionStructure {
     private EditActiveProjectPage parentPage;
 
     /* private final By applyChangesButton = By.xpath("");
         private final By discardChangesButton = By.xpath("");*/
 
-    public EditInvestmentIncomeInProject(WebDriver driver, EditActiveProjectPage editActiveProjectPage) {
+    public EditInvestmentIncomeSection(WebDriver driver, EditActiveProjectPage editActiveProjectPage) {
         super(driver);
         parentPage = editActiveProjectPage;
 
