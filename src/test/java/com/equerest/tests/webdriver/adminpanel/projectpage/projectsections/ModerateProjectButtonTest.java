@@ -9,9 +9,6 @@ import junitparams.JUnitParamsRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.sql.Timestamp;
-import java.util.Date;
-
 /**
  * Created by Oleg Nesterov on 24.09.2016;
  */
@@ -34,6 +31,5 @@ public class ModerateProjectButtonTest extends BaseTest {
 
 		selectedProject.projectToModerate()
 				.verifyProjectSavedAlertDisplayed();
-
 	}
 }
