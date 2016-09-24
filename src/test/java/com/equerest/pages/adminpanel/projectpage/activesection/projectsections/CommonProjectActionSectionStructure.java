@@ -1,13 +1,13 @@
-package com.equerest.pages.adminpanel.projectpage.projectsections;
+package com.equerest.pages.adminpanel.projectpage.activesection.projectsections;
 
-import com.equerest.pages.adminpanel.projectpage.EditProjectPage;
+import com.equerest.pages.adminpanel.projectpage.activesection.EditActiveProjectPage;
 
 /**
- * Created by aBulgakoff on 9/21/16.
+ * Created by Eduard Aliiev on 9/24/16;
  */
-public interface CommonProjectSectionStructure {
-    EditProjectPage applyChanges();
+public interface CommonProjectActionSectionStructure {
+    EditActiveProjectPage applyChanges();
 
-    EditProjectPage discardChanges();
+    EditActiveProjectPage discardChanges();
 
 }
