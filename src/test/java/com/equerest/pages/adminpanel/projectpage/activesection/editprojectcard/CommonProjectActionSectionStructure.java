@@ -1,4 +1,4 @@
-package com.equerest.pages.adminpanel.projectpage.activesection.projectsections;
+package com.equerest.pages.adminpanel.projectpage.activesection.editprojectcard;
 
 import com.equerest.pages.adminpanel.projectpage.activesection.EditActiveProjectPage;
 

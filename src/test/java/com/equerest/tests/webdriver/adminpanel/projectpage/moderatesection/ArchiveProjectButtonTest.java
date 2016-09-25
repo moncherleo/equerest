@@ -1,8 +1,8 @@
-package com.equerest.tests.webdriver.adminpanel.projectpage.projectsections;
+package com.equerest.tests.webdriver.adminpanel.projectpage.moderatesection;
 
 
 import com.equerest.pages.adminpanel.ProjectsPage;
-import com.equerest.pages.adminpanel.projectpage.InArchivePage;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.InArchivePage;
 import com.equerest.pages.common.MainPage;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;

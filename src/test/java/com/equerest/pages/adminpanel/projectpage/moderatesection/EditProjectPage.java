@@ -1,9 +1,9 @@
-package com.equerest.pages.adminpanel.projectpage;
+package com.equerest.pages.adminpanel.projectpage.moderatesection;
 
 import com.equerest.pages.adminpanel.ProjectsPage;
-import com.equerest.pages.adminpanel.projectpage.projectsections.DescriptionSection;
-import com.equerest.pages.adminpanel.projectpage.projectsections.FinanceModelSection;
-import com.equerest.pages.adminpanel.projectpage.projectsections.UploadVideoSelection;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.DescriptionSection;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.FinanceModelSection;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.UploadVideoSelection;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,8 +1,8 @@
 package com.equerest.pages.adminpanel;
 
-import com.equerest.pages.adminpanel.projectpage.EditProjectPage;
-import com.equerest.pages.adminpanel.projectpage.InArchivePage;
-import com.equerest.pages.adminpanel.projectpage.ToModeratePage;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.InArchivePage;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.ToModeratePage;
 import com.equerest.pages.adminpanel.projectpage.activesection.EditActiveProjectPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

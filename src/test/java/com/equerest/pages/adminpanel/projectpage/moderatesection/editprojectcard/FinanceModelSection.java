@@ -1,6 +1,6 @@
-package com.equerest.pages.adminpanel.projectpage.projectsections;
+package com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard;
 
-import com.equerest.pages.adminpanel.projectpage.EditProjectPage;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

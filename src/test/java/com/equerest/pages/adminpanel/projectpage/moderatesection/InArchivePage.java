@@ -1,4 +1,4 @@
-package com.equerest.pages.adminpanel.projectpage;
+package com.equerest.pages.adminpanel.projectpage.moderatesection;
 
 import com.equerest.pages.adminpanel.ProjectsPage;
 import org.openqa.selenium.By;
