@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(JUnitParamsRunner.class)
-public class EditFieldTeamProjectAddPeople extends BaseTest {
+public class EditFieldTeamProjectAddPeopleTest extends BaseTest {
     private final static String LOGIN = "olegftzi@gmail.com";
     private final static String PASSWORD = "Oleg1234";
     private final static String PROJECT_NAME = "Интернет киоски \"Инетик\"";
