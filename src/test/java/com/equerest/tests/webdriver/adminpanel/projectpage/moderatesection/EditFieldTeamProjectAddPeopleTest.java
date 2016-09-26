@@ -23,7 +23,7 @@ public class EditFieldTeamProjectAddPeopleTest extends BaseTest {
 
     @Test
     @FileParameters("src/test/resources/team_member_info.csv")
-    public void EditProjectOnDashboard(String name, String position, String experience) {
+    public void teamProjectAddPeople(String name, String position, String experience) {
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
         ProjectsPage projectsPage = mainPage.openLoginPage()
                 .loginAs(LOGIN, PASSWORD);
