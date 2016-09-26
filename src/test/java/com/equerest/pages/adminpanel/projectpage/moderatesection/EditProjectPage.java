@@ -34,6 +34,13 @@ public class EditProjectPage extends ProjectsPage {
     protected final By editorInputAreaWindows = By.cssSelector(".quick-editor.input-textarea-group");
     protected final By projectSavedAlert = By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Проект сохранен')]]");
     protected final By projectDescriptionTextArea = By.id("anchor-full_description");
+    protected final By teamMemberAddPeople = By.cssSelector("#anchor-team .addTeamMember>a");
+    protected final By teamMemberEditButton = By.xpath("//*[@id='anchor-team']/div/div/div/button");
+    protected final By teamMemberName = By.id("member_name_$index");
+    protected final By teamMemberPosition = By.id("member_q_$index");
+    protected final By teamMemberExperience = By.id("member_descr_$index");
+    protected final By teamMemberDiscardChengesButton = By.xpath("//*[@id='anchor-team']/div/div/div/div[2]/button[1]");
+    protected final By teamMemberApplyChangesButton = By.xpath("//*[@id='anchor-team']/div/div/div/div[2]/button[2]");
 
     /*left bar's buttons*/
     private final By financeModelEditThruLeftBar = By.xpath("//ul[contains(concat(' ', @class, ' '), ' left-nav ')]//a[normalize-space(.)='Финансовая модель']");
@@ -101,4 +108,15 @@ public class EditProjectPage extends ProjectsPage {
         driver.findElement(videoButton).click();
         return new UploadVideoSelection(driver, this);
     }
+
+    public EditProjectPage teamMemberAdd(String name, String position, String experience){
+        driver.findElement(teamMemberAddPeople).click();
+        driver.findElement(teamMemberEditButton).click();
+        driver.findElement(teamMemberName).sendKeys(name);
+        driver.findElement(teamMemberPosition).sendKeys(position);
+        driver.findElement(teamMemberExperience).sendKeys(experience);
+        driver.findElement(teamMemberApplyChangesButton).click();
+        return this;
+    }
+
 }
