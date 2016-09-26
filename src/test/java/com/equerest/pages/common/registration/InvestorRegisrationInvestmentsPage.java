@@ -1,7 +1,6 @@
 package com.equerest.pages.common.registration;
 
 import com.equerest.pages.AbstractPage;
-import com.equerest.pages.common.FinishPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
