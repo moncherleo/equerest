@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
- * Created by Михаїл on 26.09.2016.
+ * Created by Mykhaylo Dmytrenko on 26.09.2016.
  */
 public class InvestorRegistrationContactsPage extends AbstractPage{
     private static final By FIO_FIELD = By.xpath("//*[@id='fio']");
@@ -16,11 +16,15 @@ public class InvestorRegistrationContactsPage extends AbstractPage{
 
     public InvestorRegistrationContactsPage(WebDriver driver){super(driver);}
 
-    public InvestorRegisrationInvestmentsPage enterFields(String fio, String telephone, String email, String password){
+    public InvestorRegistrationContactsPage enterFields(String fio, String telephone, String email, String password){
         driver.findElement(FIO_FIELD).sendKeys(fio);
         driver.findElement(TELEPHONE_FIELD).sendKeys(telephone);
         driver.findElement(EMAIL_FIELD).sendKeys(email);
         driver.findElement(PASSWORD_FIELD).sendKeys(password);
+        return this;
+    }
+
+    public InvestorRegisrationInvestmentsPage goToInvestments(){
         driver.findElement(goToInvestmentsButton).click();
         return new InvestorRegisrationInvestmentsPage(driver);
     }
