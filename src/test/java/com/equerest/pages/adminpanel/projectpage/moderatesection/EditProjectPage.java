@@ -3,6 +3,7 @@ package com.equerest.pages.adminpanel.projectpage.moderatesection;
 import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.DescriptionSection;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.FinanceModelSection;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.UploadBackgroundImage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.UploadVideoSelection;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -50,6 +51,8 @@ public class EditProjectPage extends ProjectsPage {
     protected final By pasteVideoLinksField = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div/label/../*[@id='yt_link']");
     protected final By applyVideoLinksButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div/label/../*[text()[contains(.,'Применить')]]");
     protected final By videoButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]//*[text()[contains(.,'Видео')]]");
+    private final By backgroundImageButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[2]/div/..//*[@id='file']");
+
 
     public EditProjectPage(WebDriver driver) {
         super(driver);
@@ -133,4 +136,11 @@ public class EditProjectPage extends ProjectsPage {
         return this;
     }
 
+    //Upload background image
+    public UploadBackgroundImage uploadImage(){
+        driver.findElement(backgroundImageButton).click();
+
+
+        return new UploadBackgroundImage(driver, this);
+    }
 }
