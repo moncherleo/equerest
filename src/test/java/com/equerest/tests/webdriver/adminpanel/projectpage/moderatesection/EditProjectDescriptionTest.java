@@ -57,17 +57,26 @@ public class EditProjectDescriptionTest extends BaseTest {
     //upload "Видео" into the project-card
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
-    public void uploadVideoInProject(String login, String password, String projectName) {
+    public void uploadVideoLinkInProject(String login, String password, String projectName) {
         EditProjectPage selectedProject = editProject(login, password, projectName);
 
-        Date date = new Date();
-        String currentDate = new Timestamp(date.getTime()).toString();
-
-        selectedProject.uploadVideo()
+        selectedProject.editVideoLink()
                 //.applyChanges()
+                .uploadVideo()
                 .verifyEditWindowNotPresent()
                 .verifyProjectSavedAlertDisplayed();
     }
+    //delete "Видео" into the project-card
+    @Test
+    @FileParameters("src/test/resources/login_project_info.csv")
+    public void deleteVideoLinkInProject(String login, String password, String projectName) {
+        EditProjectPage selectedProject = editProject(login, password, projectName);
 
+        selectedProject.editVideoLink()
+                //.applyChanges()
+                .deleteVideo()
+                .verifyEditWindowNotPresent()
+                .verifyProjectSavedAlertDisplayed();
+    }
 
 }
