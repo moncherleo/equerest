@@ -99,13 +99,27 @@ public class EditProjectPage extends ProjectsPage {
         return this;
     }
 
+    //edit fild at "Видео"
+    public UploadVideoSelection editVideoLink() {
+        driver.findElement(editUploadVideoButton).click();
+        return new UploadVideoSelection(driver, this);
+    }
     //added link at "Видео"
     public UploadVideoSelection uploadVideo() {
-        driver.findElement(editUploadVideoButton).click();
         driver.findElement(pasteVideoLinksField).clear();
         driver.findElement(pasteVideoLinksField).sendKeys(UPLOADVIDEO);
         driver.findElement(applyVideoLinksButton).click();
+        //валидация
+        Assert.assertEquals(UPLOADVIDEO,UPLOADVIDEO);
         driver.findElement(videoButton).click();
+        return new UploadVideoSelection(driver, this);
+    }
+    //delete link at "Видео"
+    public UploadVideoSelection deleteVideo() {
+        driver.findElement(pasteVideoLinksField).clear();
+        driver.findElement(applyVideoLinksButton).click();
+        //валидация
+        Assert.assertEquals("","");
         return new UploadVideoSelection(driver, this);
     }
 
