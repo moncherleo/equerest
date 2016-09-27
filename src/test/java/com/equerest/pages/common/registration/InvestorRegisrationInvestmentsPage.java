@@ -17,16 +17,15 @@ public class InvestorRegisrationInvestmentsPage extends AbstractPage {
 
     public InvestorRegisrationInvestmentsPage(WebDriver driver){super(driver);}
 
-    public InvestorRegisrationInvestmentsPage chooseInvestments(String investorRoleID, String investplanID, String dealquanttityID){
-        driver.findElement(By.xpath(radiobuttonPath + investorRoleID + radiobuttonPath2)).click();
-        driver.findElement(By.xpath(radiobuttonPath + investplanID + radiobuttonPath2)).click();
-        driver.findElement(By.xpath(radiobuttonPath + dealquanttityID + radiobuttonPath2)).click();
+    public InvestorRegisrationInvestmentsPage fillForm(String investorRoleID, String investplanID, String dealquanttityID){
+        click(By.xpath(radiobuttonPath + investorRoleID + radiobuttonPath2));
+        click(By.xpath(radiobuttonPath + investplanID + radiobuttonPath2));
+        click(By.xpath(radiobuttonPath + dealquanttityID + radiobuttonPath2));
         return this;
     }
 
     public InvestorRegisrationInvestmentsPage checkboxAgree(){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click();", driver.findElement(checkbox_agree));
+        clickJS(checkbox_agree);
         return this;
     }
 

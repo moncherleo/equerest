@@ -16,9 +16,9 @@ public class InvestorRegistrationTest extends BaseTest{
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
         mainPage.navigateToInfoInvestorPage()
                 .startInvest()
-                .enterFields("sda", "+380", "tatata@tata", "Zaq123456")
+                .fillForm("sda", "+380", "tatata@tata", "Zaq123456")
                 .goToInvestments()
-                .chooseInvestments("role_1", "dealSumm_1", "dealQuantity_1")
+                .fillForm("role_1", "dealSumm_1", "dealQuantity_1")
                 .checkboxAgree()
                 .finishRegistration();
         }

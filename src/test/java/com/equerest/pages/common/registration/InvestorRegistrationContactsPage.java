@@ -16,16 +16,16 @@ public class InvestorRegistrationContactsPage extends AbstractPage{
 
     public InvestorRegistrationContactsPage(WebDriver driver){super(driver);}
 
-    public InvestorRegistrationContactsPage enterFields(String fio, String telephone, String email, String password){
-        driver.findElement(FIO_FIELD).sendKeys(fio);
-        driver.findElement(TELEPHONE_FIELD).sendKeys(telephone);
-        driver.findElement(EMAIL_FIELD).sendKeys(email);
-        driver.findElement(PASSWORD_FIELD).sendKeys(password);
+    public InvestorRegistrationContactsPage fillForm(String fio, String telephone, String email, String password){
+        fillField(FIO_FIELD, fio);
+        fillField(TELEPHONE_FIELD, telephone);
+        fillField(EMAIL_FIELD, email);
+        fillField(PASSWORD_FIELD, password);
         return this;
     }
 
     public InvestorRegisrationInvestmentsPage goToInvestments(){
-        driver.findElement(goToInvestmentsButton).click();
+        click(goToInvestmentsButton);
         return new InvestorRegisrationInvestmentsPage(driver);
     }
 }
