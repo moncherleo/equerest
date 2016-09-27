@@ -3,6 +3,7 @@ package com.equerest.tests.webdriver.register;
 import com.equerest.pages.common.MainPage;
 import com.equerest.tests.webdriver.BaseTest;
 
+import junitparams.FileParameters;
 import org.junit.Test;
 
 /**
@@ -12,13 +13,24 @@ public class InvestorRegistrationTest extends BaseTest{
 
 
     @Test
-    public void ValidContactsTest(){
+    /*@FileParameters("src/test/resources/")*/
+    public void ValidContactsTest(String fio, String telephone, String email, String password){
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
         mainPage.navigateToInfoInvestorPage()
                 .startInvest()
-                .fillForm("sda", "+380", "tatata@tata", "Zaq123456")
+                .fillForm(fio, telephone, email, password)
+                .goToInvestments();
+    }
+
+    @Test
+    /*@FileParameters("src/test/resources/")*/
+    public void ValidInvestmentsTest(String fio, String telephone, String email, String password, String investorRoleID, String investplanID, String dealquanttityID){
+        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
+        mainPage.navigateToInfoInvestorPage()
+                .startInvest()
+                .fillForm(fio, telephone, email, password)
                 .goToInvestments()
-                .fillForm("role_1", "dealSumm_1", "dealQuantity_1")
+                .fillForm(investorRoleID, investplanID, dealquanttityID)
                 .checkboxAgree()
                 .finishRegistration();
         }
