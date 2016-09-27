@@ -39,6 +39,7 @@ public class EditProjectPage extends ProjectsPage {
     protected final By teamMemberExperience = By.id("member_descr_$index");
     protected final By teamMemberDiscardChengesButton = By.xpath("//*[@id='anchor-team']/div/div/div/div[2]/button[1]");
     protected final By teamMemberApplyChangesButton = By.xpath("//*[@id='anchor-team']/div/div/div/div[2]/button[2]");
+    protected final By teamMemberRemovePeople = By.cssSelector("#anchor-team .quick-editor>a");
 
     /*left bar's buttons*/
     private final By financeModelEditThruLeftBar = By.xpath("//ul[contains(concat(' ', @class, ' '), ' left-nav ')]//a[normalize-space(.)='Финансовая модель']");
@@ -81,7 +82,7 @@ public class EditProjectPage extends ProjectsPage {
     }
 
     // "Применить" button
-    public EditProjectPage verifyEditWindowNotPresent(){
+    public EditProjectPage verifyEditWindowNotPresent() {
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(editorInputAreaWindows)));
@@ -89,7 +90,7 @@ public class EditProjectPage extends ProjectsPage {
     }
 
     // Alert massage "Проект сохранен"
-    public EditProjectPage verifyProjectSavedAlertDisplayed(){
+    public EditProjectPage verifyProjectSavedAlertDisplayed() {
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(projectSavedAlert)));
@@ -107,26 +108,28 @@ public class EditProjectPage extends ProjectsPage {
         driver.findElement(editUploadVideoButton).click();
         return new UploadVideoSelection(driver, this);
     }
+
     //added link at "Видео"
     public UploadVideoSelection uploadVideo() {
         driver.findElement(pasteVideoLinksField).clear();
         driver.findElement(pasteVideoLinksField).sendKeys(UPLOADVIDEO);
         driver.findElement(applyVideoLinksButton).click();
         //валидация
-        Assert.assertEquals(UPLOADVIDEO,UPLOADVIDEO);
+        Assert.assertEquals(UPLOADVIDEO, UPLOADVIDEO);
         driver.findElement(videoButton).click();
         return new UploadVideoSelection(driver, this);
     }
+
     //delete link at "Видео"
     public UploadVideoSelection deleteVideo() {
         driver.findElement(pasteVideoLinksField).clear();
         driver.findElement(applyVideoLinksButton).click();
         //валидация
-        Assert.assertEquals("","");
+        Assert.assertEquals("", "");
         return new UploadVideoSelection(driver, this);
     }
 
-    public EditProjectPage teamMemberAdd(String name, String position, String experience){
+    public EditProjectPage teamMemberAdd(String name, String position, String experience) {
         driver.findElement(teamMemberAddPeople).click();
         driver.findElement(teamMemberEditButton).click();
         driver.findElement(teamMemberName).sendKeys(name);
@@ -137,7 +140,7 @@ public class EditProjectPage extends ProjectsPage {
     }
 
     //Upload background image
-    public UploadBackgroundImage uploadImage(){
+    public UploadBackgroundImage uploadImage() {
         driver.findElement(backgroundImageButton).click();
 
 
@@ -145,13 +148,20 @@ public class EditProjectPage extends ProjectsPage {
     }
 
     //Upload image to "Глерея"
-    public UploadImagesToGallery uploadImagesToGallery(){
+    public UploadImagesToGallery uploadImagesToGallery() {
         driver.findElement(galleryImageButton).click();
 
 
         return new UploadImagesToGallery(driver, this);
     }
 
+    //Remove people from team
+    public EditProjectPage teamMemberRemove() {
+        scrollToElement(teamMemberEditButton);
+        driver.findElement(teamMemberAddPeople).click();
+        driver.findElement(teamMemberEditButton);
+        driver.findElement(teamMemberRemovePeople).click();
+        return this;
 
-
+    }
 }
