@@ -1,10 +1,7 @@
 package com.equerest.pages.adminpanel.projectpage.moderatesection;
 
 import com.equerest.pages.adminpanel.ProjectsPage;
-import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.DescriptionSection;
-import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.FinanceModelSection;
-import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.UploadBackgroundImage;
-import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.UploadVideoSelection;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.*;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -51,7 +48,10 @@ public class EditProjectPage extends ProjectsPage {
     protected final By pasteVideoLinksField = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div/label/../*[@id='yt_link']");
     protected final By applyVideoLinksButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div/label/../*[text()[contains(.,'Применить')]]");
     protected final By videoButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]//*[text()[contains(.,'Видео')]]");
+    //[Background image] button
     private final By backgroundImageButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[2]/div/..//*[@id='file']");
+    //"Загрузить изображения" button
+    private final By galleryImageButton = By.cssSelector("#anchor-gallery>.mediafiles>button");
 
 
     public EditProjectPage(WebDriver driver) {
@@ -143,4 +143,15 @@ public class EditProjectPage extends ProjectsPage {
 
         return new UploadBackgroundImage(driver, this);
     }
+
+    //Upload image to "Глерея"
+    public UploadImagesToGallery uploadImagesToGallery(){
+        driver.findElement(galleryImageButton).click();
+
+
+        return new UploadImagesToGallery(driver, this);
+    }
+
+
+
 }

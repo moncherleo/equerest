@@ -79,6 +79,7 @@ public class EditProjectDescriptionTest extends BaseTest {
                 .verifyEditWindowNotPresent()
                 .verifyProjectSavedAlertDisplayed();
     }
+
     //Upload background image
     // TODO: implement upload functionality
     @Ignore
@@ -90,5 +91,15 @@ public class EditProjectDescriptionTest extends BaseTest {
         selectedProject.uploadImage();
     }
 
+    //Upload image to "Глерея"
+    // TODO: implement upload functionality
+    @Ignore
+    @Test
+    @FileParameters("src/test/resources/login_project_info.csv")
+    public void uploadImagesToGalleryImageInProject(String login, String password, String projectName) {
+        EditProjectPage selectedProject = editProject(login, password, projectName);
+
+        selectedProject.uploadImagesToGallery();
+    }
 
 }
