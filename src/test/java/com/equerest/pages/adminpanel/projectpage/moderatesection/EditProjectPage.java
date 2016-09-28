@@ -117,6 +117,7 @@ public class EditProjectPage extends ProjectsPage {
         //валидация
         Assert.assertEquals(UPLOADVIDEO, UPLOADVIDEO);
         driver.findElement(videoButton).click();
+        driver.close();
         return new UploadVideoSelection(driver, this);
     }
 
