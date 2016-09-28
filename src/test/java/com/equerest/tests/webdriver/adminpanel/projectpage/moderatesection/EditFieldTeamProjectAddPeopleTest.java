@@ -2,6 +2,7 @@ package com.equerest.tests.webdriver.adminpanel.projectpage.moderatesection;
 
 import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.TeamMembers;
 import com.equerest.pages.common.MainPage;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
@@ -31,7 +32,13 @@ public class EditFieldTeamProjectAddPeopleTest extends BaseTest {
         EditProjectPage selectedProject = projectsPage.navigateToProjectPageViaMenuItem()
                 .editProjectByName(PROJECT_NAME);
 
-        selectedProject.teamMemberAdd(name, position, experience);
+        //selectedProject.teamMemberAdd(name, position, experience);
+        TeamMembers teamMembers = new TeamMembers(driver);
+        teamMembers.teamMemberAdd()
+                .teamMemberEdit()
+                .fillteamMemberName(name)
+                .fillPosition(position)
+                .fillExperience(experience)
+                .applyChanges();
     }
-
 }
