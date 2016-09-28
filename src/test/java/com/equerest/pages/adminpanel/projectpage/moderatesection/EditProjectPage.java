@@ -32,14 +32,6 @@ public class EditProjectPage extends ProjectsPage {
     protected final By editorInputAreaWindows = By.cssSelector(".quick-editor.input-textarea-group");
     protected final By projectSavedAlert = By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Проект сохранен')]]");
     protected final By projectDescriptionTextArea = By.id("anchor-full_description");
-    protected final By teamMemberAddPeople = By.cssSelector("#anchor-team .addTeamMember>a");
-    protected final By teamMemberEditButton = By.xpath("//*[@id='anchor-team']/div/div/div/button");
-    protected final By teamMemberName = By.id("member_name_$index");
-    protected final By teamMemberPosition = By.id("member_q_$index");
-    protected final By teamMemberExperience = By.id("member_descr_$index");
-    protected final By teamMemberDiscardChengesButton = By.xpath("//*[@id='anchor-team']/div/div/div/div[2]/button[1]");
-    protected final By teamMemberApplyChangesButton = By.xpath("//*[@id='anchor-team']/div/div/div/div[2]/button[2]");
-    protected final By teamMemberRemovePeople = By.cssSelector("#anchor-team .quick-editor>a");
 
     /*left bar's buttons*/
     private final By financeModelEditThruLeftBar = By.xpath("//ul[contains(concat(' ', @class, ' '), ' left-nav ')]//a[normalize-space(.)='Финансовая модель']");
@@ -129,21 +121,6 @@ public class EditProjectPage extends ProjectsPage {
         return new UploadVideoSelection(driver, this);
     }
 
-    //Add people of team
-    public EditProjectPage teamMemberAdd(String name, String position, String experience) {
-        scrollToElement(teamMemberAddPeople);
-        scrollToElement(teamMemberEditButton);
-        //driver.findElement(teamMemberEditButton).click();
-        driver.findElement(teamMemberName).clear();
-        driver.findElement(teamMemberName).sendKeys(name);
-        driver.findElement(teamMemberPosition).clear();
-        driver.findElement(teamMemberPosition).sendKeys(position);
-        driver.findElement(teamMemberExperience).clear();
-        driver.findElement(teamMemberExperience).sendKeys(experience);
-        driver.findElement(teamMemberApplyChangesButton).click();
-        return this;
-    }
-
     //Upload background image
     public UploadBackgroundImage uploadImage() {
         driver.findElement(backgroundImageButton).click();
@@ -160,11 +137,4 @@ public class EditProjectPage extends ProjectsPage {
         return new UploadImagesToGallery(driver, this);
     }
 
-    //Remove people from team
-    public EditProjectPage teamMemberRemove() {
-        scrollToElement(teamMemberEditButton);
-        driver.findElement(teamMemberRemovePeople).click();
-        return this;
-
-    }
 }

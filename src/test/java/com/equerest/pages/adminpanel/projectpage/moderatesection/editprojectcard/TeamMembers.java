@@ -2,6 +2,7 @@ package com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcar
 
 import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 /**
  * Created by Oleg Nesterov on 28.09.2016;
@@ -16,6 +17,10 @@ public class TeamMembers extends EditProjectPage{
     protected final By teamMemberDiscardChengesButton = By.xpath("//*[@id='anchor-team']/div/div/div/div[2]/button[1]");
     protected final By teamMemberApplyChangesButton = By.xpath("//*[@id='anchor-team']/div/div/div/div[2]/button[2]");
     protected final By teamMemberRemovePeople = By.cssSelector("#anchor-team .quick-editor>a");
+
+    public TeamMembers(WebDriver driver){
+        super(driver);
+    }
 
     @Override
     public void click(By locator) {
@@ -40,6 +45,7 @@ public class TeamMembers extends EditProjectPage{
     public TeamMembers fillteamMemberName(String name) {
         driver.findElement(teamMemberName).clear();
         fillField(teamMemberName, name);
+        return this;
     }
 
     public TeamMembers fillPosition(String position) {
@@ -54,7 +60,7 @@ public class TeamMembers extends EditProjectPage{
         return this;
     }
 
-    public TeamMembers ApplyChanges() {
+    public TeamMembers applyChanges() {
         click(teamMemberApplyChangesButton);
         return this;
     }
