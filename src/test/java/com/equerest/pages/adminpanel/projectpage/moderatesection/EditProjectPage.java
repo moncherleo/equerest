@@ -62,7 +62,7 @@ public class EditProjectPage extends ProjectsPage {
         }
     }
 
-    private void scrollToElement(By element) {
+    protected void scrollToElement(By element) {
         actions.moveToElement(driver.findElement(element)).perform();
     }
 
