@@ -130,10 +130,14 @@ public class EditProjectPage extends ProjectsPage {
     }
 
     public EditProjectPage teamMemberAdd(String name, String position, String experience) {
-        driver.findElement(teamMemberAddPeople).click();
+        scrollToElement(teamMemberAddPeople);
+        scrollToElement(teamMemberEditButton);
         driver.findElement(teamMemberEditButton).click();
+        driver.findElement(teamMemberName).clear();
         driver.findElement(teamMemberName).sendKeys(name);
+        driver.findElement(teamMemberPosition).clear();
         driver.findElement(teamMemberPosition).sendKeys(position);
+        driver.findElement(teamMemberExperience).clear();
         driver.findElement(teamMemberExperience).sendKeys(experience);
         driver.findElement(teamMemberApplyChangesButton).click();
         return this;
