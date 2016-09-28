@@ -129,10 +129,11 @@ public class EditProjectPage extends ProjectsPage {
         return new UploadVideoSelection(driver, this);
     }
 
+    //Add people of team
     public EditProjectPage teamMemberAdd(String name, String position, String experience) {
         scrollToElement(teamMemberAddPeople);
         scrollToElement(teamMemberEditButton);
-        driver.findElement(teamMemberEditButton).click();
+        //driver.findElement(teamMemberEditButton).click();
         driver.findElement(teamMemberName).clear();
         driver.findElement(teamMemberName).sendKeys(name);
         driver.findElement(teamMemberPosition).clear();
@@ -162,8 +163,6 @@ public class EditProjectPage extends ProjectsPage {
     //Remove people from team
     public EditProjectPage teamMemberRemove() {
         scrollToElement(teamMemberEditButton);
-        driver.findElement(teamMemberAddPeople).click();
-        driver.findElement(teamMemberEditButton);
         driver.findElement(teamMemberRemovePeople).click();
         return this;
 
