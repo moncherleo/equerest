@@ -6,6 +6,7 @@ import com.equerest.pages.adminpanel.projectpage.moderatesection.ToModeratePage;
 import com.equerest.pages.adminpanel.projectpage.activesection.EditActiveProjectPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import ru.yandex.qatools.allure.annotations.Step;
 
 /**
  * Created by cherleo on 9/19/16.
@@ -34,12 +35,14 @@ public class ProjectsPage extends BaseAdminPanelPage {
         super(driver);
     }
 
+    @Step("Go to Moderation section")
     //'Moderation' section "Модерация"
     public ProjectsPage selectModerationFilter(){
         driver.findElement(projectFilterModerationButton).click();
         return this;
     }
 
+    @Step("Search project by name")
     public ProjectsPage searchProjectByName(String projectName){
         driver.findElement(projectSearchField).sendKeys(projectName);
         return this;
