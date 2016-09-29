@@ -22,16 +22,6 @@ public class TeamMembers extends EditProjectPage{
         super(driver);
     }
 
-    @Override
-    public void click(By locator) {
-        super.click(locator);
-    }
-
-    @Override
-    public void fillField(By locator, String data){
-        super.fillField(locator, data);
-    }
-
     public TeamMembers teamMemberAdd() {
         scrollTo(driver.findElement(teamMemberAddPeople));
         click(teamMemberAddPeople);
@@ -45,19 +35,16 @@ public class TeamMembers extends EditProjectPage{
     }
 
     public TeamMembers fillteamMemberName(String name) {
-        driver.findElement(teamMemberName).clear();
         fillField(teamMemberName, name);
         return this;
     }
 
     public TeamMembers fillPosition(String position) {
-        driver.findElement(teamMemberPosition).clear();
         fillField(teamMemberPosition,position);
         return this;
     }
 
     public TeamMembers fillExperience(String experience) {
-        driver.findElement(teamMemberExperience).clear();
         fillField(teamMemberExperience,experience);
         return this;
     }

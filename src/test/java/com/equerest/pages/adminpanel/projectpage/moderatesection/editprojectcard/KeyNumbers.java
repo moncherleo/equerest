@@ -23,17 +23,6 @@ public class KeyNumbers extends EditProjectPage {
         super(driver);
     }
 
-    @Override
-    public void click(By locator) {
-        super.click(locator);
-    }
-
-    @Override
-    public void fillField(By locator, String data){
-        super.fillField(locator, data);
-    }
-
-
     public KeyNumbers addNumbersButton(){
         scrollTo(driver.findElement(addNumbersElement));
         click(addNumbersElement);
@@ -46,19 +35,16 @@ public class KeyNumbers extends EditProjectPage {
     }
 
     public KeyNumbers fillNumber(String dataNumber){
-        driver.findElement(fieldNumber).clear();
         fillField(fieldNumber, dataNumber);
         return this;
     }
 
     public KeyNumbers fillSybmol(String dataSymbol){
-        driver.findElement(fieldSymbol).clear();
         fillField(fieldSymbol, dataSymbol);
         return this;
     }
 
     public KeyNumbers fillDescription(String dataDescription){
-        driver.findElement(fieldDescription).clear();
         fillField(fieldDescription, dataDescription);
         return this;
     }

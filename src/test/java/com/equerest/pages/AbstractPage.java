@@ -25,6 +25,7 @@ public class AbstractPage {
     }
 
     public void fillField(By locator, String data){
+        driver.findElement(locator).clear();
         driver.findElement(locator).sendKeys(data);
     }
 
