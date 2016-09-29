@@ -27,4 +27,15 @@ public class AbstractPage {
     public void fillField(By locator, String data){
         driver.findElement(locator).sendKeys(data);
     }
+
+    public void scrollTo(WebElement element) {
+
+        String scrollElementIntoMiddle =
+                "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);"
+                        + "var elementTop = arguments[0].getBoundingClientRect().top;"
+                        + "window.scrollBy(0, elementTop-(viewPortHeight/2));";
+
+        ((JavascriptExecutor) driver).executeScript(scrollElementIntoMiddle, element);
+
+    }
 }

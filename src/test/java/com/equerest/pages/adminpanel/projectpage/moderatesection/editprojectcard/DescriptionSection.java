@@ -28,14 +28,14 @@ public class DescriptionSection extends EditProjectPage implements CommonProject
 
     @Override
     public EditProjectPage applyChanges() {
-        scrollPage();
+        scrollTo(driver.findElement(applyChangesButton));
         driver.findElement(applyChangesButton).click();
         return parentPage;
     }
 
     @Override
     public EditProjectPage discardChanges() {
-        scrollPage();
+        scrollTo(driver.findElement(discardChangesButton));
         driver.findElement(discardChangesButton).click();
         return parentPage;
     }
