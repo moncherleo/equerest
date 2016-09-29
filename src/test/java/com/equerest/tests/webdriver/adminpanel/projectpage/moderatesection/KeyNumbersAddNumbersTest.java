@@ -15,18 +15,20 @@ import org.junit.runner.RunWith;
  */
 @RunWith(JUnitParamsRunner.class)
 public class KeyNumbersAddNumbersTest extends BaseTest{
-    private final static String LOGIN = "olegftzi@gmail.com";
-    private final static String PASSWORD = "Oleg1234";
-    private final static String PROJECT_NAME = "Интернет киоски \"Инетик\"";
 
     @Test
     @FileParameters("src/test/resources/key_numbers_info.csv")
     public void editKeyNumbersAddNumbers(String number, String symbol, String description) {
+
+        String LOGIN = "olegftzi@gmail.com";
+        String PASSWORD = "Oleg1234";
+        String PROJECT_NAME = "Интернет киоски \"Инетик\"";
+
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
         ProjectsPage projectsPage = mainPage.openLoginPage()
                 .loginAs(LOGIN, PASSWORD);
 
-        EditProjectPage selectedProject = projectsPage.navigateToProjectPageViaMenuItem()
+        projectsPage.navigateToProjectPageViaMenuItem()
                 .editProjectByName(PROJECT_NAME);
 
         KeyNumbers keyNumbers = new KeyNumbers(driver);

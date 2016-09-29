@@ -14,25 +14,24 @@ import org.junit.runner.RunWith;
  * Created by Oleg Nesterov on 9/26/16;
  */
 
-
 @RunWith(JUnitParamsRunner.class)
 public class EditFieldTeamProjectAddPeopleTest extends BaseTest {
-    private final static String LOGIN = "olegftzi@gmail.com";
-    private final static String PASSWORD = "Oleg1234";
-    private final static String PROJECT_NAME = "Интернет киоски \"Инетик\"";
-
 
     @Test
     @FileParameters("src/test/resources/team_member_info.csv")
     public void teamProjectAddPeople(String name, String position, String experience) {
+
+        String LOGIN = "olegftzi@gmail.com";
+        String PASSWORD = "Oleg1234";
+        String PROJECT_NAME = "Интернет киоски \"Инетик\"";
+
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
         ProjectsPage projectsPage = mainPage.openLoginPage()
                 .loginAs(LOGIN, PASSWORD);
 
-        EditProjectPage selectedProject = projectsPage.navigateToProjectPageViaMenuItem()
+        projectsPage.navigateToProjectPageViaMenuItem()
                 .editProjectByName(PROJECT_NAME);
 
-        //selectedProject.teamMemberAdd(name, position, experience);
         TeamMembers teamMembers = new TeamMembers(driver);
         teamMembers.teamMemberAdd()
                 .teamMemberEdit()
