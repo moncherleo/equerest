@@ -2,15 +2,13 @@ package com.equerest.pages.common.registration;
 
 import com.equerest.pages.AbstractPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 
 /**
  * Created by Mykhaylo Dmytrenko on 26.09.2016.
  */
 public class InvestorRegisrationInvestmentsPage extends AbstractPage {
-    private By checkbox_agree = By.xpath("//*[@type='checkbox']");
+    private By checkboxTerms = By.xpath("//*[@type='checkbox']");
     private By finishReg = By.xpath("//*[text()='Завершить регистрацию']");
     private String radiobuttonPath = "//*[@class='input-radio-group']//*[@for='";
     private String radiobuttonPath2 = "']";
@@ -25,7 +23,7 @@ public class InvestorRegisrationInvestmentsPage extends AbstractPage {
     }
 
     public InvestorRegisrationInvestmentsPage checkboxAgree(){
-        clickJS(checkbox_agree);
+        clickJS(checkboxTerms);
         return this;
     }
 
