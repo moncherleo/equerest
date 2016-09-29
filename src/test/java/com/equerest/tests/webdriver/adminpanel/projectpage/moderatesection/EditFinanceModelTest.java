@@ -10,7 +10,7 @@ import org.junit.Test;
 /**
  * Created by aBulgakoff on 9/21/16.
  */
-public class EditFinanceModel extends BaseTest {
+public class EditFinanceModelTest extends BaseTest {
 
     private final static String LOGIN = "olegftzi@gmail.com";
     private final static String PASSWORD = "Oleg1234";
