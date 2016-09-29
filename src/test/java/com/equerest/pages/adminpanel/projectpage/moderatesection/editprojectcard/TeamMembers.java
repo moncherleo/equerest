@@ -33,14 +33,15 @@ public class TeamMembers extends EditProjectPage{
     }
 
     public TeamMembers teamMemberAdd() {
-        scrollToElement(teamMemberAddPeople);
+        scrollTo(driver.findElement(teamMemberAddPeople));
+        click(teamMemberAddPeople);
         return this;
     }
 
     public TeamMembers teamMemberEdit() {
-        scrollToElement(teamMemberEditButton);
+        scrollTo(driver.findElement(teamMemberEditButton));
+        click(teamMemberEditButton);
         return this;
-    }
 
     public TeamMembers fillteamMemberName(String name) {
         driver.findElement(teamMemberName).clear();
