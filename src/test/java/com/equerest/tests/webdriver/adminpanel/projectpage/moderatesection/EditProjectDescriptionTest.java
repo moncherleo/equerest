@@ -45,6 +45,7 @@ public class EditProjectDescriptionTest extends BaseTest {
                 .discardChanges();
     }
 
+<<<<<<< HEAD
     //delete "Видео" into the project-card
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
@@ -58,6 +59,8 @@ public class EditProjectDescriptionTest extends BaseTest {
                 .verifyProjectSavedAlertDisplayed();
     }
 
+=======
+>>>>>>> refactortc-6
     //Upload background image
     // TODO: implement upload functionality
     @Ignore
