@@ -5,7 +5,6 @@ import com.equerest.pages.helpers.adminpanel.EditProjectHelper;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -23,7 +22,7 @@ public class EditProjectDescriptionTest extends BaseTest {
     public void editProjectDescriptionPositive(String login, String password, String projectName) {
         EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
 
-        Date date= new java.util.Date();
+        Date date = new java.util.Date();
         String currentDate = new Timestamp(date.getTime()).toString();
 
         selectedProject.editProjectDescription()
@@ -44,42 +43,4 @@ public class EditProjectDescriptionTest extends BaseTest {
                 .editText("Временное описание")
                 .discardChanges();
     }
-
-<<<<<<< HEAD
-    //delete "Видео" into the project-card
-    @Test
-    @FileParameters("src/test/resources/login_project_info.csv")
-    public void deleteVideoLinkInProject(String login, String password, String projectName) {
-        EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
-
-        selectedProject.editVideoLink()
-                //.applyChanges()
-                .deleteVideo()
-                .verifyEditWindowNotPresent()
-                .verifyProjectSavedAlertDisplayed();
-    }
-
-=======
->>>>>>> refactortc-6
-    //Upload background image
-    // TODO: implement upload functionality
-    @Ignore
-    @Test
-    @FileParameters("src/test/resources/login_project_info.csv")
-    public void uploadBackgroundImageInProject(String login, String password, String projectName) {
-        EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
-
-        selectedProject.uploadImage();
-    }
-    //Upload image to "Глерея"
-    // TODO: implement upload functionality
-    @Ignore
-    @Test
-    @FileParameters("src/test/resources/login_project_info.csv")
-    public void uploadImagesToGalleryImageInProject(String login, String password, String projectName) {
-        EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
-
-        selectedProject.uploadImagesToGallery();
-    }
-
 }
