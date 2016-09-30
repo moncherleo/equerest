@@ -39,7 +39,6 @@ public class EditProjectPage extends ProjectsPage {
     //added link at "Видео"
     protected final By editUploadVideoButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]//*[@class='edit-btn']");
     protected final By pasteVideoLinksField = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div/label/../*[@id='yt_link']");
-    protected final By applyVideoLinksButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div/label/../*[text()[contains(.,'Применить')]]");
     protected final By videoButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[1]/div[3]//*[text()[contains(.,'Видео')]]");
     //[Background image] button
     private final By backgroundImageButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[2]/div/..//*[@id='file']");
@@ -105,7 +104,6 @@ public class EditProjectPage extends ProjectsPage {
     public UploadVideoSelection uploadVideo() {
         driver.findElement(pasteVideoLinksField).clear();
         driver.findElement(pasteVideoLinksField).sendKeys(UPLOADVIDEO);
-        driver.findElement(applyVideoLinksButton).click();
         //валидация
         Assert.assertEquals(UPLOADVIDEO, UPLOADVIDEO);
         driver.findElement(videoButton).click();
@@ -116,7 +114,6 @@ public class EditProjectPage extends ProjectsPage {
     //delete link at "Видео"
     public UploadVideoSelection deleteVideo() {
         driver.findElement(pasteVideoLinksField).clear();
-        driver.findElement(applyVideoLinksButton).click();
         //валидация
         Assert.assertEquals("", "");
         return new UploadVideoSelection(driver, this);
