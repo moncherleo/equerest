@@ -1,6 +1,7 @@
 package com.equerest.pages.adminpanel.projectpage.activesection;
 
 import com.equerest.pages.adminpanel.ProjectsPage;
+import com.equerest.pages.adminpanel.projectpage.activesection.editprojectcard.EditInvestmentIncomeSection;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,9 +17,6 @@ public class EditActiveProjectPage extends ProjectsPage {
     private final By infoInvestmentIncomeEditButton = By.cssSelector(".project-roi>div>button.edit-btn");
     private final By quickEditorFirstField = By.cssSelector("#roi1");
     private final By quickEditorSecondField = By.cssSelector("#roi2");
-
-    //locator: "Применить" button
-    protected final By editorInputAreaWindows = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[2]/div[7]/div/div[3]//*[text()[contains(.,'Применить')]]");
     //locator: Alert massage "Проект сохранен" locator
     protected final By projectSavedAlert = By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Проект сохранен')]]");
 
@@ -27,13 +25,6 @@ public class EditActiveProjectPage extends ProjectsPage {
         super(driver);
     }
 
-    //"Применить" button
-   /* public EditActiveProjectPage verifyEditWindowNotPresentActiveSection(){
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(editorInputAreaWindows)));
-        return this;
-    }*/
-
     //Alert massage "Проект сохранен"
     public EditActiveProjectPage verifyProjectSavedAlertDisplayedActiveSection(){
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -41,7 +32,7 @@ public class EditActiveProjectPage extends ProjectsPage {
         return this;
     }
 
-    public EditActiveProjectPage investmentIncomeInProject(){
+    public EditInvestmentIncomeSection investmentIncomeInProject(){
         driver.findElement(infoInvestmentIncomeEditButton).click();
 
         driver.findElement(quickEditorFirstField).clear();
@@ -51,8 +42,9 @@ public class EditActiveProjectPage extends ProjectsPage {
         driver.findElement(quickEditorSecondField).clear();
         driver.findElement(quickEditorSecondField).sendKeys("200");
         driver.findElement(quickEditorSecondField).click();
-        driver.findElement(editorInputAreaWindows).click();
-        return new EditActiveProjectPage(driver);
+        return new EditInvestmentIncomeSection(driver, this);
     }
+
+
 
 }

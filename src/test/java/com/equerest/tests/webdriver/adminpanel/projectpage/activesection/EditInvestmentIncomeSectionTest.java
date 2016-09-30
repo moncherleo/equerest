@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
  * Created by Eduard Aliiev on 9/24/16;
  */
 @RunWith(JUnitParamsRunner.class)
-public class EditActiveProjectPageTest extends BaseTest {
+public class EditInvestmentIncomeSectionTest extends BaseTest {
 
     private EditActiveProjectPage editActiveProject(String login, String password, String projectName) {
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
@@ -31,7 +31,7 @@ public class EditActiveProjectPageTest extends BaseTest {
         EditActiveProjectPage selectedProject = editActiveProject(login, password, projectName);
 
         selectedProject.investmentIncomeInProject()
-                //.verifyEditWindowNotPresentActiveSection()
+                .applyChanges()
                 .verifyProjectSavedAlertDisplayedActiveSection();
     }
 

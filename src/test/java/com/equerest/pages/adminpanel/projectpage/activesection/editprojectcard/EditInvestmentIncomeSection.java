@@ -1,17 +1,17 @@
 package com.equerest.pages.adminpanel.projectpage.activesection.editprojectcard;
 
 import com.equerest.pages.adminpanel.projectpage.activesection.EditActiveProjectPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
  * Created by Eduard Aliiev on 9/24/16;
  */
-public class EditInvestmentIncomeSection extends EditActiveProjectPage {
-    //implements CommonProjectActionSectionStructure {
+public class EditInvestmentIncomeSection extends EditActiveProjectPage implements CommonProjectActionSectionStructure {
     private EditActiveProjectPage parentPage;
 
-    /* private final By applyChangesButton = By.xpath("");
-        private final By discardChangesButton = By.xpath("");*/
+    private final By applyChangesButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[2]/div[7]/div/div[3]//*[text()[contains(.,'Применить')]]");
+    private final By discardChangesButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[2]/div[7]/div/div[3]//*[text()[contains(.,'Отмена')]]");
 
     public EditInvestmentIncomeSection(WebDriver driver, EditActiveProjectPage editActiveProjectPage) {
         super(driver);
@@ -19,7 +19,7 @@ public class EditInvestmentIncomeSection extends EditActiveProjectPage {
 
     }
 
-/* @Override
+    @Override
     public EditActiveProjectPage applyChanges() {
         scrollPage();
         driver.findElement(applyChangesButton).click();
@@ -32,6 +32,7 @@ public class EditInvestmentIncomeSection extends EditActiveProjectPage {
         driver.findElement(discardChangesButton).click();
         return parentPage;
     }
+
     private void scrollPage() {
-    }*/
+    }
 }
