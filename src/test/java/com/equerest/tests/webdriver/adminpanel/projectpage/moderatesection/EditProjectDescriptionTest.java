@@ -1,14 +1,10 @@
 package com.equerest.tests.webdriver.adminpanel.projectpage.moderatesection;
 
-import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
-import com.equerest.pages.common.MainPage;
 import com.equerest.pages.helpers.adminpanel.EditProjectHelper;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,18 +45,6 @@ public class EditProjectDescriptionTest extends BaseTest {
                 .discardChanges();
     }
 
-    //upload "Видео" into the project-card
-    @Test
-    @FileParameters("src/test/resources/login_project_info.csv")
-    public void uploadVideoLinkInProject(String login, String password, String projectName) {
-        EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
-
-        selectedProject.editVideoLink()
-                //.applyChanges()
-                .uploadVideo()
-                .verifyEditWindowNotPresent()
-                .verifyProjectSavedAlertDisplayed();
-    }
     //delete "Видео" into the project-card
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
