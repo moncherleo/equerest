@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
  * Created by cherleo on 9/29/16.
  */
 public class EditProjectHelper {
-    WebDriver driver;
+    private WebDriver driver;
 
     public EditProjectHelper(WebDriver driver){
         this.driver = driver;
