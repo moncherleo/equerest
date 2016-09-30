@@ -3,9 +3,12 @@ package com.equerest.tests.webdriver.adminpanel.projectpage.moderatesection;
 import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
 import com.equerest.pages.common.MainPage;
+import com.equerest.pages.helpers.adminpanel.EditProjectHelper;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,19 +22,10 @@ import java.util.Date;
 @RunWith(JUnitParamsRunner.class)
 public class EditProjectDescriptionTest extends BaseTest {
 
-    private EditProjectPage editProject(String login, String password, String projectName) {
-        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        ProjectsPage projectsPage = mainPage.openLoginPage()
-                .loginAs(login, password);
-
-        return projectsPage.navigateToProjectPageViaMenuItem()
-                .editProjectByName(projectName);
-    }
-
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
     public void editProjectDescriptionPositive(String login, String password, String projectName) {
-        EditProjectPage selectedProject = editProject(login, password, projectName);
+        EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
 
         Date date= new java.util.Date();
         String currentDate = new Timestamp(date.getTime()).toString();
@@ -48,7 +42,7 @@ public class EditProjectDescriptionTest extends BaseTest {
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
     public void editProjectDescriptionDeclineChanges(String login, String password, String projectName) {
-        EditProjectPage selectedProject = editProject(login, password, projectName);
+        EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
 
         selectedProject.editProjectDescription()
                 .editText("Временное описание")
@@ -59,7 +53,7 @@ public class EditProjectDescriptionTest extends BaseTest {
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
     public void uploadVideoLinkInProject(String login, String password, String projectName) {
-        EditProjectPage selectedProject = editProject(login, password, projectName);
+        EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
 
         selectedProject.editVideoLink()
                 //.applyChanges()
@@ -71,7 +65,7 @@ public class EditProjectDescriptionTest extends BaseTest {
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
     public void deleteVideoLinkInProject(String login, String password, String projectName) {
-        EditProjectPage selectedProject = editProject(login, password, projectName);
+        EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
 
         selectedProject.editVideoLink()
                 //.applyChanges()
@@ -86,18 +80,17 @@ public class EditProjectDescriptionTest extends BaseTest {
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
     public void uploadBackgroundImageInProject(String login, String password, String projectName) {
-        EditProjectPage selectedProject = editProject(login, password, projectName);
+        EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
 
         selectedProject.uploadImage();
     }
-
     //Upload image to "Глерея"
     // TODO: implement upload functionality
     @Ignore
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
     public void uploadImagesToGalleryImageInProject(String login, String password, String projectName) {
-        EditProjectPage selectedProject = editProject(login, password, projectName);
+        EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
 
         selectedProject.uploadImagesToGallery();
     }
