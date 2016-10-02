@@ -4,6 +4,7 @@ import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.KeyNumbers;
 import com.equerest.pages.common.MainPage;
+import com.equerest.pages.helpers.adminpanel.EditProjectHelper;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
@@ -24,12 +25,8 @@ public class KeyNumbersRemoveNumbersTest extends BaseTest{
         String PASSWORD = "Oleg1234";
         String PROJECT_NAME = "Интернет киоски \"Инетик\"";
 
-        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        ProjectsPage projectsPage = mainPage.openLoginPage()
-                .loginAs(LOGIN, PASSWORD);
-
-        projectsPage.navigateToProjectPageViaMenuItem()
-                .editProjectByName(PROJECT_NAME);
+        EditProjectHelper editProjectHelper = new EditProjectHelper(driver);
+        editProjectHelper.editProject(LOGIN, PASSWORD, PROJECT_NAME);
 
         KeyNumbers keyNumbers = new KeyNumbers(driver);
         keyNumbers.editFieldsButton()
