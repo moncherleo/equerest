@@ -1,5 +1,6 @@
 package com.equerest.pages.adminpanel;
 
+//import com.equerest.pages.AbstractPage;
 import com.equerest.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

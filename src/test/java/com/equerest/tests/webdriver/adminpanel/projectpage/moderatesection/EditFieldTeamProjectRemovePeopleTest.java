@@ -1,23 +1,19 @@
 package com.equerest.tests.webdriver.adminpanel.projectpage.moderatesection;
 
-import com.equerest.pages.adminpanel.ProjectsPage;
-import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.TeamMembers;
-import com.equerest.pages.common.MainPage;
 import com.equerest.pages.helpers.adminpanel.EditProjectHelper;
 import com.equerest.tests.webdriver.BaseTest;
-import junitparams.FileParameters;
-import junitparams.JUnitParamsRunner;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+import ru.yandex.qatools.allure.annotations.Title;
 
 /**
  * Created by Oleg Nesterov on 27.09.2016;
  */
-
+@Title("Редактирование проекта")
 public class EditFieldTeamProjectRemovePeopleTest extends BaseTest {
 
     @Test
+    @Title("Удаление человека из команды")
     public void teamProjectRemovePeople() {
 
         String LOGIN = "olegftzi@gmail.com";
