@@ -2,9 +2,15 @@ package com.equerest.tests.webdriver;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.yandex.qatools.allure.annotations.Attachment;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,17 +26,36 @@ public class BaseTest {
     private static final String CHROME_PATH_MAC = "src/test/resources/drivers/chromedriver";
     private static final String CHROME_PATH_WIN = "src/test/resources/drivers/chromedriver.exe";
 
+    @Rule
+    public TestWatcher screenshotOnFail = new TestWatcher() {
+
+        @Override
+        protected void failed(Throwable e, Description description) {
+            makeScreenshotOnFailure("Screenshot on failure");
+        }
+
+        @Override
+        protected void finished(Description description) {
+            driver.close();
+        }
+    };
+
+    @Attachment(value = "{0}", type = "image/png")
+    public byte[] makeScreenshotOnFailure(String attachName) {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
+
     @Before
     public void setUp() {
 
         //mvn clean test -Dbrowser="Chrome"
 
-        if ( BROWSER == null || BROWSER.equalsIgnoreCase("Firefox") || BROWSER.equalsIgnoreCase("")) {
+        if (BROWSER == null || BROWSER.equalsIgnoreCase("Firefox") || BROWSER.equalsIgnoreCase("")) {
             this.driver = new FirefoxDriver();
         } else if (BROWSER.equalsIgnoreCase("Chrome")) {
             if (isWindows()) {
                 System.setProperty("webdriver.chrome.driver", CHROME_PATH_WIN);
-            } else if (isMac()){
+            } else if (isMac()) {
                 System.setProperty("webdriver.chrome.driver", CHROME_PATH_MAC);
             }
             this.driver = new ChromeDriver();
@@ -42,7 +67,8 @@ public class BaseTest {
 
     @After
     public void tearDown() {
-        driver.close();
+        //moved to TestWatcher
+        //driver.close();
     }
 
     private static boolean isWindows() {
