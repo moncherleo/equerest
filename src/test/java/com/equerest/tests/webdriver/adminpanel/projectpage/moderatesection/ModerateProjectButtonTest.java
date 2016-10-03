@@ -4,11 +4,11 @@ import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.ToModeratePage;
 import com.equerest.pages.common.MainPage;
 import com.equerest.tests.webdriver.BaseTest;
-import com.sun.org.glassfish.gmbal.Description;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import ru.yandex.qatools.allure.annotations.Description;
 
 /**
  * Created by Oleg Nesterov on 24.09.2016;
