@@ -16,7 +16,9 @@ public class AbstractPage {
     }
 
     public void click(By locator){
-        driver.findElement(locator).click();
+        WebElement element = driver.findElement(locator);
+        scrollTo(element);
+        element.click();
     }
 
     public void clickJS(By locator){
