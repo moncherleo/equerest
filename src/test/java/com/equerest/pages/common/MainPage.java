@@ -1,6 +1,7 @@
 package com.equerest.pages.common;
 
 import com.equerest.pages.AbstractPage;
+import com.equerest.pages.createproject.ProjectOwnerInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -12,6 +13,7 @@ public class MainPage extends AbstractPage {
     private String url;
     private static final String LOGIN_PAGE_URL = "register#/";
     private By forInvestor = By.xpath("//*[@id='header']//*[text()='Инвестору']");
+    private By registerProjectButton = By.cssSelector("#button .button-green.bordered");
 
     public MainPage(String url, WebDriver driver) {
         super(driver);
@@ -44,4 +46,13 @@ public class MainPage extends AbstractPage {
         open();
         return navigateToInfoInvestorPage();
     }
+
+    public ProjectOwnerInfo openRegisterProjectPage(){
+        open();
+        driver.findElement(registerProjectButton).click();
+        return new ProjectOwnerInfo(driver);
+    }
+
+
+
 }
