@@ -32,7 +32,7 @@ public class ProjectInfo extends AbstractPage {
     }
 
     public ProjectInfo fillStage(){
-        click(fieldStageOfProject);
+        clickJS(fieldStageOfProject);
         return this;
     }
 
