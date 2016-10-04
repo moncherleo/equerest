@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Created by aBulgakoff on 9/20/16.
  */
 public class EditProjectPage extends ProjectsPage {
-    private final static String UPLOADVIDEO = "https://www.youtube.com/watch?v=QH2-TGUlwu4";
+    private final static String UPLOADVIDEO = "https://www.youtube.com/watch?v=TWiKdFqnIzw";
 
     protected Actions actions;
 
