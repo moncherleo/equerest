@@ -13,8 +13,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ToModeratePage extends ProjectsPage {
 
     //added project-card to "На Модерацию" button
-    private final By ProjectToModerationButton = By.xpath("//*[@id='wrapper']/main/div/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[3]/button[2]");
+    protected final By ProjectToModerationButton = By.xpath("//*[@id='wrapper']/main/div/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[3]/button[2]");
     protected final By projectSavedAlert = By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Проект обновлен.')]]");
+    protected final By filterNewButton = By.xpath("//*[@class='projects-list container ng-isolate-scope']//div[1]//*[text()='Новые']");
 
     public ToModeratePage(WebDriver driver) {
         super(driver);
