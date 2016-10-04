@@ -13,7 +13,7 @@ public class MainPage extends AbstractPage {
     private String url;
     private static final String LOGIN_PAGE_URL = "register#/";
     private By forInvestor = By.xpath("//*[@id='header']//*[text()='Инвестору']");
-    private By registerProjectButton = By.cssSelector("#button .button-green.bordered");
+    private By registerProjectButton = By.cssSelector("#main .button-green.bordered");
 
     public MainPage(String url, WebDriver driver) {
         super(driver);
