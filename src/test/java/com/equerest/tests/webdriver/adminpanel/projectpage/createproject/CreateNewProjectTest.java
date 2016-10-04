@@ -1,6 +1,8 @@
 package com.equerest.tests.webdriver.adminpanel.projectpage.createproject;
 
 import com.equerest.pages.common.MainPage;
+import com.equerest.pages.createproject.ProjectCreateComplete;
+import com.equerest.pages.createproject.ProjectInfo;
 import com.equerest.pages.createproject.ProjectOwnerInfo;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
@@ -15,21 +17,32 @@ import org.junit.runner.RunWith;
 public class CreateNewProjectTest extends BaseTest {
 
     @Test
-    @FileParameters("src/test/resources/create_new_project_info.csv")
-    public void createProject(String fio, String city, String telephone, String mail, String pass){
+    @FileParameters("src/test/resources/create_new_project_owner_info.csv")
+    public void createProject(String fio, String city, String telephone, String mail, String pass, String title, String description, String advantages, String model, String amount){
 
-        ProjectOwnerInfo projectOwnerInfo = new ProjectOwnerInfo(driver);
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
 
         mainPage.openRegisterProjectPage();
 
-        projectOwnerInfo.fillFio(fio);
-        projectOwnerInfo.fillCity(city);
-        projectOwnerInfo.fillTelephone(telephone);
-        projectOwnerInfo.fillPass(pass);
-        projectOwnerInfo.setCheckBox();
-        projectOwnerInfo.pressNextButton();
+        ProjectCreateComplete projectOwnerInfo = new ProjectOwnerInfo(driver)
+                .fillFio(fio)
+                .fillCity(city)
+                .fillTelephone(telephone)
+                .fillMail(mail)
+                .fillPass(pass)
+                .setCheckBox()
+                .pressNextButton()
+                .fillTitle(title)
+                .fillDescription(description)
+                .fillStage()
+                .fillAdvantages(advantages)
+                .fillMonetization(model)
+                .fillAmount(amount)
+                .setCheckBoxAgree()
+                .pressCompleteButton();
 
+        ProjectCreateComplete projectCreateComplete = new ProjectCreateComplete(driver);
+        projectCreateComplete.navigateToProject();
     }
 
 

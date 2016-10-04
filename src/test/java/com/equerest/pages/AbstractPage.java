@@ -39,6 +39,5 @@ public class AbstractPage {
                         + "window.scrollBy(0, elementTop-(viewPortHeight/2));";
 
         ((JavascriptExecutor) driver).executeScript(scrollElementIntoMiddle, element);
-
     }
 }

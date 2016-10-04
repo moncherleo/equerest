@@ -23,33 +23,41 @@ public class ProjectOwnerInfo extends AbstractPage {
     protected final By buttonNextStep = By.cssSelector("#entrepreneur-register-form .button.button-blue.button-next");
 
 
-    public void fillFio(String fio){
+    public ProjectOwnerInfo fillFio(String fio){
         driver.findElement(fieldFio).sendKeys(fio);
+        return this;
     }
 
-    public void fillCity(String city){
+    public ProjectOwnerInfo fillCity(String city){
         driver.findElement(fieldCity).sendKeys(city);
+        return this;
     }
 
-    public void fillTelephone(String telephone){
+    public ProjectOwnerInfo fillTelephone(String telephone){
         driver.findElement(fieldTelephone).sendKeys(telephone);
+        return this;
     }
 
-    public void fillMail(String mail){
+    public ProjectOwnerInfo fillMail(String mail){
         driver.findElement(fieldMail).sendKeys(mail);
+        return this;
     }
 
-    public void setCheckBox(){
-        driver.findElement(fieldCheckBox).click();
+    public ProjectOwnerInfo setCheckBox(){
+        scrollTo(driver.findElement(fieldCheckBox));
+        clickJS(fieldCheckBox);
+        return this;
     }
 
-    public void fillPass(String password){
+    public ProjectOwnerInfo fillPass(String password){
+        scrollTo(driver.findElement(fieldPass));
         driver.findElement(fieldPass).sendKeys(password);
+        return this;
     }
 
-    public void pressNextButton(){
-        scrollTo(driver.findElement(buttonNextStep));
-        driver.findElement(buttonNextStep).click();
+    public ProjectInfo pressNextButton(){
+        click(buttonNextStep);
+        return new ProjectInfo(driver);
     }
 
 }
