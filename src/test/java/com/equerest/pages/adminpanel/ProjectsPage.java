@@ -31,7 +31,7 @@ public class ProjectsPage extends BaseAdminPanelPage {
     private By editActiveProjectButton = By.cssSelector(".btn.btn-primary");
 
     //New section "Новые"
-    protected final By projectFilterNewButton = By.xpath("//*[@class='projects-list container ng-isolate-scope']//div[1]//*[text()='Новые']");
+    private final By projectFilterNewButton = By.xpath("//*[@class='projects-list container ng-isolate-scope']//div[1]//*[text()='Новые']");
 
     public ProjectsPage(WebDriver driver) {
         super(driver);
@@ -105,5 +105,9 @@ public class ProjectsPage extends BaseAdminPanelPage {
         return editSelectedActiveProject();
     }
 
-
+    //'New' section "Новые"
+    public ToModeratePage selectNewFilter() {
+        click(projectFilterNewButton);
+        return new ToModeratePage(driver);
+    }
 }

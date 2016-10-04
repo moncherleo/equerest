@@ -29,9 +29,9 @@ public class ModerateProjectButtonTest extends BaseTest {
 	@Description("Изменение статуса проекта на \"Модерация\"")
 	@FileParameters("src/test/resources/login_project_toModerateButton_info.csv")
 	public void toModerateProgectPage(String login, String password, String projectName) {
-		ToModeratePage selectedProject = toModeratePage(login, password, projectName);
-
-		selectedProject.projectToModerate()
+		ToModeratePage selectedProject = toModeratePage(login, password, projectName)
+				.selectNewFilter()
+				.projectToModerate()
 				.verifyProjectSavedAlertDisplayed();
 	}
 }
