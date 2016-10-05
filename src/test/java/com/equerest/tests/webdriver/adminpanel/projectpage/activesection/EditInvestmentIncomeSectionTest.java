@@ -8,10 +8,15 @@ import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import ru.yandex.qatools.allure.annotations.Description;
+import ru.yandex.qatools.allure.annotations.Title;
 
 /**
  * Created by Eduard Aliiev on 9/24/16;
  */
+@Title("TC-05 'Редактирование инвестиционного дохода'")
+@Description("- Пользователь [login] должен предварительно войти в систему, используя [password]\n" +
+        "- Проект [projectName] должен быть в статусе \"Активные\"")
 @RunWith(JUnitParamsRunner.class)
 public class EditInvestmentIncomeSectionTest extends BaseTest {
 
@@ -27,7 +32,7 @@ public class EditInvestmentIncomeSectionTest extends BaseTest {
     //"Инвестиционный доход" section is edited values.
     @Test
     @FileParameters("src/test/resources/login_project_ActiveSection_info.csv")
-    public void uploadVideoInProject(String login, String password, String projectName) {
+    public void editInvestmentIncomeInProject(String login, String password, String projectName) {
         EditActiveProjectPage selectedProject = editActiveProject(login, password, projectName);
 
         selectedProject.investmentIncomeInProject()
