@@ -34,6 +34,7 @@ public class KeyNumbersAddNumbersTest extends BaseTest{
                 .fillNumber(number)
                 .fillSybmol(symbol)
                 .fillDescription(description)
-                .applyChenges();
+                .applyChenges()
+                .alertResultMessage();
     }
 }

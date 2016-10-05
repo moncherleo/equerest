@@ -3,6 +3,8 @@ package com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcar
 import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by Oleg Nesterov on 28.09.2016;
@@ -17,6 +19,7 @@ public class KeyNumbers extends EditProjectPage {
     private By applyButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[2]/div[2]/div[2]/div/div[1]/div/div/div/div[2]/button[2]");
     private By discardButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[2]/div[2]/div[2]/div/div[1]/div/div/div/div[2]/button[1]");
     private By removeButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[2]/div[2]/div[2]/div/div[1]/div/div/div/div[2]/a");
+    private By resultVerificationMessage = By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Цифра добавлена')]]");
 
 
     public KeyNumbers(WebDriver driver){
@@ -63,6 +66,11 @@ public class KeyNumbers extends EditProjectPage {
         return this;
     }
 
+    public KeyNumbers alertResultMessage(){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(resultVerificationMessage)));
+        return this;
+    }
 
 
 
