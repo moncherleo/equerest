@@ -9,6 +9,8 @@ import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import ru.yandex.qatools.allure.annotations.Description;
+import ru.yandex.qatools.allure.annotations.Title;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -16,7 +18,9 @@ import java.util.Date;
 /**
  * Created by Eduard Aliiev on 9/23/16;
  */
-
+@Title("TC-04 'Изменение статуса проекта на 'Архив'")
+@Description("- Пользователь [login] должен предварительно войти в систему, используя [password]\n" +
+        "- Проект [projectName] должен быть создан и иметь статус 'Модерация'")
 @RunWith(JUnitParamsRunner.class)
 public class ArchiveProjectButtonTest extends BaseTest {
     private InArchivePage inArchivePage(String login, String password, String projectName) {
