@@ -7,10 +7,14 @@ import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import ru.yandex.qatools.allure.annotations.Description;
+import ru.yandex.qatools.allure.annotations.Title;
 
 /**
  * Created by Eduard Aliiev on 9/30/16;
  */
+@Title("TC-08 'Загрузка видео на страницу проекта'")
+@Description("- Пользователь [login] должен предварительно войти в систему, используя [password]")
 @RunWith(JUnitParamsRunner.class)
 public class UploadVideoSelectionTest extends BaseTest {
 
