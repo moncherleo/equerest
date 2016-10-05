@@ -8,10 +8,14 @@ import junitparams.JUnitParamsRunner;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import ru.yandex.qatools.allure.annotations.Description;
+import ru.yandex.qatools.allure.annotations.Title;
 
 /**
  * Created by Eduard Aliiev on 10/1/16;
  */
+@Title("TC-07 'Загрузка изображений в 'Галерею проекта'")
+@Description("- Пользователь [login] должен предварительно войти в систему, используя [password]")
 @RunWith(JUnitParamsRunner.class)
 public class UploadImagesToGalleryTest extends BaseTest {
 
