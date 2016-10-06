@@ -3,6 +3,7 @@ package com.equerest.steps;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -22,8 +23,9 @@ public class EntrepreneurSteps {
     protected final By fieldTelephoneNumber = By.id("tel");
     protected final By fieldMail = By.id("mail");
     protected final By fieldPass = By.id("pass");
-
-
+    protected final By buttonNextStep = By.cssSelector("#entrepreneur-register-form .button.button-blue.button-next");
+    protected final By fieldMonetizationModel = By.id("monetization_model");
+    protected final By fieldTitle = By.id("title");
 
     @Given("^I am on new project registration page$")
     public void setup() throws Throwable {
@@ -70,6 +72,16 @@ public class EntrepreneurSteps {
         driver.findElement(fieldPass).click();
         driver.findElement(fieldPass).sendKeys(password);
         Assert.assertEquals(driver.findElement(fieldPass).getAttribute("value"), password);
+    }
 
+    @And("^I go next to second project registration page$")
+    public void iGoNextToSecondProjectRegistrationPage() throws Throwable {
+        driver.findElement(buttonNextStep).click();
+        Assert.assertTrue(driver.findElement(fieldMonetizationModel).isDisplayed());
+    }
+
+    @Then("^I should see form field with \"([^\"]*)\" title$")
+    public void iShouldSeeFormFieldWithTitle(String title) throws Throwable {
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@for='title' and text()[contains(.,'" + title + "')]]")).isDisplayed());
     }
 }
