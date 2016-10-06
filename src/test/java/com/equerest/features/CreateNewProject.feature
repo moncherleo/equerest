@@ -1,7 +1,7 @@
 Feature:
   As a entrepreneur
   I want to be able to register my new project
-  So that i can see my project in projects catalogue
+  So that I can see my project in projects catalogue
 
   Scenario: Register a new project as entrepreneur
     Given I am on new project registration page
