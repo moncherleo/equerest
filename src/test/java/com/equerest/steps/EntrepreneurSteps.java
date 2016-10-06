@@ -7,6 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -26,6 +27,8 @@ public class EntrepreneurSteps {
     protected final By buttonNextStep = By.cssSelector("#entrepreneur-register-form .button.button-blue.button-next");
     protected final By fieldMonetizationModel = By.id("monetization_model");
     protected final By fieldTitle = By.id("title");
+    protected final By fieldCheckBox = By.id("checkbox_1");
+    protected final By fieldCheckBoxAgree = By.id("checkbox_agree");
 
     @Given("^I am on new project registration page$")
     public void setup() throws Throwable {
@@ -83,5 +86,14 @@ public class EntrepreneurSteps {
     @Then("^I should see form field with \"([^\"]*)\" title$")
     public void iShouldSeeFormFieldWithTitle(String title) throws Throwable {
         Assert.assertTrue(driver.findElement(By.xpath("//*[@for='title' and text()[contains(.,'" + title + "')]]")).isDisplayed());
+    }
+
+    @And("^I set checkbox to show my password$")
+    public void iSetCheckboxToShowMyPassword() throws Throwable {
+        if(driver.findElement(fieldCheckBox).isSelected() == false){
+            ((JavascriptExecutor) driver)
+                    .executeScript("arguments[0].click();", driver.findElement(fieldCheckBox));
+        }
+        Assert.assertTrue(driver.findElement(fieldCheckBox).isSelected());
     }
 }
