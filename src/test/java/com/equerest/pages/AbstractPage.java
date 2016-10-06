@@ -1,5 +1,6 @@
 package com.equerest.pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -38,6 +39,13 @@ public class AbstractPage {
     public void clickJS(By locator){
         ((JavascriptExecutor) driver)
                 .executeScript("arguments[0].click();", driver.findElement(locator));
+    }
+    
+    public void selectCheckbox(By locator){
+        if(driver.findElement(locator).isSelected() == false){
+            clickJS(locator);
+        }
+        Assert.assertTrue(driver.findElement(locator).isSelected());
     }
 
     public void fillField(By locator, String data){
