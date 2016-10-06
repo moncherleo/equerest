@@ -10,13 +10,13 @@ Feature:
     And I fill my City "Kyiv" into City field
     And I fill my phone number "+3800000000000" into Phone field
     #Eduard
-    And I fill my email address "my.email@address" into Email field
-    And I fill my desired password "equerest" into Password field
+    And I fill my email address "<mail>" into Email field
+    And I fill my desired password "<password>" into Password field
     #Leonid
     And I set checkbox to show my password
     #Misha
     And I go next to second project registration page
     Then I should see form field with "Название проекта" title
     Examples:
-      | firstName | lastName   |
-      | Leonid    | Chernyshov |
+      | firstName | lastName   | mail          | password |
+      | Leonid    | Chernyshov | test@test.com | Equerest |
