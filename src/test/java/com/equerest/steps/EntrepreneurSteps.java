@@ -18,6 +18,8 @@ import java.util.concurrent.TimeUnit;
 public class EntrepreneurSteps {
     protected WebDriver driver;
     protected final By fieldFio = By.id("fio");
+    protected final By fieldCity = By.id("city");
+    protected final By fieldTelephoneNumber = By.id("tel");
 
     @Given("^I am on new project registration page$")
     public void setup() throws Throwable {
@@ -36,4 +38,17 @@ public class EntrepreneurSteps {
         Assert.assertEquals(driver.findElement(fieldFio).getAttribute("value"), fullName);
     }
 
+    @And("^I fill my City \"([^\"]*)\" into City field$")
+    public void iFillMyCityIntoCityField(String city) throws Throwable {
+        driver.findElement(fieldCity).clear();
+        driver.findElement(fieldCity).sendKeys(city);
+        Assert.assertEquals(driver.findElement(fieldCity).getAttribute("value"), city);
+    }
+
+    @And("^I fill my phone number \"([^\"]*)\" into Phone field$")
+    public void iFillMyPhoneNumberIntoPhoneField(String phone) throws Throwable {
+        driver.findElement(fieldTelephoneNumber).clear();
+        driver.findElement(fieldTelephoneNumber).sendKeys(phone);
+        Assert.assertEquals(driver.findElement(fieldTelephoneNumber).getAttribute("value"), phone);
+    }
 }
