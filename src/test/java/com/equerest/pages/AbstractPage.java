@@ -18,11 +18,13 @@ public class AbstractPage {
         this.driver = driver;
     }
 
-    public void visibilityOf(By locator){;
+    public void visibilityOf(By locator){
+        wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
     }
 
     public void clickableOf(By locator){
+        wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(locator)));
     }
 
