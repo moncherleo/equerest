@@ -1,9 +1,8 @@
 package com.equerest.tests.webdriver.adminpanel.projectpage.createproject;
 
 import com.equerest.pages.common.MainPage;
-import com.equerest.pages.createproject.ProjectCreateComplete;
-import com.equerest.pages.createproject.ProjectInfo;
-import com.equerest.pages.createproject.ProjectOwnerInfo;
+import com.equerest.pages.createproject.ProjectCreateCompletePage;
+import com.equerest.pages.createproject.ProjectOwnerInfoPage;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
@@ -24,7 +23,7 @@ public class CreateNewProjectTest extends BaseTest {
 
         mainPage.openRegisterProjectPage();
 
-        ProjectCreateComplete projectOwnerInfo = new ProjectOwnerInfo(driver)
+        ProjectCreateCompletePage projectOwnerInfo = new ProjectOwnerInfoPage(driver)
                 .fillFio(fio)
                 .fillCity(city)
                 .fillTelephone(telephone)
@@ -41,7 +40,7 @@ public class CreateNewProjectTest extends BaseTest {
                 .setCheckBoxAgree()
                 .pressCompleteButton();
 
-        ProjectCreateComplete projectCreateComplete = new ProjectCreateComplete(driver);
+        ProjectCreateCompletePage projectCreateComplete = new ProjectCreateCompletePage(driver);
         projectCreateComplete.navigateToProject();
     }
 

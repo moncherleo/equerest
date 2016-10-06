@@ -1,7 +1,7 @@
 package com.equerest.pages.common;
 
 import com.equerest.pages.AbstractPage;
-import com.equerest.pages.createproject.ProjectOwnerInfo;
+import com.equerest.pages.createproject.ProjectOwnerInfoPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -47,10 +47,10 @@ public class MainPage extends AbstractPage {
         return navigateToInfoInvestorPage();
     }
 
-    public ProjectOwnerInfo openRegisterProjectPage(){
+    public ProjectOwnerInfoPage openRegisterProjectPage(){
         open();
         driver.findElement(registerProjectButton).click();
-        return new ProjectOwnerInfo(driver);
+        return new ProjectOwnerInfoPage(driver);
     }
 
 

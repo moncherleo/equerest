@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Oleg Nesterov on 04.10.2016;
  */
-public class ProjectInfo extends AbstractPage {
-    public ProjectInfo(WebDriver driver) {
+public class ProjectInfoPage extends AbstractPage {
+    public ProjectInfoPage(WebDriver driver) {
         super(driver);
     }
 
@@ -21,47 +21,47 @@ public class ProjectInfo extends AbstractPage {
     protected final By fieldCheckBoxAgree = By.id("checkbox_agree");
     protected final By buttonComplete = By.cssSelector("#entrepreneur-register-form .button-blue");
 
-    public ProjectInfo fillTitle(String title){
+    public ProjectInfoPage fillTitle(String title){
         driver.findElement(fieldTitle).sendKeys(title);
         return this;
     }
 
-    public ProjectInfo fillDescription(String description){
+    public ProjectInfoPage fillDescription(String description){
         driver.findElement(fieldDescriptionOfProject).sendKeys(description);
         return this;
     }
 
-    public ProjectInfo fillStage(){
+    public ProjectInfoPage fillStage(){
         clickJS(fieldStageOfProject);
         return this;
     }
 
-    public ProjectInfo fillAdvantages(String advantages){
+    public ProjectInfoPage fillAdvantages(String advantages){
         scrollTo(driver.findElement(fieldAdvantages));
         driver.findElement(fieldAdvantages).sendKeys(advantages);
         return this;
     }
 
-    public ProjectInfo fillMonetization(String model){
+    public ProjectInfoPage fillMonetization(String model){
         scrollTo(driver.findElement(fieldMonetizationModel));
         driver.findElement(fieldMonetizationModel).sendKeys(model);
         return this;
     }
 
-    public ProjectInfo fillAmount(String amount){
+    public ProjectInfoPage fillAmount(String amount){
         scrollTo(driver.findElement(fieldAmount));
         driver.findElement(fieldAmount).sendKeys(amount);
         return this;
     }
 
-    public ProjectInfo setCheckBoxAgree(){
+    public ProjectInfoPage setCheckBoxAgree(){
         scrollTo(driver.findElement(fieldCheckBoxAgree));
         clickJS(fieldCheckBoxAgree);
         return this;
     }
 
-    public ProjectCreateComplete pressCompleteButton(){
+    public ProjectCreateCompletePage pressCompleteButton(){
         click(buttonComplete);
-        return new ProjectCreateComplete(driver);
+        return new ProjectCreateCompletePage(driver);
     }
 }

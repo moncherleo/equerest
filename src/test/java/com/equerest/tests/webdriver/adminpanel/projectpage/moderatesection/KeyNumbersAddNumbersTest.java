@@ -1,6 +1,6 @@
 package com.equerest.tests.webdriver.adminpanel.projectpage.moderatesection;
 
-import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.KeyNumbers;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.KeyNumbersPage;
 import com.equerest.pages.helpers.adminpanel.EditProjectHelper;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
@@ -28,7 +28,7 @@ public class KeyNumbersAddNumbersTest extends BaseTest{
         EditProjectHelper editProjectHelper = new EditProjectHelper(driver);
         editProjectHelper.editProject(LOGIN, PASSWORD, PROJECT_NAME);
 
-        KeyNumbers keyNumbers = new KeyNumbers(driver);
+        KeyNumbersPage keyNumbers = new KeyNumbersPage(driver);
         keyNumbers.addNumbersButton()
                 .editFieldsButton()
                 .fillNumber(number)

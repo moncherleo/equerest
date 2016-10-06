@@ -3,14 +3,13 @@ package com.equerest.pages.createproject;
 import com.equerest.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 /**
  * Created by Oleg Nesterov on 10/4/16;
  */
-public class ProjectOwnerInfo extends AbstractPage {
+public class ProjectOwnerInfoPage extends AbstractPage {
 
-    public ProjectOwnerInfo(WebDriver driver) {
+    public ProjectOwnerInfoPage(WebDriver driver) {
         super(driver);
     }
 
@@ -23,41 +22,41 @@ public class ProjectOwnerInfo extends AbstractPage {
     protected final By buttonNextStep = By.cssSelector("#entrepreneur-register-form .button.button-blue.button-next");
 
 
-    public ProjectOwnerInfo fillFio(String fio){
+    public ProjectOwnerInfoPage fillFio(String fio){
         driver.findElement(fieldFio).sendKeys(fio);
         return this;
     }
 
-    public ProjectOwnerInfo fillCity(String city){
+    public ProjectOwnerInfoPage fillCity(String city){
         driver.findElement(fieldCity).sendKeys(city);
         return this;
     }
 
-    public ProjectOwnerInfo fillTelephone(String telephone){
+    public ProjectOwnerInfoPage fillTelephone(String telephone){
         driver.findElement(fieldTelephone).sendKeys(telephone);
         return this;
     }
 
-    public ProjectOwnerInfo fillMail(String mail){
+    public ProjectOwnerInfoPage fillMail(String mail){
         driver.findElement(fieldMail).sendKeys(mail);
         return this;
     }
 
-    public ProjectOwnerInfo setCheckBox(){
+    public ProjectOwnerInfoPage setCheckBox(){
         scrollTo(driver.findElement(fieldCheckBox));
         clickJS(fieldCheckBox);
         return this;
     }
 
-    public ProjectOwnerInfo fillPass(String password){
+    public ProjectOwnerInfoPage fillPass(String password){
         scrollTo(driver.findElement(fieldPass));
         driver.findElement(fieldPass).sendKeys(password);
         return this;
     }
 
-    public ProjectInfo pressNextButton(){
+    public ProjectInfoPage pressNextButton(){
         click(buttonNextStep);
-        return new ProjectInfo(driver);
+        return new ProjectInfoPage(driver);
     }
 
 }
