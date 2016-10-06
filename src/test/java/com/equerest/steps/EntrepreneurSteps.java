@@ -8,7 +8,6 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -19,7 +18,10 @@ import java.util.concurrent.TimeUnit;
 public class EntrepreneurSteps {
     protected WebDriver driver;
     protected final By fieldFio = By.id("fio");
-    protected final By checkboxAgree = By.id("checkbox_agree");
+    protected final By fieldMail = By.id("mail");
+    protected final By fieldPass = By.id("pass");
+
+
 
     @Given("^I am on new project registration page$")
     public void setup() throws Throwable {
@@ -38,12 +40,26 @@ public class EntrepreneurSteps {
         Assert.assertEquals(driver.findElement(fieldFio).getAttribute("value"), fullName);
     }
 
-    @And("^I set checkbox to show my password$")
-    public void iSetCheckboxToShowMyPassword() throws Throwable {
-        WebElement elementCheckBox = driver.findElement(checkboxAgree);
-        if (!elementCheckBox.isSelected()) {
-            elementCheckBox.click();
-        }
-        Assert.assertTrue(elementCheckBox.isSelected());
+    @And("^I fill my City \"([^\"]*)\" into City field$")
+    public void iFillMyCityIntoCityField(String arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^I fill my email address \"([^\"]*)\" into Email field$")
+    public void iFillMyEmailAddressIntoEmailField(String arg0) throws Throwable {
+        String mail = arg0;
+        driver.findElement(fieldMail).click();
+        driver.findElement(fieldMail).sendKeys(mail);
+        Assert.assertEquals(driver.findElement(fieldMail).getAttribute("value"), mail);
+    }
+
+    @And("^I fill my desired password \"([^\"]*)\" into Password field$")
+    public void iFillMyDesiredPasswordIntoPasswordField(String arg0) throws Throwable {
+        String password = arg0;
+        driver.findElement(fieldPass).click();
+        driver.findElement(fieldPass).sendKeys(password);
+        Assert.assertEquals(driver.findElement(fieldPass).getAttribute("value"), password);
+
     }
 }
