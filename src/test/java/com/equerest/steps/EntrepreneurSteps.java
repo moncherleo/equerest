@@ -52,6 +52,7 @@ public class EntrepreneurSteps {
         driver.findElement(fieldTelephoneNumber).clear();
         driver.findElement(fieldTelephoneNumber).sendKeys(phone);
         Assert.assertEquals(driver.findElement(fieldTelephoneNumber).getAttribute("value"), phone);
+    }
 
     @And("^I set checkbox to show my password$")
     public void iSetCheckboxToShowMyPassword() throws Throwable {
