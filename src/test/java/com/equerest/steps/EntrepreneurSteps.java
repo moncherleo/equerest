@@ -1,6 +1,7 @@
 package com.equerest.steps;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
@@ -34,4 +35,5 @@ public class EntrepreneurSteps {
         driver.findElement(fieldFio).sendKeys(fullName);
         Assert.assertEquals(driver.findElement(fieldFio).getAttribute("value"), fullName);
     }
+
 }
