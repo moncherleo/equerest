@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 /**
- * Created by cherleo on 9/19/16.
+ * Created by Leonid Chernyshov on 9/19/16.
  */
 public class AbstractPage {
     protected WebDriver driver;
