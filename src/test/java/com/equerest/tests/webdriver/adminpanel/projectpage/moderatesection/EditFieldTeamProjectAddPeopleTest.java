@@ -35,6 +35,7 @@ public class EditFieldTeamProjectAddPeopleTest extends BaseTest {
                 .fillteamMemberName(name)
                 .fillPosition(position)
                 .fillExperience(experience)
-                .applyChanges();
+                .applyChanges()
+                .assertTeamMemberAppears(name,position,experience);
     }
 }

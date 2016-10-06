@@ -1,6 +1,7 @@
 package com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard;
 
 import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -17,6 +18,7 @@ public class TeamMembers extends EditProjectPage{
     protected final By teamMemberDiscardChengesButton = By.xpath("//*[@id='anchor-team']/div/div/div/div[2]/button[1]");
     protected final By teamMemberApplyChangesButton = By.xpath("//*[@id='anchor-team']/div/div/div/div[2]/button[2]");
     protected final By teamMemberRemovePeople = By.cssSelector("#anchor-team .quick-editor>a");
+    protected final By teamMemberSection = By.id("anchor-team");
 
     public TeamMembers(WebDriver driver){
         super(driver);
@@ -58,6 +60,14 @@ public class TeamMembers extends EditProjectPage{
     public TeamMembers teamMemberRemove() {
         scrollToElement(teamMemberEditButton);
         click(teamMemberRemovePeople);
+        return this;
+    }
+
+    public TeamMembers assertTeamMemberAppears(String name, String position, String experience){
+        scrollTo(driver.findElement(teamMemberSection));
+        Assert.assertTrue(driver.findElement(teamMemberSection).getText().contains(name));
+        Assert.assertTrue(driver.findElement(teamMemberSection).getText().contains(position));
+        Assert.assertTrue(driver.findElement(teamMemberSection).getText().contains(experience));
         return this;
     }
 
