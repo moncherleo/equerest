@@ -56,12 +56,6 @@ public class EntrepreneurSteps {
         Assert.assertEquals(driver.findElement(fieldTelephoneNumber).getAttribute("value"), phone);
     }
 
-    @And("^I fill my City \"([^\"]*)\" into City field$")
-    public void iFillMyCityIntoCityField(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
     @And("^I fill my email address \"([^\"]*)\" into Email field$")
     public void iFillMyEmailAddressIntoEmailField(String arg0) throws Throwable {
         String mail = arg0;
