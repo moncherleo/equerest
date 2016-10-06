@@ -35,6 +35,7 @@ public class KeyNumbersAddNumbersTest extends BaseTest{
                 .fillSybmol(symbol)
                 .fillDescription(description)
                 .applyChenges()
-                .alertResultMessage();
+                .alertResultMessage()
+                .assertKeyNumbersAppears(symbol);
     }
 }
