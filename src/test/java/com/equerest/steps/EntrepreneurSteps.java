@@ -7,6 +7,7 @@ import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -20,6 +21,7 @@ public class EntrepreneurSteps {
     protected final By fieldFio = By.id("fio");
     protected final By fieldCity = By.id("city");
     protected final By fieldTelephoneNumber = By.id("tel");
+    protected final By checkboxAgree = By.id("checkbox_agree");
 
     @Given("^I am on new project registration page$")
     public void setup() throws Throwable {
@@ -50,5 +52,13 @@ public class EntrepreneurSteps {
         driver.findElement(fieldTelephoneNumber).clear();
         driver.findElement(fieldTelephoneNumber).sendKeys(phone);
         Assert.assertEquals(driver.findElement(fieldTelephoneNumber).getAttribute("value"), phone);
+
+    @And("^I set checkbox to show my password$")
+    public void iSetCheckboxToShowMyPassword() throws Throwable {
+        WebElement elementCheckBox = driver.findElement(checkboxAgree);
+        if (!elementCheckBox.isSelected()) {
+            elementCheckBox.click();
+        }
+        Assert.assertTrue(elementCheckBox.isSelected());
     }
 }
