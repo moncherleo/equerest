@@ -1,6 +1,7 @@
 package com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard;
 
 import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,6 +21,7 @@ public class KeyNumbers extends EditProjectPage {
     private By discardButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[2]/div[2]/div[2]/div/div[1]/div/div/div/div[2]/button[1]");
     private By removeButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[2]/div[2]/div[2]/div/div[1]/div/div/div/div[2]/a");
     private By resultVerificationMessage = By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Цифра добавлена')]]");
+    private By keyNumbersSection = By.xpath("//*[@id='wrapper']/main/div/div/div/section[2]/div[2]/div[2]/div/div[1]");
 
 
     public KeyNumbers(WebDriver driver){
@@ -72,6 +74,8 @@ public class KeyNumbers extends EditProjectPage {
         return this;
     }
 
-
-
+    public KeyNumbers assertKeyNumbersAppears(String symbol){
+        Assert.assertTrue(driver.findElement(keyNumbersSection).getText().contains(symbol));
+        return this;
+    }
 }
