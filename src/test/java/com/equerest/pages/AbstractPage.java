@@ -4,21 +4,33 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by cherleo on 9/19/16.
  */
 public class AbstractPage {
     protected WebDriver driver;
+    protected WebDriverWait wait;
 
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
     }
 
+    public void visibilityOf(By locator){;
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
+    }
+
+    public void clickableOf(By locator){
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(locator)));
+    }
+
     public void click(By locator){
-        WebElement element = driver.findElement(locator);
-        scrollTo(element);
-        element.click();
+        visibilityOf(locator);
+        clickableOf(locator);
+        scrollTo(driver.findElement(locator));
+        driver.findElement(locator).click();
     }
 
     public void clickJS(By locator){
