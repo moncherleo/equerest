@@ -97,6 +97,7 @@ public class EntrepeneurRegistrationProjectPage extends DriverFactory{
     @Then("^I should see \"([^\"]*)\" project title$")
     public void iShouldSeePtojectTitle(String name) throws Throwable {
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='wrapper']/main//*[text()[contains(.,'Тестовый Проект 1')]]")).isDisplayed());
+        driver.close();
     }
 }
 
