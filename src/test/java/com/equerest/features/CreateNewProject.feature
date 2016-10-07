@@ -30,5 +30,5 @@ Feature:
     Then I should see "<projectName>" project title
 
     Examples:
-      | firstName | lastName   | mail          | password | city | telephone     | projectName       | projectDescription | stage             |
-      | Leonid    | Chernyshov | test@test.com | Equerest | Kyiv | +380631324567 | тестовый проект 1 | Описание проекта   | Идея или прототип |
+      | firstName | lastName   | mail          | password | city | telephone     | projectName       | projectDescription |
+      | Leonid    | Chernyshov | test@test.com | Equerest | Kyiv | +380631324567 | Тестовый Проект 1 | Описание проекта   |
