@@ -1,7 +1,7 @@
 package com.equerest.pages.common;
 
 import com.equerest.pages.AbstractPage;
-import com.equerest.pages.createproject.EntrepreneurContactsPage;
+import com.equerest.pages.common.registration.EntrepreneurContactsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.allure.annotations.Step;

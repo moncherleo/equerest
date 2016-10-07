@@ -1,4 +1,4 @@
-package com.equerest.pages.createproject;
+package com.equerest.pages.common.registration;
 
 import com.equerest.pages.AbstractPage;
 import org.openqa.selenium.By;

@@ -1,8 +1,8 @@
-package com.equerest.tests.webdriver.adminpanel.projectpage.createproject;
+package com.equerest.tests.webdriver.register;
 
 import com.equerest.pages.common.MainPage;
-import com.equerest.pages.createproject.EntrepreneurRegistrationFinishPage;
-import com.equerest.pages.createproject.EntrepreneurContactsPage;
+import com.equerest.pages.common.registration.EntrepreneurRegistrationFinishPage;
+import com.equerest.pages.common.registration.EntrepreneurContactsPage;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
  * Created by Oleg Nesterov on 10/4/16;
  */
 @RunWith(JUnitParamsRunner.class)
-public class CreateNewProjectTest extends BaseTest {
+public class EntrepreneurRegistrationTest extends BaseTest {
 
     @Test
     @FileParameters("src/test/resources/create_new_project_owner_info.csv")
