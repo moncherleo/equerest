@@ -19,7 +19,7 @@ Feature:
     Then I should see form field with "Название проекта" title
     And I fill Project name "<projectName>" into projectName field
     And I fill Description of project "<projectDescription>" into description of project field
-    And I select stage of project "<stage>" at project stage field
+    And I select stage of project idea or prototip at project stage field
     And I fill advantages "Конкурентные преймущества" into Competitive advantages field
     And i fill Amount of investment "2000" into Amount of investment field
     And I fill monetization Model "Модель монетизации" into monetization Model field
@@ -27,7 +27,7 @@ Feature:
     And I go to finish registration page
     Then I should see the text "Спасибо!"
     And I shuld click to the Мой проект button
-    Then I should see "<projectName>" ptoject title
+    Then I should see "<projectName>" project title
 
     Examples:
       | firstName | lastName   | mail          | password | city | telephone     | projectName       | projectDescription | stage             |

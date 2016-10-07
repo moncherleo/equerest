@@ -11,8 +11,8 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by onesterov on 10/7/16.
  */
-public class EntrepeneurRegistrationProjectPage {
-    protected WebDriver driver;
+public class EntrepeneurRegistrationProjectPage extends DriverFactory{
+   // protected WebDriver driver;
 
     private final By fieldTitle = By.id("title");
     private final By fieldDescriptionOfProject = By.id("full_description");
@@ -40,11 +40,11 @@ public class EntrepeneurRegistrationProjectPage {
         Assert.assertEquals(driver.findElement(fieldTitle).getAttribute("value"), projectDescription);
     }
 
-    @And("^I select stage of project \"([^\"]*)\" at project stage field$")
-    public void iSelectStageOfProjectAtProjectStageField(String stage) throws Throwable {
-        driver.findElement(fieldStageOfProject).clear();
-        driver.findElement(fieldStageOfProject).sendKeys(stage);
-        Assert.assertEquals(driver.findElement(fieldStageOfProject).getAttribute("value"), stage);
+    @And("^I select stage of project idea or prototip at project stage field$")
+    public void iSelectStageOfProjectAtProjectStageField() throws Throwable {
+            ((JavascriptExecutor) driver)
+                    .executeScript("arguments[0].click();", driver.findElement(fieldStageOfProject));
+        Assert.assertTrue(driver.findElement(fieldStageOfProject).isSelected());
     }
 
     @And("^I fill advantages \"([^\"]*)\" into Competitive advantages field$")
@@ -94,11 +94,10 @@ public class EntrepeneurRegistrationProjectPage {
         driver.findElement(buttonMyProjectThankYou).click();
     }
 
-    @Then("^I should see \"([^\"]*)\" ptoject title$")
+    @Then("^I should see \"([^\"]*)\" project title$")
     public void iShouldSeePtojectTitle(String name) throws Throwable {
         //driver.findElement(titleOfProject).getText().contains(name);
         Assert.assertEquals(driver.findElement(titleOfProject), name);
     }
-
 }
 

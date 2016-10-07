@@ -17,8 +17,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by moncher on 06.10.2016.
  */
-public class EntrepreneurSteps {
-    protected WebDriver driver;
+public class EntrepreneurSteps extends DriverFactory {
+    //protected WebDriver driver;
     protected final By fieldFio = By.id("fio");
     protected final By fieldCity = By.id("city");
     protected final By fieldTelephoneNumber = By.id("tel");
@@ -33,7 +33,7 @@ public class EntrepreneurSteps {
     @Given("^I am on new project registration page$")
     public void setup() throws Throwable {
 
-        this.driver = new FirefoxDriver();
+       // this.driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://dev.equerest.com/register#/entrepreneur");
