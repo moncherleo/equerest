@@ -20,9 +20,9 @@ Feature:
     And I fill Project name "<projectName>" into projectName field
     And I fill Description of project "<projectDescription>" into description of project field
     And I select stage of project "<stage>" at project stage field
-    And I fill advantages "<advantages>" into Competitive advantages field
+    And I fill advantages "Конкурентные преймущества" into Competitive advantages field
     And i fill Amount of investment "2000" into Amount of investment field
-    And I fill monetization Model "<monetizationModel>" into monetization Model field
+    And I fill monetization Model "Модель монетизации" into monetization Model field
     And I set checkbox at I agree with conditions and rules field
     And I go to finish registration page
     Then I should see the text "Спасибо!"
@@ -31,4 +31,4 @@ Feature:
 
     Examples:
       | firstName | lastName   | mail          | password | city | telephone     | projectName       | projectDescription | stage             |
-      | Leonid    | Chernyshov | test@test.com | Equerest | Kyiv | +380631324567 | тестовій проект 1 | Описание проекта   | Идея или прототип |
+      | Leonid    | Chernyshov | test@test.com | Equerest | Kyiv | +380631324567 | тестовый проект 1 | Описание проекта   | Идея или прототип |
