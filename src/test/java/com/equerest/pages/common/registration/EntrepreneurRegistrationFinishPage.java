@@ -1,4 +1,4 @@
-package com.equerest.pages.createproject;
+package com.equerest.pages.common.registration;
 
 import com.equerest.pages.AbstractPage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
@@ -8,9 +8,9 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Oleg Nesterov on 04.10.2016;
  */
-public class ProjectCreateComplete extends AbstractPage {
+public class EntrepreneurRegistrationFinishPage extends AbstractPage {
 
-    public ProjectCreateComplete(WebDriver driver) {
+    public EntrepreneurRegistrationFinishPage(WebDriver driver) {
         super(driver);
     }
 

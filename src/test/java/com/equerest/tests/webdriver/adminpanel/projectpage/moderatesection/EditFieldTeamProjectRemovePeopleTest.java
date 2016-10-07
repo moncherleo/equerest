@@ -1,6 +1,6 @@
 package com.equerest.tests.webdriver.adminpanel.projectpage.moderatesection;
 
-import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.TeamMembers;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard.TeamMembersPage;
 import com.equerest.pages.helpers.adminpanel.EditProjectHelper;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class EditFieldTeamProjectRemovePeopleTest extends BaseTest {
         EditProjectHelper editProjectHelper = new EditProjectHelper(driver);
         editProjectHelper.editProject(LOGIN, PASSWORD, PROJECT_NAME);
 
-        TeamMembers teamMembers = new TeamMembers(driver);
+        TeamMembersPage teamMembers = new TeamMembersPage(driver);
         teamMembers.teamMemberEdit().teamMemberRemove();
     }
 }
