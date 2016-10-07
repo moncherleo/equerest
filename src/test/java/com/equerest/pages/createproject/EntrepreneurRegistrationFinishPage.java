@@ -8,9 +8,9 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Oleg Nesterov on 04.10.2016;
  */
-public class ProjectCreateCompletePage extends AbstractPage {
+public class EntrepreneurRegistrationFinishPage extends AbstractPage {
 
-    public ProjectCreateCompletePage(WebDriver driver) {
+    public EntrepreneurRegistrationFinishPage(WebDriver driver) {
         super(driver);
     }
 

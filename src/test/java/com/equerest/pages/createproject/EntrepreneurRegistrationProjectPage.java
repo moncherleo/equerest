@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Oleg Nesterov on 04.10.2016;
  */
-public class ProjectInfoPage extends AbstractPage {
-    public ProjectInfoPage(WebDriver driver) {
+public class EntrepreneurRegistrationProjectPage extends AbstractPage {
+    public EntrepreneurRegistrationProjectPage(WebDriver driver) {
         super(driver);
     }
 
@@ -21,47 +21,47 @@ public class ProjectInfoPage extends AbstractPage {
     protected final By fieldCheckBoxAgree = By.id("checkbox_agree");
     protected final By buttonComplete = By.cssSelector("#entrepreneur-register-form .button-blue");
 
-    public ProjectInfoPage fillTitle(String title){
+    public EntrepreneurRegistrationProjectPage fillTitle(String title){
         driver.findElement(fieldTitle).sendKeys(title);
         return this;
     }
 
-    public ProjectInfoPage fillDescription(String description){
+    public EntrepreneurRegistrationProjectPage fillDescription(String description){
         driver.findElement(fieldDescriptionOfProject).sendKeys(description);
         return this;
     }
 
-    public ProjectInfoPage fillStage(){
+    public EntrepreneurRegistrationProjectPage fillStage(){
         clickJS(fieldStageOfProject);
         return this;
     }
 
-    public ProjectInfoPage fillAdvantages(String advantages){
+    public EntrepreneurRegistrationProjectPage fillAdvantages(String advantages){
         scrollTo(driver.findElement(fieldAdvantages));
         driver.findElement(fieldAdvantages).sendKeys(advantages);
         return this;
     }
 
-    public ProjectInfoPage fillMonetization(String model){
+    public EntrepreneurRegistrationProjectPage fillMonetization(String model){
         scrollTo(driver.findElement(fieldMonetizationModel));
         driver.findElement(fieldMonetizationModel).sendKeys(model);
         return this;
     }
 
-    public ProjectInfoPage fillAmount(String amount){
+    public EntrepreneurRegistrationProjectPage fillAmount(String amount){
         scrollTo(driver.findElement(fieldAmount));
         driver.findElement(fieldAmount).sendKeys(amount);
         return this;
     }
 
-    public ProjectInfoPage setCheckBoxAgree(){
+    public EntrepreneurRegistrationProjectPage setCheckBoxAgree(){
         scrollTo(driver.findElement(fieldCheckBoxAgree));
         clickJS(fieldCheckBoxAgree);
         return this;
     }
 
-    public ProjectCreateCompletePage pressCompleteButton(){
+    public EntrepreneurRegistrationFinishPage pressCompleteButton(){
         click(buttonComplete);
-        return new ProjectCreateCompletePage(driver);
+        return new EntrepreneurRegistrationFinishPage(driver);
     }
 }

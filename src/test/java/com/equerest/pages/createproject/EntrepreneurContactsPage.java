@@ -7,9 +7,9 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Oleg Nesterov on 10/4/16;
  */
-public class ProjectOwnerInfoPage extends AbstractPage {
+public class EntrepreneurContactsPage extends AbstractPage {
 
-    public ProjectOwnerInfoPage(WebDriver driver) {
+    public EntrepreneurContactsPage(WebDriver driver) {
         super(driver);
     }
 
@@ -22,41 +22,41 @@ public class ProjectOwnerInfoPage extends AbstractPage {
     protected final By buttonNextStep = By.cssSelector("#entrepreneur-register-form .button.button-blue.button-next");
 
 
-    public ProjectOwnerInfoPage fillFio(String fio){
+    public EntrepreneurContactsPage fillFio(String fio){
         driver.findElement(fieldFio).sendKeys(fio);
         return this;
     }
 
-    public ProjectOwnerInfoPage fillCity(String city){
+    public EntrepreneurContactsPage fillCity(String city){
         driver.findElement(fieldCity).sendKeys(city);
         return this;
     }
 
-    public ProjectOwnerInfoPage fillTelephone(String telephone){
+    public EntrepreneurContactsPage fillTelephone(String telephone){
         driver.findElement(fieldTelephone).sendKeys(telephone);
         return this;
     }
 
-    public ProjectOwnerInfoPage fillMail(String mail){
+    public EntrepreneurContactsPage fillMail(String mail){
         driver.findElement(fieldMail).sendKeys(mail);
         return this;
     }
 
-    public ProjectOwnerInfoPage setCheckBox(){
+    public EntrepreneurContactsPage setCheckBox(){
         scrollTo(driver.findElement(fieldCheckBox));
         clickJS(fieldCheckBox);
         return this;
     }
 
-    public ProjectOwnerInfoPage fillPass(String password){
+    public EntrepreneurContactsPage fillPass(String password){
         scrollTo(driver.findElement(fieldPass));
         driver.findElement(fieldPass).sendKeys(password);
         return this;
     }
 
-    public ProjectInfoPage pressNextButton(){
+    public EntrepreneurRegistrationProjectPage pressNextButton(){
         click(buttonNextStep);
-        return new ProjectInfoPage(driver);
+        return new EntrepreneurRegistrationProjectPage(driver);
     }
 
 }
