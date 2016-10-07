@@ -39,9 +39,6 @@ public class DeleteProjectTest extends BaseTest {
                 .selectModerationFilter()
                 .searchProjectByName(projectName);
         driver.findElement(deleteProjectButton).click();
-
-        Alert confirmationAlert = driver.switchTo().alert();
-        confirmationAlert.sendKeys("1");
-        confirmationAlert.accept();
+        selectedProject.confirmDeletionAlert();
     }
 }

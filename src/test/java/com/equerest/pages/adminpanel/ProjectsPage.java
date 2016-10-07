@@ -4,6 +4,7 @@ import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage
 import com.equerest.pages.adminpanel.projectpage.moderatesection.InArchivePage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.ToModeratePage;
 import com.equerest.pages.adminpanel.projectpage.activesection.EditActiveProjectPage;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -109,5 +110,12 @@ public class ProjectsPage extends BaseAdminPanelPage {
     public ToModeratePage selectNewFilter() {
         click(projectFilterNewButton);
         return new ToModeratePage(driver);
+    }
+
+    public ProjectsPage confirmDeletionAlert(){
+        Alert confirmationAlert = driver.switchTo().alert();
+        confirmationAlert.sendKeys("1");
+        confirmationAlert.accept();
+        return this;
     }
 }

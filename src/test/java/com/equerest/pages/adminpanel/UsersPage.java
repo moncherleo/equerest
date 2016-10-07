@@ -1,6 +1,7 @@
 package com.equerest.pages.adminpanel;
 
 import com.equerest.pages.adminpanel.userspage.CreateNewUserPage;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,6 +32,13 @@ public class UsersPage extends BaseAdminPanelPage{
     public UsersPage deleteUser(By userName){
         //in progress
         driver.findElement(deleteUserButton).click();
+        return this;
+    }
+
+    public UsersPage confirmDeletionAlert(){
+        Alert confirmationAlert = driver.switchTo().alert();
+        confirmationAlert.sendKeys("1");
+        confirmationAlert.accept();
         return this;
     }
 }
