@@ -1,7 +1,7 @@
 package com.equerest.pages.common;
 
 import com.equerest.pages.AbstractPage;
-import com.equerest.pages.createproject.ProjectOwnerInfo;
+import com.equerest.pages.common.registration.EntrepreneurContactsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -12,8 +12,9 @@ import ru.yandex.qatools.allure.annotations.Step;
 public class MainPage extends AbstractPage {
     private String url;
     private static final String LOGIN_PAGE_URL = "register#/";
-    private By forInvestor = By.xpath("//*[@id='header']//*[text()='Инвестору']");
+    private By forInvestor = By.xpath("//*[@id='header']//*[text()='Инвестору                                ']");
     private By registerProjectButton = By.cssSelector("#main .button-green.bordered");
+    private By forEntrepreneur = By.xpath("//*[@id='header']//*[text()[contains(.,'Предпринимателю')]]");
 
     public MainPage(String url, WebDriver driver) {
         super(driver);
@@ -47,10 +48,16 @@ public class MainPage extends AbstractPage {
         return navigateToInfoInvestorPage();
     }
 
-    public ProjectOwnerInfo openRegisterProjectPage(){
+    public EntrepreneurContactsPage openRegisterProjectPage(){
         open();
         driver.findElement(registerProjectButton).click();
-        return new ProjectOwnerInfo(driver);
+        return new EntrepreneurContactsPage(driver);
+    }
+
+    public EntrepreneurInfoPage navigateToEntrepreneurInfoPage(){
+        open();
+        driver.findElement(forEntrepreneur).click();
+        return new com.equerest.pages.common.EntrepreneurInfoPage(driver);
     }
 
 

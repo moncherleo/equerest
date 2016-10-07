@@ -35,10 +35,15 @@ public class ModerateProjectButtonTest extends BaseTest {
 	@FileParameters("src/test/resources/login_project_toModerateButton_info.csv")
 	public void toModerateProgectPage(String login, String password, String projectName) {
 
-		ToModeratePage selectedProject = toModeratePage(login, password, projectName)
+		ProjectsPage selectedProject = toModeratePage(login, password, projectName)
 				.selectNewFilter()
 				.toModerateProject(projectName)
 				.projectToModerate()
-				.verifyProjectSavedAlertDisplayed();
+				.verifyAlertUpdateProjectDisplayed()
+				.selectModerationFilter()
+				.searchProjectByName(projectName);
+
+		ToModeratePage toModeratePage = new ToModeratePage(driver)
+				.assertProjectAppear(projectName);
 	}
 }

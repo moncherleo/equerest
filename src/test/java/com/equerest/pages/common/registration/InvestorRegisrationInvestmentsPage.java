@@ -27,9 +27,9 @@ public class InvestorRegisrationInvestmentsPage extends AbstractPage {
         return this;
     }
 
-    public FinishPage finishRegistration(){
+    public InvestorRegistrationFinishPage finishRegistration(){
         driver.findElement(finishReg).click();
-        return new FinishPage(driver);
+        return new InvestorRegistrationFinishPage(driver);
     }
 
 }
