@@ -19,13 +19,10 @@ import static com.sun.deploy.ui.CacheUpdateProgressDialog.dismiss;
 @RunWith(JUnitParamsRunner.class)
 public class DeleteProjectTest extends BaseTest {
 
-    private By deleteProjectButton = By.xpath("//*[@id='wrapper']/main/div/div/div//*[text()[contains(.,'Удалить')]]");
-    String login = "olegftzi@gmail.com";
-    String password = "Oleg1234";
-    String projectName = "Тестовый проект Удаление";
-
     private ProjectsPage openProjectsList() {
-
+        String login = "olegftzi@gmail.com";
+        String password = "Oleg1234";
+        String projectName = "Тестовый проект Удаление";
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
         ProjectsPage projectsPage = mainPage.openLoginPage()
                 .loginAs(login, password);
@@ -40,10 +37,10 @@ public class DeleteProjectTest extends BaseTest {
 
         ProjectsPage selectedProject = openProjectsList()
                 .selectNewFilter()
-                .searchProjectByNameForNewStatus(project);
+                .searchProjectByNameForNewStatus(project)
                 //.selectModerationFilter()
                 //.searchProjectByName(project);
-        driver.findElement(deleteProjectButton).click();
-        selectedProject.confirmDeletionAlert();
+                .deleteProject()
+                .confirmDeletionAlert();
     }
 }

@@ -16,16 +16,15 @@ import org.openqa.selenium.By;
  */
 @RunWith(JUnitParamsRunner.class)
 public class DeleteUserTest extends BaseTest {
-    //private By deleteUserButton = By.xpath("//*[@id='wrapper']/main//a[@uib-tooltip='Удалить']");
-    String login = "olegftzi@gmail.com";
-    String password = "Oleg1234";
-    String userName = "Тестовый пользователь";
 
     private UsersPage openProjectsList() {
-
+        String login = "olegftzi@gmail.com";
+        String password = "Oleg1234";
+        String userName = "Тестовый пользователь";
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        ProjectsPage usersPage = mainPage.openLoginPage()
-                .loginAs(login, password);
+        UsersPage usersPage = mainPage.openLoginPage()
+                .loginAs(login, password)
+                .navigateToUserMenuPageViaMenuItem();
         return usersPage.navigateToUserMenuPageViaMenuItem();
     }
 
