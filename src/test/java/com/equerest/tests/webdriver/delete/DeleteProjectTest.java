@@ -3,6 +3,7 @@ package com.equerest.tests.webdriver.delete;
 import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.common.MainPage;
 import com.equerest.tests.webdriver.BaseTest;
+import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,9 +16,10 @@ import static com.sun.deploy.ui.CacheUpdateProgressDialog.dismiss;
 /**
  * Created by Oleg Nesterov on 07.10.2016;
  */
+@RunWith(JUnitParamsRunner.class)
 public class DeleteProjectTest extends BaseTest {
 
-    private By deleteProjectButton = By.xpath("//*[@id='wrapper']/main/div/div/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[3]/button[1]");
+    private By deleteProjectButton = By.xpath("//*[@id='wrapper']/main/div/div/div//*[text()[contains(.,'Удалить')]]");
     String login = "olegftzi@gmail.com";
     String password = "Oleg1234";
     String projectName = "Тестовый проект Удаление";
@@ -33,11 +35,14 @@ public class DeleteProjectTest extends BaseTest {
 
     @Test
     @Description("Удаление проекта из фильтра Модерация")
-    public void deleteProject() {
+    @FileParameters("src/test/resources/delete_project.csv")
+    public void deleteProject(String project) {
 
         ProjectsPage selectedProject = openProjectsList()
-                .selectModerationFilter()
-                .searchProjectByName(projectName);
+                .selectNewFilter()
+                .searchProjectByNameForNewStatus(project);
+                //.selectModerationFilter()
+                //.searchProjectByName(project);
         driver.findElement(deleteProjectButton).click();
         selectedProject.confirmDeletionAlert();
     }

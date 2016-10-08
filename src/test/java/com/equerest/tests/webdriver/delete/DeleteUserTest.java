@@ -4,15 +4,19 @@ import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.adminpanel.UsersPage;
 import com.equerest.pages.common.MainPage;
 import com.equerest.tests.webdriver.BaseTest;
+import junitparams.FileParameters;
+import junitparams.JUnitParamsRunner;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 
 
 /**
  * Created by Oleg Nesterov on 07.10.2016;
  */
+@RunWith(JUnitParamsRunner.class)
 public class DeleteUserTest extends BaseTest {
-    private By deleteUserButton = By.xpath("//*[@id='wrapper']/main/div/div/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[3]/button[1]");
+    //private By deleteUserButton = By.xpath("//*[@id='wrapper']/main//a[@uib-tooltip='Удалить']");
     String login = "olegftzi@gmail.com";
     String password = "Oleg1234";
     String userName = "Тестовый пользователь";
@@ -26,8 +30,11 @@ public class DeleteUserTest extends BaseTest {
     }
 
     @Test
-    public void deleteUserTest(){
+    @FileParameters("src/test/resources/delete_user.csv")
+    public void deleteUserTest(String userMail){
        UsersPage projectsPage = openProjectsList()
-        .searchUser(userName);
+               .searchUser(userMail)
+               .deleteUser()
+               .confirmDeletionAlert();
     }
 }

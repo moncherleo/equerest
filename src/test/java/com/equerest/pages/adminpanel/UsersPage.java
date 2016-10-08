@@ -15,7 +15,7 @@ public class UsersPage extends BaseAdminPanelPage{
         super(driver);
     }
     private By searchUserField = By.id("search");
-    private By deleteUserButton = By.xpath("//*[@id='wrapper']/main");
+    private By deleteUserButton = By.cssSelector("#wrapper a[uib-tooltip='Удалить']");
     private By removeFilterButton = By.id("removeFilter");
     private By addUserButton = By.id("userAdd");
 
@@ -29,8 +29,7 @@ public class UsersPage extends BaseAdminPanelPage{
         return new CreateNewUserPage(driver);
     }
 
-    public UsersPage deleteUser(By userName){
-        //in progress
+    public UsersPage deleteUser(){
         driver.findElement(deleteUserButton).click();
         return this;
     }
