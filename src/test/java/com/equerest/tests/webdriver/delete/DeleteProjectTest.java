@@ -7,11 +7,9 @@ import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
+
 import ru.yandex.qatools.allure.annotations.Description;
 
-import static com.sun.deploy.ui.CacheUpdateProgressDialog.dismiss;
 
 /**
  * Created by Oleg Nesterov on 07.10.2016;
