@@ -4,6 +4,7 @@ import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage
 import com.equerest.pages.adminpanel.projectpage.moderatesection.InArchivePage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.ToModeratePage;
 import com.equerest.pages.adminpanel.projectpage.activesection.EditActiveProjectPage;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -32,6 +33,7 @@ public class ProjectsPage extends BaseAdminPanelPage {
 
     //New section "Новые"
     private final By projectFilterNewButton = By.xpath("//*[@class='projects-list container ng-isolate-scope']//div[1]//*[text()='Новые']");
+    private By deleteProjectButton = By.xpath("//*[@id='wrapper']/main/div/div/div//*[text()[contains(.,'Удалить')]]");
 
     public ProjectsPage(WebDriver driver) {
         super(driver);
@@ -109,5 +111,17 @@ public class ProjectsPage extends BaseAdminPanelPage {
     public ToModeratePage selectNewFilter() {
         click(projectFilterNewButton);
         return new ToModeratePage(driver);
+    }
+
+    public ProjectsPage confirmDeletionAlert(){
+        Alert confirmationAlert = driver.switchTo().alert();
+        confirmationAlert.sendKeys("1");
+        confirmationAlert.accept();
+        return this;
+    }
+
+    public ProjectsPage deleteProject(){
+        driver.findElement(deleteProjectButton).click();
+        return this;
     }
 }

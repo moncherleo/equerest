@@ -12,6 +12,7 @@ import ru.yandex.qatools.allure.annotations.Step;
 public class BaseAdminPanelPage extends AbstractPage {
 
     private By projectsMenuItem = By.xpath("//*[@id='js-navbar-collapse']//*[text()='Проекты']");
+    private By userMenuItem = By.xpath("//*[@id='js-navbar-collapse']//*[text()='Пользователи']");
 
     public BaseAdminPanelPage(WebDriver driver){
         super(driver);
@@ -21,5 +22,11 @@ public class BaseAdminPanelPage extends AbstractPage {
     public ProjectsPage navigateToProjectPageViaMenuItem(){
         driver.findElement(projectsMenuItem).click();
         return new ProjectsPage(driver);
+    }
+
+    @Step("Go to Users menu")
+    public UsersPage navigateToUserMenuPageViaMenuItem(){
+        driver.findElement(userMenuItem).click();
+        return new UsersPage(driver);
     }
 }
