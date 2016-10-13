@@ -21,7 +21,7 @@ public class EntrepreneurRegistrationTest extends BaseTest {
     public void createProject(String fio, String city, String telephone, String mail, String pass, String title, String description, String advantages, String model, String amount){
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
         mainPage.openRegisterProjectPage();
-
+        //test comment
         EntrepreneurRegistrationFinishPage projectOwnerInfo = new EntrepreneurContactsPage(driver)
                 .fillFio(fio)
                 .fillCity(city)
