@@ -44,6 +44,7 @@ public class EntrepreneurRegistrationTest extends BaseTest {
     }
 
     @Test
+    @Ignore
     @FileParameters("src/test/resources/create_new_project_via_menu.csv")
     public void createProjectViaTopMenu(String fio, String city, String telephone, String mail, String pass, String title, String description, String advantages, String model, String amount){
 
