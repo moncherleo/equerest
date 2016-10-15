@@ -17,7 +17,7 @@ import org.openqa.selenium.By;
 @RunWith(JUnitParamsRunner.class)
 public class DeleteUserTest extends BaseTest {
 
-    private UsersPage openProjectsList() {
+    public UsersPage openProjectsList() {
         String login = "olegftzi@gmail.com";
         String password = "Oleg1234";
         String userName = "Тестовый пользователь";

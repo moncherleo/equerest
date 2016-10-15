@@ -17,7 +17,7 @@ import ru.yandex.qatools.allure.annotations.Description;
 @RunWith(JUnitParamsRunner.class)
 public class DeleteProjectTest extends BaseTest {
 
-    private ProjectsPage openProjectsList() {
+    public ProjectsPage openProjectsList() {
         String login = "olegftzi@gmail.com";
         String password = "Oleg1234";
         String projectName = "Тестовый проект Удаление";
@@ -31,7 +31,7 @@ public class DeleteProjectTest extends BaseTest {
     @Test
     @Description("Удаление проекта из фильтра Модерация")
     @FileParameters("src/test/resources/delete_project.csv")
-    public void deleteProject(String project) {
+    public void deleteProjectTest(String project) {
 
         ProjectsPage selectedProject = openProjectsList()
                 .selectNewFilter()

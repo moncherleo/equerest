@@ -4,8 +4,12 @@ import com.equerest.pages.common.MainPage;
 import com.equerest.pages.common.registration.EntrepreneurRegistrationFinishPage;
 import com.equerest.pages.common.registration.EntrepreneurContactsPage;
 import com.equerest.tests.webdriver.BaseTest;
+import com.equerest.tests.webdriver.delete.DeleteProjectTest;
+import com.equerest.tests.webdriver.delete.DeleteUserTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -72,5 +76,17 @@ public class EntrepreneurRegistrationTest extends BaseTest {
         EntrepreneurRegistrationFinishPage projectCreateComplete = new EntrepreneurRegistrationFinishPage(driver);
         projectCreateComplete.navigateToProject();
     }
+
+    @After
+    public void deleteProjectAndUser(){
+ /*       DeleteProjectTest deleteProjectTest = new DeleteProjectTest();
+        deleteProjectTest.openProjectsList();
+        deleteProjectTest.deleteProjectTest("Тестовый проект Предприниматель 1");
+
+        DeleteUserTest deleteUserTest = new DeleteUserTest();
+        deleteUserTest.openProjectsList();
+        deleteUserTest.deleteUserTest("equeresttest1@gmail.com");*/
+    }
+
 
 }
