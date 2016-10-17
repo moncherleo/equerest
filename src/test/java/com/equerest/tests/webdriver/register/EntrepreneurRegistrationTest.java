@@ -1,15 +1,12 @@
 package com.equerest.tests.webdriver.register;
 
-import com.equerest.pages.common.MainPage;
+import com.equerest.pages.common.HomePage;
 import com.equerest.pages.common.registration.EntrepreneurRegistrationFinishPage;
 import com.equerest.pages.common.registration.EntrepreneurContactsPage;
 import com.equerest.tests.webdriver.BaseTest;
-import com.equerest.tests.webdriver.delete.DeleteProjectTest;
-import com.equerest.tests.webdriver.delete.DeleteUserTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,8 +20,8 @@ public class EntrepreneurRegistrationTest extends BaseTest {
     @Test
     @FileParameters("src/test/resources/create_new_project_owner_info.csv")
     public void createProject(String fio, String city, String telephone, String mail, String pass, String title, String description, String advantages, String model, String amount){
-        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        mainPage.openRegisterProjectPage();
+        HomePage homePage = new HomePage(driver);
+        homePage.openRegisterProjectPage();
         //test comment
         EntrepreneurRegistrationFinishPage projectOwnerInfo = new EntrepreneurContactsPage(driver)
                 .fillFio(fio)
@@ -52,7 +49,7 @@ public class EntrepreneurRegistrationTest extends BaseTest {
     @FileParameters("src/test/resources/create_new_project_via_menu.csv")
     public void createProjectViaTopMenu(String fio, String city, String telephone, String mail, String pass, String title, String description, String advantages, String model, String amount){
 
-        EntrepreneurContactsPage mainPage = new MainPage("https://dev.equerest.com/", driver)
+        EntrepreneurContactsPage mainPage = new HomePage(driver)
                 .navigateToEntrepreneurInfoPage()
                 .startEntrepreneurRegistration();
 

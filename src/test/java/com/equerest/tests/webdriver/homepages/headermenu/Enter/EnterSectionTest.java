@@ -1,7 +1,7 @@
 package com.equerest.tests.webdriver.homepages.headermenu.Enter;
 
 
-import com.equerest.pages.common.MainPage;
+import com.equerest.pages.common.HomePage;
 import com.equerest.pages.homepages.headermenu.Enter.EnterSection;
 import com.equerest.pages.homepages.headermenu.HeaderMenu;
 import com.equerest.tests.webdriver.BaseTest;
@@ -19,8 +19,8 @@ public class EnterSectionTest extends BaseTest {
     @Test
     @Title("Проверка кликабельности кнопки 'Войти'")
     public void enterSectionButton() {
-        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        mainPage.open();
+        HomePage homePage = new HomePage(driver);
+        homePage.open();
 
         HeaderMenu clickButton = new EnterSection(driver);
         clickButton

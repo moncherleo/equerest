@@ -1,7 +1,7 @@
 package com.equerest.pages.common.registration;
 
 import com.equerest.pages.AbstractPage;
-import com.equerest.pages.common.MainPage;
+import com.equerest.pages.common.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -14,8 +14,8 @@ public class InvestorRegistrationFinishPage extends AbstractPage {
 
     public InvestorRegistrationFinishPage(WebDriver driver){super(driver);}
 
-    public MainPage pressOk(){
+    public HomePage pressOk(){
         driver.findElement(okButton).click();
-        return new MainPage("https://dev.equerest.com/", driver);
+        return new HomePage(driver);
     }
 }

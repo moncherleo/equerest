@@ -1,14 +1,12 @@
 package com.equerest.tests.webdriver.delete;
 
-import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.adminpanel.UsersPage;
-import com.equerest.pages.common.MainPage;
+import com.equerest.pages.common.HomePage;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
 
 
 /**
@@ -21,8 +19,8 @@ public class DeleteUserTest extends BaseTest {
         String login = "olegftzi@gmail.com";
         String password = "Oleg1234";
         String userName = "Тестовый пользователь";
-        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        UsersPage usersPage = mainPage.openLoginPage()
+        HomePage homePage = new HomePage(driver);
+        UsersPage usersPage = homePage.openLoginPage()
                 .loginAs(login, password)
                 .navigateToUserMenuPageViaMenuItem();
         return usersPage.navigateToUserMenuPageViaMenuItem();

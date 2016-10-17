@@ -2,19 +2,13 @@ package com.equerest.tests.webdriver.adminpanel.projectpage.moderatesection;
 
 import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.ToModeratePage;
-import com.equerest.pages.common.MainPage;
+import com.equerest.pages.common.HomePage;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.qatools.allure.annotations.Description;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Oleg Nesterov on 24.09.2016;
@@ -22,8 +16,8 @@ import java.util.concurrent.TimeUnit;
 @RunWith(JUnitParamsRunner.class)
 public class ModerateProjectButtonTest extends BaseTest {
 	private ProjectsPage toModeratePage(String login, String password, String projectName) {
-		MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-		ProjectsPage projectsPage = mainPage.openLoginPage()
+		HomePage homePage = new HomePage(driver);
+		ProjectsPage projectsPage = homePage.openLoginPage()
 				.loginAs(login, password);
 
 		return projectsPage.navigateToProjectPageViaMenuItem();

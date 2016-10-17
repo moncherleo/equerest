@@ -1,6 +1,6 @@
 package com.equerest.tests.webdriver.homepages.headermenu.Investor;
 
-import com.equerest.pages.common.MainPage;
+import com.equerest.pages.common.HomePage;
 import com.equerest.pages.homepages.headermenu.Investor.InvestorSection;
 import com.equerest.pages.homepages.headermenu.HeaderMenu;
 import com.equerest.tests.webdriver.BaseTest;
@@ -17,8 +17,8 @@ public class InvestorSectionTest extends BaseTest{
     @Test
     @Title("Проверка кликабельности кнопки 'Инвестору'")
     public void investorSectionButton() {
-        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        mainPage.open();
+        HomePage homePage = new HomePage(driver);
+        homePage.open();
 
         HeaderMenu clickButton = new InvestorSection(driver);
         clickButton

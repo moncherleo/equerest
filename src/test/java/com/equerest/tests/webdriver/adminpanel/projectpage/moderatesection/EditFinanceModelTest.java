@@ -2,7 +2,7 @@ package com.equerest.tests.webdriver.adminpanel.projectpage.moderatesection;
 
 import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
-import com.equerest.pages.common.MainPage;
+import com.equerest.pages.common.HomePage;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -19,8 +19,8 @@ public class EditFinanceModelTest extends BaseTest {
     @Ignore
     @Test
     public void EditProjectOnDashboard() {
-        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        ProjectsPage projectsPage = mainPage.openLoginPage()
+        HomePage homePage = new HomePage(driver);
+        ProjectsPage projectsPage = homePage.openLoginPage()
                 .loginAs(LOGIN, PASSWORD);
 
         EditProjectPage selectedProject = projectsPage.navigateToProjectPageViaMenuItem()

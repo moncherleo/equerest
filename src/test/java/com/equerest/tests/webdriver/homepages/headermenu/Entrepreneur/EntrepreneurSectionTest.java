@@ -1,6 +1,6 @@
 package com.equerest.tests.webdriver.homepages.headermenu.Entrepreneur;
 
-import com.equerest.pages.common.MainPage;
+import com.equerest.pages.common.HomePage;
 import com.equerest.pages.homepages.headermenu.Entrepreneur.EntrepreneurSection;
 import com.equerest.pages.homepages.headermenu.HeaderMenu;
 import com.equerest.tests.webdriver.BaseTest;
@@ -17,8 +17,8 @@ public class EntrepreneurSectionTest extends BaseTest{
     @Test
     @Title("Проверка кликабельности кнопки 'Предпринимателю'")
     public void entrepreneurSectionButton() {
-        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        mainPage.open();
+        HomePage homePage = new HomePage(driver);
+        homePage.open();
 
         HeaderMenu clickButton = new EntrepreneurSection(driver);
         clickButton

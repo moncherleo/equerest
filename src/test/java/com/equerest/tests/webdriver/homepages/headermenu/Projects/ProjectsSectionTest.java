@@ -1,6 +1,6 @@
 package com.equerest.tests.webdriver.homepages.headermenu.Projects;
 
-import com.equerest.pages.common.MainPage;
+import com.equerest.pages.common.HomePage;
 import com.equerest.pages.homepages.headermenu.Projects.ProjectsSection;
 import com.equerest.pages.homepages.headermenu.HeaderMenu;
 import com.equerest.tests.webdriver.BaseTest;
@@ -17,8 +17,8 @@ public class ProjectsSectionTest extends BaseTest{
     @Test
     @Title("Проверка кликабельности кнопки 'Проекты'")
     public void projectsSectionButton() {
-        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        mainPage.open();
+        HomePage homePage = new HomePage(driver);
+        homePage.open();
 
         HeaderMenu clickButton = new ProjectsSection(driver);
         clickButton

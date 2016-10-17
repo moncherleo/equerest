@@ -9,19 +9,25 @@ import ru.yandex.qatools.allure.annotations.Step;
 /**
  * Created by cherleo on 9/19/16.
  */
-public class MainPage extends AbstractPage {
+public class HomePage extends AbstractPage {
     private String url;
     private static final String LOGIN_PAGE_URL = "register#/";
     private By forInvestor = By.xpath("//*[@id='header']//*[text()='Инвестору                                ']");
     private By registerProjectButton = By.cssSelector("#main .button-green.bordered");
     private By forEntrepreneur = By.xpath("//*[@id='header']//*[text()[contains(.,'Предпринимателю')]]");
 
-    public MainPage(String url, WebDriver driver) {
+    public HomePage(String url, WebDriver driver) {
         super(driver);
         this.url = url;
     }
+
+    public HomePage(WebDriver driver) {
+        super(driver);
+        this.url = "https://dev.equerest.com/";
+    }
+
     @Step("Open home page")
-    public MainPage open(){
+    public HomePage open(){
         driver.navigate().to(url);
         return this;
     }

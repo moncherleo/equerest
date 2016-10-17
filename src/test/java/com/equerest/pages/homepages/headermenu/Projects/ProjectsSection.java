@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 public class ProjectsSection extends HeaderMenu {
 
     //the general locator of the equerestLogo
-    private final By equerestLogo = By.xpath("/html/body/div[1]/header/div/nav/div[1]/div[1]//img[contains(@src, 'header_logo.svg')]");
+        private final By equerestLogo = By.xpath("/html/body/div[1]/header/div/nav/div[1]/div[1]//img[contains(@src, 'header_logo.svg')]");
 
     public ProjectsSection(WebDriver driver) {
         super(driver);
