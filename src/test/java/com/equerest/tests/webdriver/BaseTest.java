@@ -39,7 +39,7 @@ public class BaseTest {
 
         @Override
         protected void finished(Description description) {
-            driver.close();
+            driver.quit();
         }
     };
 
