@@ -48,8 +48,7 @@ public class EntrepreneurRegistrationTest extends BaseTest {
     @FileParameters("src/test/resources/create_new_project_via_menu.csv")
     public void createProjectViaTopMenu(String fio, String city, String telephone, String mail, String pass, String title, String description, String advantages, String model, String amount){
 
-        EntrepreneurContactsPage mainPage = new HomePage(driver)
-                .navigateToEntrepreneurInfoPage()
+                homePage.navigateToEntrepreneurInfoPage()
                 .startEntrepreneurRegistration();
 
         EntrepreneurRegistrationFinishPage projectOwnerInfo = new EntrepreneurContactsPage(driver)
