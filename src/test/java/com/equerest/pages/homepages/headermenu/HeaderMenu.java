@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Eduard Aliiev on 10/16/16;
  */
-public class TheElementsHeaderMenuAreCheckedClickability extends AbstractPage {
+public class HeaderMenu extends AbstractPage {
 
     //The locators of the 'Header' menu
     private final By missionButton = By.xpath("/html/body/div[1]/header/div/nav/div[1]/div[2]//*[text()[contains(.,'Миссия')]]");
@@ -22,7 +22,7 @@ public class TheElementsHeaderMenuAreCheckedClickability extends AbstractPage {
     private final By projectsButton =By.xpath("/html/body/div[1]/header/div/nav/div[1]/div[2]//*[text()[contains(.,'Проекты')]]");
     private final By enterButton =By.xpath("/html/body/div[1]/header/div/nav/div[2]//*[text()[contains(.,'Войти')]]");
 
-    public TheElementsHeaderMenuAreCheckedClickability(WebDriver driver){
+    public HeaderMenu(WebDriver driver){
         super(driver);
     }
 

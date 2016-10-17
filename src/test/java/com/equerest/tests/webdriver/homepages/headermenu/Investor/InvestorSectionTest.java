@@ -2,7 +2,7 @@ package com.equerest.tests.webdriver.homepages.headermenu.Investor;
 
 import com.equerest.pages.common.MainPage;
 import com.equerest.pages.homepages.headermenu.Investor.InvestorSection;
-import com.equerest.pages.homepages.headermenu.TheElementsHeaderMenuAreCheckedClickability;
+import com.equerest.pages.homepages.headermenu.HeaderMenu;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Description;
@@ -20,7 +20,7 @@ public class InvestorSectionTest extends BaseTest{
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
         mainPage.open();
 
-        TheElementsHeaderMenuAreCheckedClickability clickButton = new InvestorSection(driver);
+        HeaderMenu clickButton = new InvestorSection(driver);
         clickButton
                 .investorSection()
                 .investorSectionButton();

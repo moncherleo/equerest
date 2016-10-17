@@ -2,7 +2,7 @@ package com.equerest.tests.webdriver.homepages.headermenu.Projects;
 
 import com.equerest.pages.common.MainPage;
 import com.equerest.pages.homepages.headermenu.Projects.ProjectsSection;
-import com.equerest.pages.homepages.headermenu.TheElementsHeaderMenuAreCheckedClickability;
+import com.equerest.pages.homepages.headermenu.HeaderMenu;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Description;
@@ -20,7 +20,7 @@ public class ProjectsSectionTest extends BaseTest{
         MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
         mainPage.open();
 
-        TheElementsHeaderMenuAreCheckedClickability clickButton = new ProjectsSection(driver);
+        HeaderMenu clickButton = new ProjectsSection(driver);
         clickButton
                 .projectsSection()
                 .projectsSectionButton();
