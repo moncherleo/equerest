@@ -39,29 +39,24 @@ public class HomePage extends AbstractPage {
 
     /** Method consolidate actions needed for typical flow of opening login page*/
     public LoginPage openLoginPage(){
-        open();
         return navigateToLoginPage();
     }
 
     public InvestorInfoPage navigateToInfoInvestorPage(){
-        open();
         driver.findElement(forInvestor).click();
         return new InvestorInfoPage(driver);
     }
 
     public InvestorInfoPage openInfoInvestorPage() {
-        open();
         return navigateToInfoInvestorPage();
     }
 
     public EntrepreneurContactsPage openRegisterProjectPage(){
-        open();
         driver.findElement(registerProjectButton).click();
         return new EntrepreneurContactsPage(driver);
     }
 
     public EntrepreneurInfoPage navigateToEntrepreneurInfoPage(){
-        open();
         driver.findElement(forEntrepreneur).click();
         return new com.equerest.pages.common.EntrepreneurInfoPage(driver);
     }

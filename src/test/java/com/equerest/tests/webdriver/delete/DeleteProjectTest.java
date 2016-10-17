@@ -21,7 +21,6 @@ public class DeleteProjectTest extends BaseTest {
         String login = "olegftzi@gmail.com";
         String password = "Oleg1234";
         String projectName = "Тестовый проект Удаление";
-        HomePage homePage = new HomePage(driver);
         ProjectsPage projectsPage = homePage.openLoginPage()
                 .loginAs(login, password);
 

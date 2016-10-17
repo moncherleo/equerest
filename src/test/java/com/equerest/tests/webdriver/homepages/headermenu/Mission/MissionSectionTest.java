@@ -17,9 +17,6 @@ public class MissionSectionTest extends BaseTest{
     @Test
     @Title("Проверка кликабельности кнопки 'Миссия'")
     public void missionSectionButton() {
-        HomePage homePage = new HomePage(driver);
-        homePage.open();
-
         HeaderMenu clickButton = new MissionSection(driver);
         clickButton
                 .missionSection()

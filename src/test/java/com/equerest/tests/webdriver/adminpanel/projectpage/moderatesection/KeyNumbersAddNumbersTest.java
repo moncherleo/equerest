@@ -25,7 +25,7 @@ public class KeyNumbersAddNumbersTest extends BaseTest{
         String PASSWORD = "Oleg1234";
         String PROJECT_NAME = "Интернет киоски \"Инетик\"";
 
-        EditProjectHelper editProjectHelper = new EditProjectHelper(driver);
+        EditProjectHelper editProjectHelper = new EditProjectHelper();
         editProjectHelper.editProject(LOGIN, PASSWORD, PROJECT_NAME);
 
         KeyNumbersPage keyNumbers = new KeyNumbersPage(driver);

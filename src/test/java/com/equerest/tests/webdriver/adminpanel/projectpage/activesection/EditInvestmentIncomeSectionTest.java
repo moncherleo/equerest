@@ -21,7 +21,6 @@ import ru.yandex.qatools.allure.annotations.Title;
 public class EditInvestmentIncomeSectionTest extends BaseTest {
 
     private EditActiveProjectPage editActiveProject(String login, String password, String projectName) {
-        HomePage homePage = new HomePage(driver);
         ProjectsPage projectsPage = homePage.openLoginPage()
                 .loginAs(login, password);
 

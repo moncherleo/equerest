@@ -16,7 +16,6 @@ import ru.yandex.qatools.allure.annotations.Description;
 @RunWith(JUnitParamsRunner.class)
 public class ModerateProjectButtonTest extends BaseTest {
 	private ProjectsPage toModeratePage(String login, String password, String projectName) {
-		HomePage homePage = new HomePage(driver);
 		ProjectsPage projectsPage = homePage.openLoginPage()
 				.loginAs(login, password);
 
@@ -29,7 +28,7 @@ public class ModerateProjectButtonTest extends BaseTest {
 	@FileParameters("src/test/resources/login_project_toModerateButton_info.csv")
 	public void toModerateProgectPage(String login, String password, String projectName) {
 
-		ProjectsPage selectedProject = toModeratePage(login, password, projectName)
+		toModeratePage(login, password, projectName)
 				.selectNewFilter()
 				.toModerateProject(projectName)
 				.projectToModerate()
@@ -37,7 +36,6 @@ public class ModerateProjectButtonTest extends BaseTest {
 				.selectModerationFilter()
 				.searchProjectByName(projectName);
 
-		ToModeratePage toModeratePage = new ToModeratePage(driver)
-				.assertProjectAppear(projectName);
+		new ToModeratePage(driver).assertProjectAppear(projectName);
 	}
 }

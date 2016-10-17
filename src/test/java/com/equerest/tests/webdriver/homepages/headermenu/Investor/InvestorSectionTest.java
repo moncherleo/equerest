@@ -17,9 +17,6 @@ public class InvestorSectionTest extends BaseTest{
     @Test
     @Title("Проверка кликабельности кнопки 'Инвестору'")
     public void investorSectionButton() {
-        HomePage homePage = new HomePage(driver);
-        homePage.open();
-
         HeaderMenu clickButton = new InvestorSection(driver);
         clickButton
                 .investorSection()

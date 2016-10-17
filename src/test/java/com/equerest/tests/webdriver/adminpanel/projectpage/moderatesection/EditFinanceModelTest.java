@@ -19,7 +19,6 @@ public class EditFinanceModelTest extends BaseTest {
     @Ignore
     @Test
     public void EditProjectOnDashboard() {
-        HomePage homePage = new HomePage(driver);
         ProjectsPage projectsPage = homePage.openLoginPage()
                 .loginAs(LOGIN, PASSWORD);
 

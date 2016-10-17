@@ -17,9 +17,6 @@ public class EntrepreneurSectionTest extends BaseTest{
     @Test
     @Title("Проверка кликабельности кнопки 'Предпринимателю'")
     public void entrepreneurSectionButton() {
-        HomePage homePage = new HomePage(driver);
-        homePage.open();
-
         HeaderMenu clickButton = new EntrepreneurSection(driver);
         clickButton
                 .entrepreneurSection()

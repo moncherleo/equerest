@@ -24,7 +24,6 @@ import java.util.Date;
 @RunWith(JUnitParamsRunner.class)
 public class ArchiveProjectButtonTest extends BaseTest {
     private InArchivePage inArchivePage(String login, String password, String projectName) {
-        HomePage homePage = new HomePage(driver);
         ProjectsPage projectsPage = homePage.openLoginPage()
                 .loginAs(login, password);
 

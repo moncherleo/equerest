@@ -26,7 +26,7 @@ public class UploadBackgroundImageTest extends BaseTest {
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
     public void uploadBackgroundImageInProject(String login, String password, String projectName) {
-        EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
+        EditProjectPage selectedProject = new EditProjectHelper().editProject(login, password, projectName);
 
         selectedProject.uploadImage();
     }

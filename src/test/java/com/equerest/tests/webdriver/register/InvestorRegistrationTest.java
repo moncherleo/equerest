@@ -17,7 +17,6 @@ public class InvestorRegistrationTest extends BaseTest{
     @Test
     @FileParameters("src/test/resources/valid_contacts.csv")
     public void ValidContactsTest(String fio, String telephone, String email, String password){
-        HomePage homePage = new HomePage(driver);
         homePage.navigateToInfoInvestorPage()
                 .startInvest()
                 .fillForm(fio, telephone, email, password)
@@ -27,7 +26,6 @@ public class InvestorRegistrationTest extends BaseTest{
     @Test
     @FileParameters("src/test/resources/investment_radiobuttons_pairwise.csv")
     public void ValidInvestmentsTest(String investorRoleID, String investplanID, String dealquanttityID){
-        HomePage homePage = new HomePage(driver);
         homePage.navigateToInfoInvestorPage()
                 .startInvest()
                 .fillForm("Name Surname", "+380123451212", "h194398@mvrht.com", "!QAZ@WSX")

@@ -19,9 +19,6 @@ public class EnterSectionTest extends BaseTest {
     @Test
     @Title("Проверка кликабельности кнопки 'Войти'")
     public void enterSectionButton() {
-        HomePage homePage = new HomePage(driver);
-        homePage.open();
-
         HeaderMenu clickButton = new EnterSection(driver);
         clickButton
                 .enterSection()

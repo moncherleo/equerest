@@ -1,5 +1,6 @@
 package com.equerest.tests.webdriver;
 
+import com.equerest.pages.common.HomePage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -25,6 +26,8 @@ public class BaseTest {
 
     private static final String CHROME_PATH_MAC = "src/test/resources/drivers/chromedriver";
     private static final String CHROME_PATH_WIN = "src/test/resources/drivers/chromedriver.exe";
+
+    protected HomePage homePage;
 
     @Rule
     public TestWatcher screenshotOnFail = new TestWatcher() {
@@ -63,6 +66,7 @@ public class BaseTest {
 
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+        homePage = new HomePage(driver).open();
     }
 
     @After

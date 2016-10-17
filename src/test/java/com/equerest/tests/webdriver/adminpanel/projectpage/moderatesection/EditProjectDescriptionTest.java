@@ -20,7 +20,7 @@ public class EditProjectDescriptionTest extends BaseTest {
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
     public void editProjectDescriptionPositive(String login, String password, String projectName) {
-        EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
+        EditProjectPage selectedProject = new EditProjectHelper().editProject(login, password, projectName);
 
         Date date = new java.util.Date();
         String currentDate = new Timestamp(date.getTime()).toString();
@@ -37,7 +37,7 @@ public class EditProjectDescriptionTest extends BaseTest {
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
     public void editProjectDescriptionDeclineChanges(String login, String password, String projectName) {
-        EditProjectPage selectedProject = new EditProjectHelper(driver).editProject(login, password, projectName);
+        EditProjectPage selectedProject = new EditProjectHelper().editProject(login, password, projectName);
 
         selectedProject.editProjectDescription()
                 .editText("Временное описание")

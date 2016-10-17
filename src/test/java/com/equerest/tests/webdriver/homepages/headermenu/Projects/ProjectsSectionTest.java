@@ -17,9 +17,6 @@ public class ProjectsSectionTest extends BaseTest{
     @Test
     @Title("Проверка кликабельности кнопки 'Проекты'")
     public void projectsSectionButton() {
-        HomePage homePage = new HomePage(driver);
-        homePage.open();
-
         HeaderMenu clickButton = new ProjectsSection(driver);
         clickButton
                 .projectsSection()
