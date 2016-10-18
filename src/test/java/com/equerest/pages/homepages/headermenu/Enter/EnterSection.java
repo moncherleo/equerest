@@ -16,10 +16,9 @@ public class EnterSection extends HeaderMenu {
     public EnterSection(WebDriver driver) {
         super(driver);
     }
-
     public EnterSection enterSectionButton() {
         driver.findElement(equerestLogo).click();
-        Assert.assertTrue(driver.findElement(equerestLogo).isEnabled());
+        Assert.assertTrue(driver.findElement(By.cssSelector("#banner .h1[class='h1']")).isEnabled());
         return this;
     }
 

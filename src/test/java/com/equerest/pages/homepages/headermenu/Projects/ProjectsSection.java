@@ -19,7 +19,7 @@ public class ProjectsSection extends HeaderMenu {
 
     public ProjectsSection projectsSectionButton() {
         driver.findElement(equerestLogo).click();
-        Assert.assertTrue(driver.findElement(equerestLogo).isEnabled());
+        Assert.assertTrue(driver.findElement(By.cssSelector("#banner .h1[class='h1']")).isEnabled());
         return this;
     }
 

@@ -16,11 +16,11 @@ import org.openqa.selenium.WebDriver;
 public class HeaderMenu extends AbstractPage {
 
     //The locators of the 'Header' menu
-    private final By missionButton = By.xpath("/html/body/div[1]/header/div/nav/div[1]/div[2]//*[text()[contains(.,'Миссия')]]");
-    private final By entrepreneurButton =By.xpath("/html/body/div[1]/header/div/nav/div[1]/div[2]//*[text()[contains(.,'Предпринимателю')]]");
-    private final By investorButton =By.xpath("/html/body/div[1]/header/div/nav/div[1]/div[2]//*[text()[contains(.,'Инвестору')]]");
-    private final By projectsButton =By.xpath("/html/body/div[1]/header/div/nav/div[1]/div[2]//*[text()[contains(.,'Проекты')]]");
-    private final By enterButton =By.xpath("/html/body/div[1]/header/div/nav/div[2]//*[text()[contains(.,'Войти')]]");
+    private final By missionButton = By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Миссия')]]");
+    private final By entrepreneurButton =By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Предпринимателю')]]");
+    private final By investorButton =By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Инвестору')]]");
+    private final By projectsButton =By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Проекты')]]");
+    private final By enterButton =By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Войти')]]");
 
     public HeaderMenu(WebDriver driver){
         super(driver);
@@ -29,31 +29,31 @@ public class HeaderMenu extends AbstractPage {
     //'Mission' button "Миссия"
     public MissionSection missionSection(){
         driver.findElement(missionButton).click();
-        Assert.assertTrue(driver.findElement(missionButton).isEnabled());
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='mission']//h1[text()[contains(.,'Миссия Equerest')]]")).isEnabled());
         return new MissionSection(driver);
     }
     //'Entrepreneur' button "Предпринимателю"
     public EntrepreneurSection entrepreneurSection(){
         driver.findElement(entrepreneurButton).click();
-        Assert.assertTrue(driver.findElement(entrepreneurButton).isEnabled());
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='banner']//h1[text()[contains(.,'Найдем инвестора для вашего бизнеса')]]")).isEnabled());
         return new EntrepreneurSection(driver);
     }
     //'Investor' button "Инвестору"
     public InvestorSection investorSection(){
         driver.findElement(investorButton).click();
-        Assert.assertTrue(driver.findElement(investorButton).isEnabled());
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='banner']//h1[text()[contains(.,'Инвестируйте в перспективные проекты')]]")).isEnabled());
         return new InvestorSection(driver);
     }
     //'Projects' button "Проекты"
     public ProjectsSection projectsSection(){
         driver.findElement(projectsButton).click();
-        Assert.assertTrue(driver.findElement(projectsButton).isEnabled());
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='catalog']//h1[text()[contains(.,'Проекты')]]")).isEnabled());
         return new ProjectsSection(driver);
     }
     //'Enter' button "Войти"
     public EnterSection enterSection(){
         driver.findElement(enterButton).click();
-        Assert.assertTrue(driver.findElement(enterButton).isEnabled());
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='login-block']//h3[text()[contains(.,'Войти')]]")).isEnabled());
         return new EnterSection(driver);
     }
 
