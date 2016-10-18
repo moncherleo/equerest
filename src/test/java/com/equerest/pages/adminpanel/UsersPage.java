@@ -15,7 +15,7 @@ public class UsersPage extends BaseAdminPanelPage{
         super(driver);
     }
     private By searchUserField = By.id("search");
-    private By deleteUserButton = By.cssSelector("#wrapper a[uib-tooltip='Удалить']");
+    private By deleteUserButton = By.cssSelector("#wrapper a[uib-tooltip='Удалить']");//Use for unique user ONLY
     private By removeFilterButton = By.id("removeFilter");
     private By addUserButton = By.id("userAdd");
 

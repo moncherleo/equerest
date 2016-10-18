@@ -1,7 +1,7 @@
 package com.equerest.tests.webdriver.delete;
 
 import com.equerest.pages.adminpanel.ProjectsPage;
-import com.equerest.pages.common.MainPage;
+import com.equerest.pages.common.HomePage;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
@@ -17,12 +17,11 @@ import ru.yandex.qatools.allure.annotations.Description;
 @RunWith(JUnitParamsRunner.class)
 public class DeleteProjectTest extends BaseTest {
 
-    private ProjectsPage openProjectsList() {
+    public ProjectsPage openProjectsList() {
         String login = "olegftzi@gmail.com";
         String password = "Oleg1234";
         String projectName = "Тестовый проект Удаление";
-        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        ProjectsPage projectsPage = mainPage.openLoginPage()
+        ProjectsPage projectsPage = homePage.openLoginPage()
                 .loginAs(login, password);
 
         return projectsPage.navigateToProjectPageViaMenuItem();
@@ -31,7 +30,7 @@ public class DeleteProjectTest extends BaseTest {
     @Test
     @Description("Удаление проекта из фильтра Модерация")
     @FileParameters("src/test/resources/delete_project.csv")
-    public void deleteProject(String project) {
+    public void deleteProjectTest(String project) {
 
         ProjectsPage selectedProject = openProjectsList()
                 .selectNewFilter()

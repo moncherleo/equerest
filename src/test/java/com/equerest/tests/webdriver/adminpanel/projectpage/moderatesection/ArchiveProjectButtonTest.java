@@ -3,7 +3,7 @@ package com.equerest.tests.webdriver.adminpanel.projectpage.moderatesection;
 
 import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.InArchivePage;
-import com.equerest.pages.common.MainPage;
+import com.equerest.pages.common.HomePage;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
@@ -24,8 +24,7 @@ import java.util.Date;
 @RunWith(JUnitParamsRunner.class)
 public class ArchiveProjectButtonTest extends BaseTest {
     private InArchivePage inArchivePage(String login, String password, String projectName) {
-        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        ProjectsPage projectsPage = mainPage.openLoginPage()
+        ProjectsPage projectsPage = homePage.openLoginPage()
                 .loginAs(login, password);
 
         return projectsPage.navigateToProjectPageViaMenuItem()

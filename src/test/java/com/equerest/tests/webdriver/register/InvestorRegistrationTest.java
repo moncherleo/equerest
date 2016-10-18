@@ -1,6 +1,6 @@
 package com.equerest.tests.webdriver.register;
 
-import com.equerest.pages.common.MainPage;
+import com.equerest.pages.common.HomePage;
 import com.equerest.tests.webdriver.BaseTest;
 
 import junitparams.FileParameters;
@@ -17,8 +17,7 @@ public class InvestorRegistrationTest extends BaseTest{
     @Test
     @FileParameters("src/test/resources/valid_contacts.csv")
     public void ValidContactsTest(String fio, String telephone, String email, String password){
-        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        mainPage.navigateToInfoInvestorPage()
+        homePage.navigateToInfoInvestorPage()
                 .startInvest()
                 .fillForm(fio, telephone, email, password)
                 .goToInvestments();
@@ -27,8 +26,7 @@ public class InvestorRegistrationTest extends BaseTest{
     @Test
     @FileParameters("src/test/resources/investment_radiobuttons_pairwise.csv")
     public void ValidInvestmentsTest(String investorRoleID, String investplanID, String dealquanttityID){
-        MainPage mainPage = new MainPage("https://dev.equerest.com/", driver);
-        mainPage.navigateToInfoInvestorPage()
+        homePage.navigateToInfoInvestorPage()
                 .startInvest()
                 .fillForm("Name Surname", "+380123451212", "h194398@mvrht.com", "!QAZ@WSX")
                 .goToInvestments()
