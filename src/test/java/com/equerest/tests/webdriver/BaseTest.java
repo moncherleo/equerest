@@ -11,8 +11,12 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import ru.yandex.qatools.allure.annotations.Attachment;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -21,8 +25,11 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     protected WebDriver driver;
-    private String BROWSER = System.getProperty("browser");
+    private static final String BROWSER = System.getProperty("browser");
+    private static final String REMOTE = System.getProperty("remote");
+    private static final String REMOTE_URL = "http://localhost:4444/wd/hub";
     private static String OS = System.getProperty("os.name").toLowerCase();
+    DesiredCapabilities capabilities;
 
     private static final String CHROME_PATH_MAC = "src/test/resources/drivers/chromedriver";
     private static final String CHROME_PATH_WIN = "src/test/resources/drivers/chromedriver.exe";
@@ -53,15 +60,25 @@ public class BaseTest {
 
         //mvn clean test -Dbrowser="Chrome"
 
-        if (BROWSER == null || BROWSER.equalsIgnoreCase("Firefox") || BROWSER.equalsIgnoreCase("")) {
-            this.driver = new FirefoxDriver();
-        } else if (BROWSER.equalsIgnoreCase("Chrome")) {
-            if (isWindows()) {
-                System.setProperty("webdriver.chrome.driver", CHROME_PATH_WIN);
-            } else if (isMac()) {
-                System.setProperty("webdriver.chrome.driver", CHROME_PATH_MAC);
+        if (REMOTE.equalsIgnoreCase("true")) {
+            capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName("firefox");
+            try {
+                this.driver = new RemoteWebDriver(new URL(REMOTE_URL),capabilities);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
             }
-            this.driver = new ChromeDriver();
+        } else {
+            if (BROWSER == null || BROWSER.equalsIgnoreCase("Firefox") || BROWSER.equalsIgnoreCase("")) {
+                this.driver = new FirefoxDriver();
+            } else if (BROWSER.equalsIgnoreCase("Chrome")) {
+                if (isWindows()) {
+                    System.setProperty("webdriver.chrome.driver", CHROME_PATH_WIN);
+                } else if (isMac()) {
+                    System.setProperty("webdriver.chrome.driver", CHROME_PATH_MAC);
+                }
+                this.driver = new ChromeDriver();
+            }
         }
 
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
