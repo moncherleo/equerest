@@ -18,7 +18,7 @@ public class EntrepreneurSection extends HeaderMenu {
     }
     public EntrepreneurSection entrepreneurSectionButton() {
         driver.findElement(equerestLogo).click();
-        Assert.assertTrue(driver.findElement(equerestLogo).isEnabled());
+        Assert.assertTrue(driver.findElement(By.cssSelector("#banner .h1[class='h1']")).isEnabled());
         return this;
     }
 }
