@@ -25,9 +25,9 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     protected WebDriver driver;
-    private static final String BROWSER = System.getProperty("browser");
-    private static final String REMOTE = System.getProperty("remote");
-    private static final String REMOTE_URL = "http://localhost:4444/wd/hub";
+    private static String BROWSER = System.getProperty("browser");
+    private static String REMOTE = System.getProperty("remote");
+    private static String REMOTE_URL = "http://localhost:4444/wd/hub";
     private static String OS = System.getProperty("os.name").toLowerCase();
     DesiredCapabilities capabilities;
 
@@ -62,7 +62,6 @@ public class BaseTest {
 
         if (REMOTE != null && REMOTE.equalsIgnoreCase("true")) {
             capabilities = new DesiredCapabilities();
-            capabilities.setBrowserName("firefox");
             try {
                 this.driver = new RemoteWebDriver(new URL(REMOTE_URL),capabilities);
             } catch (MalformedURLException e) {
@@ -71,12 +70,14 @@ public class BaseTest {
         } else {
             if (BROWSER == null || BROWSER.equalsIgnoreCase("Firefox") || BROWSER.equalsIgnoreCase("")) {
                 this.driver = new FirefoxDriver();
+                capabilities.setBrowserName("firefox");
             } else if (BROWSER.equalsIgnoreCase("Chrome")) {
                 if (isWindows()) {
                     System.setProperty("webdriver.chrome.driver", CHROME_PATH_WIN);
                 } else if (isMac()) {
                     System.setProperty("webdriver.chrome.driver", CHROME_PATH_MAC);
                 }
+                capabilities.setBrowserName("chrome");
                 this.driver = new ChromeDriver();
             }
         }
