@@ -60,7 +60,7 @@ public class BaseTest {
 
         //mvn clean test -Dbrowser="Chrome"
 
-        if (REMOTE.equalsIgnoreCase("true")) {
+        if (REMOTE != null && REMOTE.equalsIgnoreCase("true")) {
             capabilities = new DesiredCapabilities();
             capabilities.setBrowserName("firefox");
             try {
