@@ -22,7 +22,7 @@ public class UploadVideoSelectionTest extends BaseTest {
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
     public void uploadVideoLinkInProject(String login, String password, String projectName) {
-        EditProjectPage selectedProject = new EditProjectHelper().editProject(login, password, projectName);
+        EditProjectPage selectedProject = new EditProjectHelper(homePage).editProject(login, password, projectName);
 
         selectedProject.editVideoLink()
                 .uploadVideo()

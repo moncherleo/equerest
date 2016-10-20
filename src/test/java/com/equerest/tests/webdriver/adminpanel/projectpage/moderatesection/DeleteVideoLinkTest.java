@@ -23,7 +23,7 @@ public class DeleteVideoLinkTest extends BaseTest {
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
     public void deleteVideoLinkInProject(String login, String password, String projectName) {
-        EditProjectPage selectedProject = new EditProjectHelper().editProject(login, password, projectName);
+        EditProjectPage selectedProject = new EditProjectHelper(homePage).editProject(login, password, projectName);
 
         selectedProject.editVideoLink()
                 .deleteVideo()

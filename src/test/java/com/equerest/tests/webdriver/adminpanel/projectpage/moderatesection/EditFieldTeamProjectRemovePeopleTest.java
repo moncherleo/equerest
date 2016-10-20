@@ -20,7 +20,7 @@ public class EditFieldTeamProjectRemovePeopleTest extends BaseTest {
         String PASSWORD = "Oleg1234";
         String PROJECT_NAME = "Интернет киоски \"Инетик\"";
 
-        EditProjectHelper editProjectHelper = new EditProjectHelper();
+        EditProjectHelper editProjectHelper = new EditProjectHelper(homePage);
         editProjectHelper.editProject(LOGIN, PASSWORD, PROJECT_NAME);
 
         TeamMembersPage teamMembers = new TeamMembersPage(driver);
