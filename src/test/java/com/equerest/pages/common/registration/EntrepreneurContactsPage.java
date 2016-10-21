@@ -1,13 +1,13 @@
 package com.equerest.pages.common.registration;
 
-import com.equerest.pages.AbstractPage;
+import com.equerest.pages.common.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
  * Created by Oleg Nesterov on 10/4/16;
  */
-public class EntrepreneurContactsPage extends AbstractPage {
+public class EntrepreneurContactsPage extends HomePage {
 
     public EntrepreneurContactsPage(WebDriver driver) {
         super(driver);
@@ -19,7 +19,7 @@ public class EntrepreneurContactsPage extends AbstractPage {
     protected final By fieldMail = By.id("mail");
     protected final By fieldPass = By.id("pass");
     protected final By fieldCheckBox = By.id("checkbox_1");
-    protected final By buttonNextStep = By.cssSelector("#entrepreneur-registration-form .button.button-blue.button-next");
+    protected final By buttonNextStep = By.cssSelector(".entrepreneur-reg-form .button.button-blue.button-next");
 
 
     public EntrepreneurContactsPage fillFio(String fio){

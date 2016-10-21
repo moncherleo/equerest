@@ -1,7 +1,8 @@
 package com.equerest.tests.webdriver.common;
 
-import com.equerest.pages.common.EntrepreneurContactsInfoPage;
+
 import com.equerest.pages.common.HomePage;
+import com.equerest.pages.common.registration.EntrepreneurContactsPage;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Description;
@@ -17,10 +18,12 @@ public class EntrepreneurContactsPageTest extends BaseTest {
     @Test
     @Title("Проверка кликабельности кнопки 'Подать проект'")
     public void entrepreneurContactsClickButton(){
-        HomePage clickButton = new EntrepreneurContactsInfoPage(driver);
+        HomePage clickButton = new EntrepreneurContactsPage(driver);
         clickButton
-                    .openRegisterProjectPage();
-                   // .equerestLogoButton();
+                    .openRegisterProjectPage()
+                    .equerestLogoButton();
     }
+
+
 
 }

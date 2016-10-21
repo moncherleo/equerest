@@ -12,7 +12,7 @@ import ru.yandex.qatools.allure.annotations.Title;
  */
 @Title("C126 Проверка контролов Хедер меню")
 @Description("Проверка кликабельности кнопок 'Хедер' меню на главной странице сайта")
-public class EntrepreneurButtonTest extends BaseTest{
+public class EntrepreneurInfoPageTest extends BaseTest{
     @Test
     @Title("Проверка кликабельности кнопки 'Предпринимателю'")
     public void entrepreneurSectionButton() {

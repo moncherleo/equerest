@@ -22,7 +22,7 @@ public class HomePage extends AbstractPage {
     private final By forEnter = By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Войти')]]");
     //######################_locotors for the ('Подать проект' и 'Как мы работаем?')_######################
     private By registerProjectButton = By.cssSelector("#main .button-green.bordered");
-    private final By howWeAreWorkingButton = By.xpath(".//*[@id='banner']//a[text()[contains(.,'Как мы работаем?')]]");
+    private final By howWeAreWorkingButton = By.xpath("//*[@id='banner']//a[text()[contains(.,'Как мы работаем?')]]");
 
 
     public HomePage(String url, WebDriver driver) {
@@ -60,7 +60,7 @@ public class HomePage extends AbstractPage {
     //'EntrepreneurInfoPage' button "Предпринимателю"
     public EntrepreneurInfoPage navigateToEntrepreneurInfoPage(){
         driver.findElement(forEntrepreneur).click();
-        Assert.assertTrue(driver.findElement(By.xpath("/*//*[@id='banner']//h1[text()[contains(.,'Найдем инвестора для вашего бизнеса')]]")).isEnabled());
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='banner']//h1[text()[contains(.,'Найдем инвестора для вашего бизнеса')]]")).isEnabled());
         return new EntrepreneurInfoPage(driver);
     }
     //'InvestorInfoPage' button "Инвестору"
@@ -71,7 +71,7 @@ public class HomePage extends AbstractPage {
 
     public InvestorInfoPage navigateToInfoInvestorPage(){
         driver.findElement(forInvestor).click();
-        Assert.assertTrue(driver.findElement(By.xpath("/*//*[@id='banner']//h1[text()[contains(.,'Инвестируйте в перспективные проекты')]]")).isEnabled());
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='banner']//h1[text()[contains(.,'Инвестируйте в перспективные проекты')]]")).isEnabled());
         return new InvestorInfoPage(driver);
     }
     public InvestorInfoPage openInfoInvestorPage() {
