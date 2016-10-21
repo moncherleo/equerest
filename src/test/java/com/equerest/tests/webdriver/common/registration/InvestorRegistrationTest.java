@@ -1,6 +1,5 @@
-package com.equerest.tests.webdriver.register;
+package com.equerest.tests.webdriver.common.registration;
 
-import com.equerest.pages.common.HomePage;
 import com.equerest.tests.webdriver.BaseTest;
 
 import junitparams.FileParameters;

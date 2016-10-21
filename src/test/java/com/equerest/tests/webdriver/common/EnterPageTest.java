@@ -1,24 +1,26 @@
-package com.equerest.tests.webdriver.homepages.headermenu;
+package com.equerest.tests.webdriver.common;
 
-import com.equerest.pages.homepage.HomePage;
-import com.equerest.pages.homepage.headermenu.MissionButton;
+
+import com.equerest.pages.common.EnterPage;
+import com.equerest.pages.common.HomePage;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Description;
 import ru.yandex.qatools.allure.annotations.Title;
 
 /**
- * Created by Eduard Aliiev on 10/17/16;
+ * Created by Eduard Aliiev on 10/16/16;
  */
 @Title("C126 Проверка контролов Хедер меню")
 @Description("Проверка кликабельности кнопок 'Хедер' меню на главной странице сайта")
-public class MissionButtonTest extends BaseTest{
+public class EnterPageTest extends BaseTest {
     @Test
-    @Title("Проверка кликабельности кнопки 'Миссия'")
-    public void missionSectionButton() {
-        HomePage clickButton = new MissionButton(driver);
+    @Title("Проверка кликабельности кнопки 'Войти'")
+    public void enterSectionButton() {
+        HomePage clickButton = new EnterPage(driver);
         clickButton
-                .missionButton()
+                .enterButton()
                 .equerestLogoButton();
     }
+
 }

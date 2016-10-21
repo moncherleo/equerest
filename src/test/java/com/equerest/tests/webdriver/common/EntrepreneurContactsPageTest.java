@@ -1,7 +1,7 @@
-package com.equerest.tests.webdriver.homepages.bannermenu;
+package com.equerest.tests.webdriver.common;
 
-import com.equerest.pages.homepage.HomePage;
-import com.equerest.pages.homepage.bannermenu.PostProjectButton;
+import com.equerest.pages.common.EntrepreneurContactsInfoPage;
+import com.equerest.pages.common.HomePage;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Description;
@@ -12,15 +12,15 @@ import ru.yandex.qatools.allure.annotations.Title;
  */
 @Title("C129 Проверка контролов на Главной странице сайта в \"Область ключевых цифр\"")
 @Description("Проверка кликабельности кнопок на Главной странице сайта в \"Область ключевых цифр\"")
-public class PostProjectButtonTest extends BaseTest {
+public class EntrepreneurContactsPageTest extends BaseTest {
 
     @Test
     @Title("Проверка кликабельности кнопки 'Подать проект'")
-    public void postProjectClickButton(){
-        HomePage clickButton = new PostProjectButton(driver);
+    public void entrepreneurContactsClickButton(){
+        HomePage clickButton = new EntrepreneurContactsInfoPage(driver);
         clickButton
-                    .postProjectButton()
-                    .equerestLogoButton();
+                    .openRegisterProjectPage();
+                   // .equerestLogoButton();
     }
 
 }

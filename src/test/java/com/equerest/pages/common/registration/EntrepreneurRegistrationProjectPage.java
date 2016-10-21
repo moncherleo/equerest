@@ -19,7 +19,7 @@ public class EntrepreneurRegistrationProjectPage extends AbstractPage {
     protected final By fieldMonetizationModel = By.id("monetization_model");
     protected final By fieldAmount = By.id("required_amount");
     protected final By fieldCheckBoxAgree = By.id("checkbox_agree");
-    protected final By buttonComplete = By.cssSelector("#entrepreneur-register-form .button-blue");
+    protected final By buttonComplete = By.cssSelector("#entrepreneur-registration-form .button-blue");
 
     public EntrepreneurRegistrationProjectPage fillTitle(String title){
         driver.findElement(fieldTitle).sendKeys(title);

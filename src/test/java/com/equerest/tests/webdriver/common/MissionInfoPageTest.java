@@ -1,7 +1,7 @@
-package com.equerest.tests.webdriver.homepages.headermenu;
+package com.equerest.tests.webdriver.common;
 
-import com.equerest.pages.homepage.HomePage;
-import com.equerest.pages.homepage.headermenu.InvestorButton;
+import com.equerest.pages.common.HomePage;
+import com.equerest.pages.common.MissionInfoPage;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Description;
@@ -12,14 +12,13 @@ import ru.yandex.qatools.allure.annotations.Title;
  */
 @Title("C126 Проверка контролов Хедер меню")
 @Description("Проверка кликабельности кнопок 'Хедер' меню на главной странице сайта")
-public class InvestorButtonTest extends BaseTest{
+public class MissionInfoPageTest extends BaseTest{
     @Test
-    @Title("Проверка кликабельности кнопки 'Инвестору'")
-    public void investorSectionButton() {
-        HomePage clickButton = new InvestorButton(driver);
+    @Title("Проверка кликабельности кнопки 'Миссия'")
+    public void missionSectionButton() {
+        HomePage clickButton = new MissionInfoPage(driver);
         clickButton
-                .investorButton()
+                .missionButton()
                 .equerestLogoButton();
     }
-
 }

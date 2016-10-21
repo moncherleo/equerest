@@ -19,7 +19,7 @@ public class EntrepreneurContactsPage extends AbstractPage {
     protected final By fieldMail = By.id("mail");
     protected final By fieldPass = By.id("pass");
     protected final By fieldCheckBox = By.id("checkbox_1");
-    protected final By buttonNextStep = By.cssSelector("#entrepreneur-register-form .button.button-blue.button-next");
+    protected final By buttonNextStep = By.cssSelector("#entrepreneur-registration-form .button.button-blue.button-next");
 
 
     public EntrepreneurContactsPage fillFio(String fio){

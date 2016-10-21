@@ -1,7 +1,7 @@
-package com.equerest.tests.webdriver.homepages.bannermenu;
+package com.equerest.tests.webdriver.common;
 
-import com.equerest.pages.homepage.HomePage;
-import com.equerest.pages.homepage.bannermenu.HowWeAreWorkingButton;
+import com.equerest.pages.common.HomePage;
+import com.equerest.pages.common.HowWeAreWorkingContactsPage;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Description;
@@ -12,12 +12,12 @@ import ru.yandex.qatools.allure.annotations.Title;
  */
 @Title("C129 Проверка контролов на Главной странице сайта в \"Область ключевых цифр\"")
 @Description("Проверка кликабельности кнопок на Главной странице сайта в \"Область ключевых цифр\"")
-public class HowWeAreWorkingButtonTest extends BaseTest {
+public class HowWeAreWorkingContactsPageTest extends BaseTest {
 
     @Test
     @Title("Проверка кликабельности кнопки 'Как мы работаем?'")
     public void HowWeAreWorkingClickButton() {
-        HomePage clickButton = new HowWeAreWorkingButton(driver);
+        HomePage clickButton = new HowWeAreWorkingContactsPage(driver);
         clickButton
                 .howWeAreWorkingButton()
                 .equerestLogoButton();

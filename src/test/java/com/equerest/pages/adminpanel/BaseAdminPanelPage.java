@@ -18,7 +18,7 @@ public class BaseAdminPanelPage extends AbstractPage {
         super(driver);
     }
 
-    @Step("Go to ProjectsButton menu")
+    @Step("Go to ProjectInfoPage menu")
     public ProjectsPage navigateToProjectPageViaMenuItem(){
         driver.findElement(projectsMenuItem).click();
         return new ProjectsPage(driver);
