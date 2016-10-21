@@ -1,8 +1,7 @@
-package com.equerest.tests.webdriver.homepages.headermenu.Entrepreneur;
+package com.equerest.tests.webdriver.homepages.headermenu;
 
-import com.equerest.pages.common.HomePage;
-import com.equerest.pages.homepages.headermenu.Entrepreneur.EntrepreneurSection;
-import com.equerest.pages.homepages.headermenu.HeaderMenu;
+import com.equerest.pages.homepage.HomePage;
+import com.equerest.pages.homepage.headermenu.EntrepreneurButton;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Description;
@@ -13,14 +12,14 @@ import ru.yandex.qatools.allure.annotations.Title;
  */
 @Title("C126 Проверка контролов Хедер меню")
 @Description("Проверка кликабельности кнопок 'Хедер' меню на главной странице сайта")
-public class EntrepreneurSectionTest extends BaseTest{
+public class EntrepreneurButtonTest extends BaseTest{
     @Test
     @Title("Проверка кликабельности кнопки 'Предпринимателю'")
     public void entrepreneurSectionButton() {
-        HeaderMenu clickButton = new EntrepreneurSection(driver);
+        HomePage clickButton = new EntrepreneurButton(driver);
         clickButton
-                .entrepreneurSection()
-                .entrepreneurSectionButton();
+                .entrepreneurButton()
+                .equerestLogoButton();
     }
 
 }

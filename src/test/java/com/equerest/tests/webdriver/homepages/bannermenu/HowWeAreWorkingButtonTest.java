@@ -1,7 +1,7 @@
 package com.equerest.tests.webdriver.homepages.bannermenu;
 
-import com.equerest.pages.homepages.bannermenu.BannerMenu;
-import com.equerest.pages.homepages.bannermenu.HowWeAreWorkingButton;
+import com.equerest.pages.homepage.HomePage;
+import com.equerest.pages.homepage.bannermenu.HowWeAreWorkingButton;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Description;
@@ -17,7 +17,7 @@ public class HowWeAreWorkingButtonTest extends BaseTest {
     @Test
     @Title("Проверка кликабельности кнопки 'Как мы работаем?'")
     public void HowWeAreWorkingClickButton() {
-        BannerMenu clickButton = new HowWeAreWorkingButton(driver);
+        HomePage clickButton = new HowWeAreWorkingButton(driver);
         clickButton
                 .howWeAreWorkingButton()
                 .equerestLogoButton();

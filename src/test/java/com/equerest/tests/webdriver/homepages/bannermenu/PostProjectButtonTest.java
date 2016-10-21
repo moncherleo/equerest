@@ -1,7 +1,7 @@
 package com.equerest.tests.webdriver.homepages.bannermenu;
 
-import com.equerest.pages.homepages.bannermenu.BannerMenu;
-import com.equerest.pages.homepages.bannermenu.PostProjectButton;
+import com.equerest.pages.homepage.HomePage;
+import com.equerest.pages.homepage.bannermenu.PostProjectButton;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Description;
@@ -17,7 +17,7 @@ public class PostProjectButtonTest extends BaseTest {
     @Test
     @Title("Проверка кликабельности кнопки 'Подать проект'")
     public void postProjectClickButton(){
-        BannerMenu clickButton = new PostProjectButton(driver);
+        HomePage clickButton = new PostProjectButton(driver);
         clickButton
                     .postProjectButton()
                     .equerestLogoButton();
