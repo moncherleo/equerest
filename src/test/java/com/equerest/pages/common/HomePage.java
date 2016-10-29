@@ -12,7 +12,7 @@ import ru.yandex.qatools.allure.annotations.Step;
  */
 public class HomePage extends AbstractPage {
     private String url;
-    private static final String LOGIN_PAGE_URL = "registration#/";
+    private static final String LOGIN_PAGE_URL = "register#/";
     private final By equerestLogo = By.xpath("/html/body/div[1]/header/div/nav/div[1]/div[1]//img[contains(@src, 'header_logo.svg')]");
     //######################_locators for the 'Header' menu_######################
     private final By forMission = By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Миссия')]]");
