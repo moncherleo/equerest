@@ -1,5 +1,6 @@
-package com.equerest.pages.common;
+package com.equerest.pages.common.main;
 
+import com.equerest.pages.common.HomePage;
 import com.equerest.pages.common.registration.EntrepreneurContactsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

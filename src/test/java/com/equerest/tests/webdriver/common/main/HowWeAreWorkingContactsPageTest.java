@@ -1,7 +1,7 @@
 package com.equerest.tests.webdriver.common;
 
 import com.equerest.pages.common.HomePage;
-import com.equerest.pages.common.HowWeAreWorkingContactsPage;
+import com.equerest.pages.common.main.HowWeAreWorkingContactsPage;
 import com.equerest.tests.webdriver.BaseTest;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Description;
