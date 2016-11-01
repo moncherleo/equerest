@@ -1,6 +1,11 @@
 package com.equerest.pages.common;
 
 import com.equerest.pages.AbstractPage;
+import com.equerest.pages.common.main.HowWeAreWorkingContactsPage;
+import com.equerest.pages.common.main.MissionEquerestPage;
+import com.equerest.pages.common.main.NewProjectsPage;
+import com.equerest.pages.common.main.SuccessfulProjectsPage;
+import com.equerest.pages.common.header.*;
 import com.equerest.pages.common.registration.EntrepreneurContactsPage;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -20,32 +25,34 @@ public class HomePage extends AbstractPage {
     private By forInvestor = By.xpath("//*[@id='header']//*[text()='Инвестору                                ']");
     private final By forProjects = By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Проекты')]]");
     private final By forEnter = By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Войти')]]");
-    //######################_locotors for the ('Подать проект' и 'Как мы работаем?')_######################
+    //######################_locotors for the 'main' menu_######################
     private By registerProjectButton = By.cssSelector("#main .button-green.bordered");
     private final By howWeAreWorkingButton = By.xpath("//*[@id='banner']//a[text()[contains(.,'Как мы работаем?')]]");
-
+    private final By moreSuccessfulProjectsButton = By.xpath("//*[@id='complete']//*[text()[contains(.,'Больше успешных проектов')]]");
+    private final By missionEquerestButton = By.xpath("//*[@id='main']//*[text()[contains(.,'Миссия Equerest')]]");
+    private final By moreNewProjectsButton = By.xpath("//*[@id='new_projects']//*[text()[contains(.,'Больше новых проектов')]]");
+    //######################_locotors for the 'Footer' menu_######################
 
     public HomePage(String url, WebDriver driver) {
         super(driver);
         this.url = url;
     }
-
     public HomePage(WebDriver driver) {
         super(driver);
         this.url = "https://dev.equerest.com/";
     }
-
     @Step("Open home page")
-    public HomePage open(){
+    public HomePage open() {
         driver.navigate().to(url);
         return this;
     }
     @Step("Navigate to login page")
-    public LoginPage navigateToLoginPage(){
-        driver.navigate().to(url+LOGIN_PAGE_URL);
+    public LoginPage navigateToLoginPage() {
+        driver.navigate().to(url + LOGIN_PAGE_URL);
         return new LoginPage(driver);
     }
-
+    //######################_'Header'_######################
+    //'Equerest logo'
     public EquerestLogoButton equerestLogoButton() {
         driver.findElement(equerestLogo).click();
         Assert.assertTrue(driver.findElement(By.cssSelector("#banner .h1[class='h1']")).isEnabled());
@@ -58,18 +65,21 @@ public class HomePage extends AbstractPage {
         return new MissionInfoPage(driver);
     }
     //'EntrepreneurInfoPage' button "Предпринимателю"
-    public EntrepreneurInfoPage navigateToEntrepreneurInfoPage(){
+    public EntrepreneurInfoPage navigateToEntrepreneurInfoPage() {
         driver.findElement(forEntrepreneur).click();
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='banner']//h1[text()[contains(.,'Найдем инвестора для вашего бизнеса')]]")).isEnabled());
         return new EntrepreneurInfoPage(driver);
     }
     //'InvestorInfoPage' button "Инвестору"
-    /** Method consolidate actions needed for typical flow of opening login page*/
-    public LoginPage openLoginPage(){
+
+    /**
+     * Method consolidate actions needed for typical flow of opening login page
+     */
+    public LoginPage openLoginPage() {
         return navigateToLoginPage();
     }
 
-    public InvestorInfoPage navigateToInfoInvestorPage(){
+    public InvestorInfoPage navigateToInfoInvestorPage() {
         driver.findElement(forInvestor).click();
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='banner']//h1[text()[contains(.,'Инвестируйте в перспективные проекты')]]")).isEnabled());
         return new InvestorInfoPage(driver);
@@ -90,20 +100,42 @@ public class HomePage extends AbstractPage {
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='login-block']//h3[text()[contains(.,'Войти')]]")).isEnabled());
         return new EnterPage(driver);
     }
-    //######################_'Подать проект' и 'Как мы работаем?'_######################
-    public EntrepreneurContactsPage openRegisterProjectPage(){
+    //######################_'Main'_######################
+    //'Подать проект'
+    public EntrepreneurContactsPage openRegisterProjectPage() {
         Assert.assertTrue(driver.findElement(By.cssSelector("#banner .h1[class='h1']")).isEnabled());
         Assert.assertTrue(driver.findElement(By.cssSelector("#banner .h3[class='h3']")).isEnabled());
         driver.findElement(registerProjectButton).click();
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='entrepreneur-register-form']//h1[text()[contains(.,'Регистрация вашего бизнес-проекта')]]")).isEnabled());
         return new EntrepreneurContactsPage(driver);
     }
+    //'Как мы работаем?'
     public HowWeAreWorkingContactsPage howWeAreWorkingButton() {
         driver.findElement(howWeAreWorkingButton).click();
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='banner']//h1[text()[contains(.,'Найдем инвестора для вашего бизнеса')]]")).isEnabled());
         return new HowWeAreWorkingContactsPage(driver);
     }
-
-
+    //'Успешные проекты'
+    public SuccessfulProjectsPage moreSuccessfulProjectsButton() {
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='complete']//*[text()[contains(.,'Успешные проекты')]]")).isEnabled());
+        driver.findElement(moreSuccessfulProjectsButton).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='catalog']//h1[text()[contains(.,'Проекты')]]")).isEnabled());
+        return new SuccessfulProjectsPage(driver);
+    }
+    //'Миссия Equerest'
+    public MissionEquerestPage missionEquerestButton() {
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='main']//*[text()[contains(.,'Мы убеждены, что за бизнесом должно стоять желание помогать людям')]]")).isEnabled());
+        driver.findElement(missionEquerestButton).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='mission']//h1[text()[contains(.,'Миссия Equerest')]]")).isEnabled());
+        return new MissionEquerestPage(driver);
+    }
+    //'Новые проекты'
+    public NewProjectsPage moreNewProjectsButton(){
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='new_projects']//*[text()[contains(.,'Новые проекты')]]")).isEnabled());
+        driver.findElement(moreNewProjectsButton).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='catalog']//h1[text()[contains(.,'Проекты')]]")).isEnabled());
+        return new NewProjectsPage(driver);
+    }
+    //######################_'Footer'_######################
 
 }
