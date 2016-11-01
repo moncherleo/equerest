@@ -1,5 +1,6 @@
-package com.equerest.pages.common;
+package com.equerest.pages.common.header;
 
+import com.equerest.pages.common.HomePage;
 import org.openqa.selenium.WebDriver;
 
 /**

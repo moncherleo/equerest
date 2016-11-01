@@ -1,4 +1,4 @@
-package com.equerest.pages.common.main;
+package com.equerest.pages.common.header;
 
 import com.equerest.pages.common.HomePage;
 import com.equerest.pages.common.registration.EntrepreneurContactsPage;

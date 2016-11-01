@@ -1,4 +1,4 @@
-package com.equerest.tests.webdriver.common;
+package com.equerest.tests.webdriver.common.main;
 
 import com.equerest.pages.common.HomePage;
 import com.equerest.pages.common.main.HowWeAreWorkingContactsPage;

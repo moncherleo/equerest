@@ -1,4 +1,4 @@
-package com.equerest.tests.webdriver.common;
+package com.equerest.tests.webdriver.common.header;
 
 import com.equerest.pages.common.header.EntrepreneurInfoPage;
 import com.equerest.pages.common.HomePage;
