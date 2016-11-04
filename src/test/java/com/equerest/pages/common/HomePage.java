@@ -1,11 +1,12 @@
 package com.equerest.pages.common;
 
 import com.equerest.pages.AbstractPage;
+import com.equerest.pages.common.footer.*;
+import com.equerest.pages.common.header.*;
 import com.equerest.pages.common.main.HowWeAreWorkingContactsPage;
 import com.equerest.pages.common.main.MissionEquerestPage;
 import com.equerest.pages.common.main.NewProjectsPage;
 import com.equerest.pages.common.main.SuccessfulProjectsPage;
-import com.equerest.pages.common.header.*;
 import com.equerest.pages.common.registration.EntrepreneurContactsPage;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -19,19 +20,31 @@ public class HomePage extends AbstractPage {
     private String url;
     private static final String LOGIN_PAGE_URL = "register#/";
     private final By equerestLogo = By.xpath("/html/body/div[1]/header/div/nav/div[1]/div[1]//img[contains(@src, 'header_logo.svg')]");
+    private final By worthItFooterLogo = By.cssSelector("#footer .link");
     //######################_locators for the 'Header' menu_######################
     private final By forMission = By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Миссия')]]");
     private By forEntrepreneur = By.xpath("//*[@id='header']//*[text()[contains(.,'Предпринимателю')]]");
     private By forInvestor = By.xpath("//*[@id='header']//*[text()='Инвестору                                ']");
     private final By forProjects = By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Проекты')]]");
     private final By forEnter = By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Войти')]]");
-    //######################_locotors for the 'main' menu_######################
+    //######################_locotors for the 'Main' menu_######################
     private By registerProjectButton = By.cssSelector("#main .button-green.bordered");
     private final By howWeAreWorkingButton = By.xpath("//*[@id='banner']//a[text()[contains(.,'Как мы работаем?')]]");
     private final By moreSuccessfulProjectsButton = By.xpath("//*[@id='complete']//*[text()[contains(.,'Больше успешных проектов')]]");
     private final By missionEquerestButton = By.xpath("//*[@id='main']//*[text()[contains(.,'Миссия Equerest')]]");
     private final By moreNewProjectsButton = By.xpath("//*[@id='new_projects']//*[text()[contains(.,'Больше новых проектов')]]");
     //######################_locotors for the 'Footer' menu_######################
+    private final By investorFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Инвестору')]]");
+    private final By projectsFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Проекты')]]");
+    private final By investFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Инвестировать')]]");
+    private final By ientrepreneurFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Предпринимателю')]]");
+    private final By missionFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Миссия')]]");
+    private final By postProjectFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Подать проект')]]");
+    private final By contactsFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Контакты')]]");
+    private final By termsOfUseFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Правила пользования')]]");
+    //private final By partnersFooterButton = By.id("partners-link");
+    private final By privacyPolicyFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Политика конфиденциальности')]]");
+    private final By cookiesProcessingPolicyFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Политика обработки cookies')]]");
 
     public HomePage(String url, WebDriver driver) {
         super(driver);
@@ -137,5 +150,72 @@ public class HomePage extends AbstractPage {
         return new NewProjectsPage(driver);
     }
     //######################_'Footer'_######################
+    //Worth It Logo
+    public HomePage worthItFooterLogoButton(){
+        driver.findElement(worthItFooterLogo).click();
+        Assert.assertTrue(driver.findElement(By.xpath(".//*[@id='footer']//*[text()[contains(.,'©')]]")).isEnabled());
+    return this;
+    }
+    //'Инвестору' футер
+    public InvestorInfoFooterPage investorInfoFooterButton(){
+        driver.findElement(investorFooterButton).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='banner']//h1[text()[contains(.,'Инвестируйте в перспективные проекты')]]")).isEnabled());
+        return new InvestorInfoFooterPage(driver);
+    }
+    //'Пропекты' футер
+    public ProjectsInfoFooterPage projectsInfoFooterButton(){
+        driver.findElement(projectsFooterButton).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='catalog']//h1[text()[contains(.,'Проекты')]]")).isEnabled());
+        return new ProjectsInfoFooterPage(driver);
+    }
+    //'Инвестировать' футер
+    public InvestInfoFooterPage investInfoFooterButton(){
+        driver.findElement(investFooterButton).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='entrepreneur-register-form']//*[text()[contains(.,'Регистрация инвестора')]]")).isEnabled());
+        return new InvestInfoFooterPage(driver);
+    }
+    //'Предпринимателю' футер
+    public IentrepreneurInfoFooterPage ientrepreneurInfoFooterButton(){
+        driver.findElement(ientrepreneurFooterButton).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='banner']//h1[text()[contains(.,'Найдем инвестора для вашего бизнеса')]]")).isEnabled());
+        return new IentrepreneurInfoFooterPage(driver);
+    }
+    //'Миссия' футер
+    public MissionInfoFooterPage missionInfoFooterButton(){
+        driver.findElement(missionFooterButton).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='mission']//h1[text()[contains(.,'Миссия Equerest')]]")).isEnabled());
+        return new MissionInfoFooterPage(driver);
+    }
+    //'Подать проект' футер
+    public PostProjectInfoFooterPage postProjectInfoFooterButton(){
+        driver.findElement(postProjectFooterButton).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='entrepreneur-register-form']//*[text()[contains(.,'Регистрация вашего бизнес-проекта')]]")).isEnabled());
+        return new PostProjectInfoFooterPage(driver);
+    }
+    //'Контакты' футер
+    public ContactsInfoFooterPage contactsInfoFooterButton() {
+        driver.findElement(contactsFooterButton).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='contact']//*[text()[contains(.,'Контакты')]]")).isEnabled());
+    return new ContactsInfoFooterPage(driver);
+    }
+    //'Правила пользования' футер
+    public TermsOfUseInfoFooterPage termsOfUseInfoFooterButton() {
+        driver.findElement(termsOfUseFooterButton).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='terms']//*[text()[contains(.,'Правила пользования')]]")).isEnabled());
+        return new TermsOfUseInfoFooterPage(driver);
+    }
+    //'Политика конфиденциальности' футер
+    public PrivacyPolicyInfoFooterPage privacyPolicyInfoFooterButton() {
+        driver.findElement(privacyPolicyFooterButton).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='terms']/div/div/h1[text()[contains(.,'Политика конфиденциальности')]]")).isEnabled());
+        return new PrivacyPolicyInfoFooterPage(driver);
+    }
+    //'Политика обработки cookies' футер
+    public CookiesProcessingPolicyInfoFooterPage cookiesProcessingPolicyInfoFooterButton() {
+        driver.findElement(cookiesProcessingPolicyFooterButton).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='terms']/div/div/h1[text()[contains(.,'Политика обработки “cookies”')]]")).isEnabled());
+    return new CookiesProcessingPolicyInfoFooterPage(driver);
+    }
+
 
 }
