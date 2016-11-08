@@ -1,11 +1,11 @@
 package com.equerest.tests.webdriver.common.registration;
 
-import com.equerest.pages.common.registration.EntrepreneurRegistrationFinishPage;
 import com.equerest.pages.common.registration.EntrepreneurContactsPage;
+import com.equerest.pages.common.registration.EntrepreneurRegistrationFinishPage;
+import com.equerest.pages.helpers.adminpanel.DeleteNewUserHelper;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
-import org.junit.After;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +18,7 @@ public class EntrepreneurRegistrationTest extends BaseTest {
 
     @Test
     @FileParameters("src/test/resources/create_new_project_owner_info.csv")
-    public void createProject(String fio, String city, String telephone, String mail, String pass, String title, String description, String advantages, String model, String amount){
+    public void createProject(String fio, String city, String telephone, String mail, String pass, String title, String description, String advantages, String model, String amount) {
         homePage.openRegisterProjectPage();
         //test comment
         EntrepreneurRegistrationFinishPage projectOwnerInfo = new EntrepreneurContactsPage(driver)
@@ -39,7 +39,13 @@ public class EntrepreneurRegistrationTest extends BaseTest {
                 .pressCompleteButton();
 
         EntrepreneurRegistrationFinishPage projectCreateComplete = new EntrepreneurRegistrationFinishPage(driver);
-        projectCreateComplete.navigateToProject();
+        projectCreateComplete
+                .navigateToProject();
+
+        // Удаление НОВОГО пользователя
+        DeleteNewUserHelper deleteNewUserHelper = new DeleteNewUserHelper(driver);
+        deleteNewUserHelper
+                .deleteNewCreatedUser();
     }
 
     @Test
@@ -71,16 +77,16 @@ public class EntrepreneurRegistrationTest extends BaseTest {
         projectCreateComplete.navigateToProject();
     }
 
-    @After
+    /*@After
     public void deleteProjectAndUser(){
- /*       DeleteProjectTest deleteProjectTest = new DeleteProjectTest();
+        DeleteProjectTest deleteProjectTest = new DeleteProjectTest();
         deleteProjectTest.openProjectsList();
         deleteProjectTest.deleteProjectTest("Тестовый проект Предприниматель 1");
 
         DeleteUserTest deleteUserTest = new DeleteUserTest();
         deleteUserTest.openProjectsList();
-        deleteUserTest.deleteUserTest("equeresttest1@gmail.com");*/
-    }
+        deleteUserTest.deleteUserTest("equeresttest1@gmail.com");
+    }*/
 
 
 }

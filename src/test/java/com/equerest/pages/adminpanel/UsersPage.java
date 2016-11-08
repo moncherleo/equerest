@@ -1,10 +1,10 @@
 package com.equerest.pages.adminpanel;
 
 import com.equerest.pages.adminpanel.userspage.CreateNewUserPage;
+import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 /**
  * Created by Oleg Nesterov on 07.10.2016;
@@ -38,6 +38,7 @@ public class UsersPage extends BaseAdminPanelPage{
         Alert confirmationAlert = driver.switchTo().alert();
         confirmationAlert.sendKeys("1");
         confirmationAlert.accept();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Пользователь удален')]]")).isEnabled());
         return this;
     }
 }

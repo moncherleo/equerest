@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
  * Created by Mykhaylo Dmytrenko on 25.09.2016.
  */
 public class InvestorInfoPage extends HomePage {
-    private By startInvestButton = By.xpath("//*[@id='banner']//*[@href='/registration#/investor']");
+    private By startInvestButton = By.xpath("//*[@id='banner']//*[text()[contains(.,'Начать инвестировать')]]");
 
     public InvestorInfoPage(WebDriver driver) {
         super(driver);
