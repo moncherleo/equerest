@@ -46,5 +46,4 @@ public class EditActiveProjectPage extends ProjectsPage {
     }
 
 
-
 }

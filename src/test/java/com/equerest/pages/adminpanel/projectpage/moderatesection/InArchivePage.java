@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class InArchivePage extends ProjectsPage {
 
     //added project-card at "В архив" button
-    protected final By projectInArchiveButton = By.xpath("//*[@id='wrapper']/main/div/div/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[3]//*[text()[contains(.,'В архив')]]");
+    protected final By projectInArchiveButton = By.xpath("//*[@id='wrapper']//*[text()[contains(.,'В архив')]]");
     protected final By projectSavedAlert = By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Проект обновлен.')]]");
 
     public InArchivePage(WebDriver driver) {

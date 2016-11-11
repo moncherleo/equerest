@@ -10,8 +10,8 @@ import org.openqa.selenium.WebDriver;
 public class EditInvestmentIncomeSection extends EditActiveProjectPage implements CommonProjectActionSectionStructure {
     private EditActiveProjectPage parentPage;
 
-    private final By applyChangesButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[2]/div[7]/div/div[3]//*[text()[contains(.,'Применить')]]");
-    private final By discardChangesButton = By.xpath("//*[@id='wrapper']/main/div/div/div/section[1]/div[2]/div/div[3]/div/div[2]/div[7]/div/div[3]//*[text()[contains(.,'Отмена')]]");
+    private final By applyChangesButton = By.xpath("//*[@id='wrapper']/main//*[text()[contains(.,'Применить')]]");
+    private final By discardChangesButton = By.xpath("//*[@id='wrapper']/main//*[text()[contains(.,'Отмена')]]");
 
     public EditInvestmentIncomeSection(WebDriver driver, EditActiveProjectPage editActiveProjectPage) {
         super(driver);
