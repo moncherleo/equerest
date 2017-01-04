@@ -3,6 +3,7 @@ package com.equerest.pages.common;
 import com.equerest.pages.AbstractPage;
 import com.equerest.pages.adminpanel.ProjectsPage;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,7 @@ public class LoginPage extends AbstractPage {
     private By loginLabel = By.cssSelector("#login-block>h3");
     private By emailFieldLabel = By.cssSelector(".input-text-group>label[for = 'email']");
     private By passwordFieldlabel = By.cssSelector(".input-text-group>label[for = 'password']");
+    private By loginConfirmationMsg = By.xpath("//div[contains(.,'Вы успешно вошли')]");
 
 
     public LoginPage(WebDriver driver) {
@@ -85,6 +87,12 @@ public class LoginPage extends AbstractPage {
         passField.sendKeys(testPwMsg);
         Assert.assertEquals(emField.getAttribute("value"), testEmailMsg);
         Assert.assertEquals(passField.getAttribute("value"), testPwMsg);
+        return new LoginPage(driver);
+    }
+
+    public LoginPage assertSuccessfulLoginPopUpMsg() {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(loginConfirmationMsg));
         return new LoginPage(driver);
     }
 }

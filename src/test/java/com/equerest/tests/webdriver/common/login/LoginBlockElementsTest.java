@@ -13,7 +13,7 @@ import ru.yandex.qatools.allure.annotations.Title;
  */
 @Title("C13 Check that block \"Войти\" exists and contains elements")
 @Description("All elements exist and all buttons and links are clickable, all text field can be filled with relevant data")
-public class LoginClickableElementsTest extends BaseTest {
+public class LoginBlockElementsTest extends BaseTest {
     @Test
     public void checkThatLoginBlockExists() {
         HomePage homePage = new HomePage(driver);
