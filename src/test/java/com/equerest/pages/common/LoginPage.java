@@ -30,6 +30,18 @@ public class LoginPage extends AbstractPage {
     private By loginConfirmationMsg = By.xpath("//div[contains(.,'Вы успешно вошли')]");
     private By wrongEmailOrPasswordMsg = By.xpath("//div[contains(.,'Неверный логин или пароль')]");
     private By invalidInput = By.cssSelector("input:invalid");
+    //######################_locotors for the Registration block_######################
+    private By registrationBlock = By.id("registerBlock");
+    private By registrationLabel = By.cssSelector("#registerBlock>h3");
+    private By entrepreneurLabel = By.xpath(".//*[@id='registerBlock']//div[1]/label");
+    private By presentProjectText = By.cssSelector(".flex-block>div>div>span");
+    private By submitProjectButton = By.xpath("//*[@href = \"/register#/entrepreneur\"]");
+    private By howItWorksForEntrepreneur = By.xpath(".//*[@id='registerBlock']//span[1]/a");
+    private By howItWorksForInvestor = By.xpath(".//*[@id='registerBlock']//span[2]/a");
+    private By investorLabel = By.xpath(".//*[@id='registerBlock']//div[2]/label");
+    private By getAccessText = By.xpath(".//*[@id='registerBlock']//div[2]/span[1]");
+    private By investButton = By.xpath("//*[@href = \"/register#/investor\"]");
+
 
 
     public LoginPage(WebDriver driver) {
@@ -123,4 +135,51 @@ public class LoginPage extends AbstractPage {
         wait.until(ExpectedConditions.presenceOfElementLocated(invalidInput));
         return new LoginPage(driver);
     }
+
+    //######################_Registration block_######################
+    public LoginPage checkRegistrationBlockExist() {
+        Assert.assertTrue(driver.findElement(registrationBlock).isEnabled());
+        Assert.assertTrue(driver.findElement(registrationLabel).isEnabled());
+        Assert.assertTrue(driver.findElement(entrepreneurLabel).isEnabled());
+        Assert.assertTrue(driver.findElement(presentProjectText).isEnabled());
+        Assert.assertTrue(driver.findElement(submitProjectButton).isEnabled());
+        Assert.assertTrue(driver.findElement(howItWorksForEntrepreneur).isEnabled());
+        Assert.assertTrue(driver.findElement(howItWorksForInvestor).isEnabled());
+        Assert.assertTrue(driver.findElement(investorLabel).isEnabled());
+        Assert.assertTrue(driver.findElement(getAccessText).isEnabled());
+        Assert.assertTrue(driver.findElement(investButton).isEnabled());
+        return new LoginPage(driver);
+    }
+
+    public LoginPage checkRegistrationBlockTextValues() {
+        Assert.assertEquals(driver.findElement(registrationLabel).getText(), "Регистрация");
+        Assert.assertEquals(driver.findElement(entrepreneurLabel).getText(), "Предпринимателю");
+        Assert.assertTrue(driver.findElement(presentProjectText).getText().contains("Представьте свой"));
+        Assert.assertTrue(driver.findElement(presentProjectText).getText().contains("проект потенциальным"));
+        Assert.assertTrue(driver.findElement(presentProjectText).getText().contains("инвесторам"));
+        Assert.assertEquals(driver.findElement(submitProjectButton).getText(), "Подать проект");
+        Assert.assertEquals(driver.findElement(howItWorksForEntrepreneur).getText(), "Как это работает?");
+        Assert.assertEquals(driver.findElement(howItWorksForInvestor).getText(), "Как это работает?");
+        Assert.assertEquals(driver.findElement(investorLabel).getText(), "Инвестору");
+        Assert.assertEquals(driver.findElement(investButton).getText(), "Инвестировать");
+        Assert.assertTrue(driver.findElement(getAccessText).getText().contains("Получите доступ"));
+        Assert.assertTrue(driver.findElement(getAccessText).getText().contains("к перспективным"));
+        Assert.assertTrue(driver.findElement(getAccessText).getText().contains("и доходным проектам"));
+        return new LoginPage(driver);
+    }
+
+    public LoginPage checkRegistrationBlockClickable() {
+        WebElement submitProjectButton = driver.findElement(this.submitProjectButton);
+        WebElement investButton = driver.findElement(this.investButton);
+        WebElement howItWorksForEntrepreneur = driver.findElement(this.howItWorksForEntrepreneur);
+        WebElement howItWorksForInvestor = driver.findElement(this.howItWorksForInvestor);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        Assert.assertEquals(submitProjectButton, wait.until(ExpectedConditions.elementToBeClickable(this.submitProjectButton)));
+        Assert.assertEquals(investButton, wait.until(ExpectedConditions.elementToBeClickable(this.investButton)));
+        Assert.assertEquals(howItWorksForEntrepreneur, wait.until(ExpectedConditions.elementToBeClickable(this.howItWorksForEntrepreneur)));
+        Assert.assertEquals(howItWorksForInvestor, wait.until(ExpectedConditions.elementToBeClickable(this.howItWorksForInvestor)));
+        return new LoginPage(driver);
+    }
+
+
 }
