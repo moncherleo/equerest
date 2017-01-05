@@ -22,7 +22,7 @@ public class LoginWithValidDataEntrepreneur extends BaseTest {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginAs("eq-pred@mail.ru", "Qwer1234");
-        loginPage.assertSuccessfulLoginPopUpMsg();
+        loginPage.checkSuccessfulLoginPopUpMsg();
 
         EntrepreneurProjectPage projectPage = new EntrepreneurProjectPage(driver);
         projectPage

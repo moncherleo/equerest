@@ -20,7 +20,7 @@ public class LoginWithValidDataInvestor extends BaseTest {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginAs("eq-inv@mail.ru", "Qwer1234");
-        loginPage.assertSuccessfulLoginPopUpMsg();
+        loginPage.checkSuccessfulLoginPopUpMsg();
 
         InvestorProjectsCataloguePage investorPage = new InvestorProjectsCataloguePage(driver);
         investorPage.assertPageURL();

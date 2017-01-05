@@ -25,6 +25,7 @@ public class LoginPage extends AbstractPage {
     private By emailFieldLabel = By.cssSelector(".input-text-group>label[for = 'email']");
     private By passwordFieldlabel = By.cssSelector(".input-text-group>label[for = 'password']");
     private By loginConfirmationMsg = By.xpath("//div[contains(.,'Вы успешно вошли')]");
+    private By wrongEmailOrPasswordMsg = By.xpath("//div[contains(.,'Неверный логин или пароль')]");
 
 
     public LoginPage(WebDriver driver) {
@@ -90,9 +91,14 @@ public class LoginPage extends AbstractPage {
         return new LoginPage(driver);
     }
 
-    public LoginPage assertSuccessfulLoginPopUpMsg() {
+    public LoginPage checkSuccessfulLoginPopUpMsg() {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginConfirmationMsg));
+        return new LoginPage(driver);
+    }
+    public  LoginPage checkWrongEmailOrPasswordErrorMessage(){
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(wrongEmailOrPasswordMsg));
         return new LoginPage(driver);
     }
 }
