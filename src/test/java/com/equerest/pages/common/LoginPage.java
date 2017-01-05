@@ -2,11 +2,14 @@ package com.equerest.pages.common;
 
 import com.equerest.pages.AbstractPage;
 import com.equerest.pages.adminpanel.ProjectsPage;
+import com.google.common.base.Verify;
+import org.jboss.netty.util.Version;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -26,6 +29,7 @@ public class LoginPage extends AbstractPage {
     private By passwordFieldlabel = By.cssSelector(".input-text-group>label[for = 'password']");
     private By loginConfirmationMsg = By.xpath("//div[contains(.,'Вы успешно вошли')]");
     private By wrongEmailOrPasswordMsg = By.xpath("//div[contains(.,'Неверный логин или пароль')]");
+    private By invalidInput = By.cssSelector("input:invalid");
 
 
     public LoginPage(WebDriver driver) {
@@ -96,9 +100,27 @@ public class LoginPage extends AbstractPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginConfirmationMsg));
         return new LoginPage(driver);
     }
-    public  LoginPage checkWrongEmailOrPasswordErrorMessage(){
+
+    public LoginPage checkWrongEmailOrPasswordErrorMessage() {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(wrongEmailOrPasswordMsg));
+        return new LoginPage(driver);
+    }
+
+    public LoginPage clickLoginButton() {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(loginButton));
+        WebElement button = driver.findElement(loginButton);
+        button.click();
+        return new LoginPage(driver);
+    }
+
+    public LoginPage checkEmptyInput() {
+        WebElement emailF = driver.findElement(emailField);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.presenceOfElementLocated(invalidInput));
+        emailF.sendKeys("eq-notexist@mail.ru");
+        wait.until(ExpectedConditions.presenceOfElementLocated(invalidInput));
         return new LoginPage(driver);
     }
 }
