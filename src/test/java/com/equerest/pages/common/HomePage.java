@@ -217,5 +217,15 @@ public class HomePage extends AbstractPage {
     return new CookiesProcessingPolicyInfoFooterPage(driver);
     }
 
+    //проверить наличие логотипа Экверест на странице
+    public HomePage assertLogoPresent(){
+        Assert.assertTrue(driver.findElement(equerestLogo)!=null);
+        return this;
+    }
 
+    public HomePage assertCurrentUrlIsEquerestHomepage(){
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertEquals("https://dev.equerest.com/", currentUrl);
+        return this;
+    }
 }
