@@ -17,7 +17,8 @@ import ru.yandex.qatools.allure.annotations.Step;
  * Created by cherleo on 9/19/16.
  */
 public class HomePage extends AbstractPage {
-    private String url;
+    protected static final String BASE_URL = "https://dev.equerest.com/";
+    public String url;
     private static final String LOGIN_PAGE_URL = "register#/";
     private final By equerestLogo = By.xpath("/html/body/div[1]/header/div/nav/div[1]/div[1]//img[contains(@src, 'header_logo.svg')]");
     private final By worthItFooterLogo = By.cssSelector("#footer .link");
@@ -52,7 +53,7 @@ public class HomePage extends AbstractPage {
     }
     public HomePage(WebDriver driver) {
         super(driver);
-        this.url = "https://dev.equerest.com/";
+        this.url = BASE_URL;
     }
     @Step("Open home page")
     public HomePage open() {

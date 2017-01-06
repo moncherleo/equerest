@@ -2,6 +2,7 @@ package com.equerest.pages.common;
 
 import com.equerest.pages.AbstractPage;
 import com.equerest.pages.adminpanel.ProjectsPage;
+import com.equerest.pages.common.registration.EntrepreneurContactsPage;
 import com.google.common.base.Verify;
 import org.jboss.netty.util.Version;
 import org.junit.Assert;
@@ -35,7 +36,7 @@ public class LoginPage extends AbstractPage {
     private By registrationLabel = By.cssSelector("#registerBlock>h3");
     private By entrepreneurLabel = By.xpath(".//*[@id='registerBlock']//div[1]/label");
     private By presentProjectText = By.cssSelector(".flex-block>div>div>span");
-    private By submitProjectButton = By.xpath("//*[@href = \"/register#/entrepreneur\"]");
+    private By submitProjectButton = By.xpath(".//*[@class='flex-block']/div[1]/div/div/a");
     private By howItWorksForEntrepreneur = By.xpath(".//*[@id='registerBlock']//span[1]/a");
     private By howItWorksForInvestor = By.xpath(".//*[@id='registerBlock']//span[2]/a");
     private By investorLabel = By.xpath(".//*[@id='registerBlock']//div[2]/label");
@@ -179,6 +180,14 @@ public class LoginPage extends AbstractPage {
         Assert.assertEquals(howItWorksForEntrepreneur, wait.until(ExpectedConditions.elementToBeClickable(this.howItWorksForEntrepreneur)));
         Assert.assertEquals(howItWorksForInvestor, wait.until(ExpectedConditions.elementToBeClickable(this.howItWorksForInvestor)));
         return new LoginPage(driver);
+    }
+
+    public EntrepreneurContactsPage clickSubmitProjectButton() {
+        WebDriverWait wait = new WebDriverWait(driver, 7);
+        wait.until(ExpectedConditions.elementToBeClickable(submitProjectButton));
+        WebElement button = driver.findElement(submitProjectButton);
+        button.click();
+        return new EntrepreneurContactsPage(driver);
     }
 
 

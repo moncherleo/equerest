@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 public class EntrepreneurContactsPage extends HomePage {
 
     public EntrepreneurContactsPage(WebDriver driver) {
-        super(driver);
+        super(BASE_URL + "register#/entrepreneur", driver);
     }
 
     protected final By fieldFio = By.id("fio");
