@@ -16,6 +16,8 @@ public class NewProjectsAreaTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         homePage
                 .open()
+                .assertCurrentUrlIsEquerestHomepage()
+                .assertLogoPresent()
                 .checkNewProjectsAreaPresence()
                 .checkNumberofNewProjectsShown(3)
                 .checkThatNewProjectsSortedByDate()
