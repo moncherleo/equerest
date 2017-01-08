@@ -216,4 +216,14 @@ public class LoginPage extends AbstractPage {
         button.click();
         return new InvestorInfoPage(driver);
     }
+    public LoginPage fillInEmailField(String inputEmail){
+        WebElement mailField= driver.findElement(emailField);
+        mailField.sendKeys(inputEmail);
+        return this;
+    }
+    public LoginPage checkPresenceOfInvalidInputNotification(){
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        Assert.assertTrue(wait.until(ExpectedConditions.presenceOfElementLocated(invalidInput)).isDisplayed());
+        return this;
+    }
 }
