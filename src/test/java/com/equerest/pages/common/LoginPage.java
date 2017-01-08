@@ -3,6 +3,7 @@ package com.equerest.pages.common;
 import com.equerest.pages.AbstractPage;
 import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.common.header.EntrepreneurInfoPage;
+import com.equerest.pages.common.header.InvestorInfoPage;
 import com.equerest.pages.common.registration.EntrepreneurContactsPage;
 import com.equerest.pages.common.registration.InvestorRegistrationContactsPage;
 import com.google.common.base.Verify;
@@ -206,5 +207,13 @@ public class LoginPage extends AbstractPage {
         WebElement button = driver.findElement(howItWorksForEntrepreneur);
         button.click();
         return new EntrepreneurInfoPage(driver);
+    }
+
+    public InvestorInfoPage clickHowItWorksForInvestorLink() {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(howItWorksForInvestor));
+        WebElement button = driver.findElement(howItWorksForInvestor);
+        button.click();
+        return new InvestorInfoPage(driver);
     }
 }

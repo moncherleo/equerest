@@ -11,9 +11,7 @@ import org.openqa.selenium.WebDriver;
 public class InvestorInfoPage extends HomePage {
     private By startInvestButton = By.xpath("//*[@id='banner']//*[text()[contains(.,'Начать инвестировать')]]");
 
-    public InvestorInfoPage(WebDriver driver) {
-        super(driver);
-    }
+    public InvestorInfoPage(WebDriver driver){super(BASE_URL + "info/investor", driver);}
 
     public InvestorRegistrationContactsPage startInvest(){
         driver.findElement(startInvestButton).click();
