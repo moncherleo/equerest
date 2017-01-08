@@ -3,6 +3,7 @@ package com.equerest.pages.common;
 import com.equerest.pages.AbstractPage;
 import com.equerest.pages.adminpanel.ProjectsPage;
 import com.equerest.pages.common.registration.EntrepreneurContactsPage;
+import com.equerest.pages.common.registration.InvestorRegistrationContactsPage;
 import com.google.common.base.Verify;
 import org.jboss.netty.util.Version;
 import org.junit.Assert;
@@ -41,7 +42,7 @@ public class LoginPage extends AbstractPage {
     private By howItWorksForInvestor = By.xpath(".//*[@id='registerBlock']//span[2]/a");
     private By investorLabel = By.xpath(".//*[@id='registerBlock']//div[2]/label");
     private By getAccessText = By.xpath(".//*[@id='registerBlock']//div[2]/span[1]");
-    private By investButton = By.xpath("//*[@href = \"/register#/investor\"]");
+    private By investButton = By.xpath(".//*[@id='registerBlock']/div/div[2]/div/a");
 
 
 
@@ -190,5 +191,11 @@ public class LoginPage extends AbstractPage {
         return new EntrepreneurContactsPage(driver);
     }
 
-
+    public InvestorRegistrationContactsPage clickInvestButton() {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(investButton));
+        WebElement button = driver.findElement(investButton);
+        button.click();
+        return new InvestorRegistrationContactsPage(driver);
+    }
 }

@@ -14,7 +14,7 @@ public class InvestorRegistrationContactsPage extends AbstractPage{
     private static final By PASSWORD_FIELD = By.xpath("//*[@id='pass']");
     private By goToInvestmentsButton = By.cssSelector(".button.button-blue.button-next");
 
-    public InvestorRegistrationContactsPage(WebDriver driver){super(driver);}
+    public InvestorRegistrationContactsPage(WebDriver driver){super(BASE_URL + "register#/investor", driver);}
 
     public InvestorRegistrationContactsPage fillForm(String fio, String telephone, String email, String password){
         fillField(FIO_FIELD, fio);

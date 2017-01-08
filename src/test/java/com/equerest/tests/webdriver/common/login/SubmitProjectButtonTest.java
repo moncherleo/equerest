@@ -15,7 +15,7 @@ import ru.yandex.qatools.allure.annotations.Title;
 @Title("C32 Check button \"Подать проект\"")
 public class SubmitProjectButtonTest extends BaseTest {
     @Test
-    public void checkSubmitProjectButton() throws InterruptedException {
+    public void checkSubmitProjectButton() {
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = homePage.navigateToLoginPage();
 

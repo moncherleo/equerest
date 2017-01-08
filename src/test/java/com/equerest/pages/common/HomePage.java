@@ -24,8 +24,6 @@ import java.util.List;
  * Created by cherleo on 9/19/16.
  */
 public class HomePage extends AbstractPage {
-    protected static final String BASE_URL = "https://dev.equerest.com/";
-    public String url;
     private static final String LOGIN_PAGE_URL = "register#/";
     private final By equerestLogo = By.xpath("/html/body/div[1]/header/div/nav/div[1]/div[1]//img[contains(@src, 'header_logo.svg')]");
     private final By worthItFooterLogo = By.cssSelector("#footer .link");

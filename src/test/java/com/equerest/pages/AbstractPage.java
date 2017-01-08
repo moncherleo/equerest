@@ -13,11 +13,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Created by cherleo on 9/19/16.
  */
 public class AbstractPage {
+    protected static final String BASE_URL = "https://dev.equerest.com/";
+    public String url;
     protected WebDriver driver;
     protected WebDriverWait wait;
 
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public AbstractPage(String url, WebDriver driver) {
+        this.driver = driver;
+        this.url = url;
     }
 
     public void visibilityOf(By locator){
