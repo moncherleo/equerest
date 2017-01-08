@@ -12,9 +12,7 @@ public class EntrepreneurInfoPage extends HomePage {
 
     private By startEntrepreneurButton = By.xpath("//*[@id='banner']/div/div[2]//*[text()[contains(.,'Подать проект')]]");
 
-    public EntrepreneurInfoPage(WebDriver driver) {
-        super(driver);
-    }
+    public EntrepreneurInfoPage(WebDriver driver){super(BASE_URL + "info/entrepreneur", driver);}
 
     public EntrepreneurContactsPage startEntrepreneurRegistration(){
         driver.findElement(startEntrepreneurButton).click();
