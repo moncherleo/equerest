@@ -41,6 +41,8 @@ public class HomePage extends AbstractPage {
     private final By moreNewProjectsButton = By.xpath("//*[@id='new_projects']//*[text()[contains(.,'Больше новых проектов')]]");
     private final By moreNewProjectsLink = By.xpath("//*[@id='new_projects']//a[contains(.,'Больше новых проектов')]");
     private final By moreNewProjectsArea = By.xpath("//*[@id='new_projects']//*[text()[contains(.,'Новые проекты')]]");
+    private By successfulProjectsArea = By.cssSelector("#complete");
+    private By successfulProjectsLabel = By.xpath("//*[@id='complete']//h2[contains(.,'Успешные проекты')]");
     //######################_locotors for the 'Footer' menu_######################
     private final By investorFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Инвестору')]]");
     private final By projectsFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Проекты')]]");
@@ -336,7 +338,20 @@ public class HomePage extends AbstractPage {
         String currentUrl = driver.getCurrentUrl();
         Assert.assertEquals("https://dev.equerest.com/", currentUrl);
         return this;
-
     }
-
+    public HomePage checkSuccessfulProjectsAreaPresence(){
+        WebElement successProjArea = driver.findElement(successfulProjectsArea);
+        Assert.assertTrue(successProjArea.isDisplayed());
+        return this;
+    }
+    public HomePage checkSuccessfulProjectsLabelPresence(){
+        WebElement successProjArea = driver.findElement(successfulProjectsArea);
+        Assert.assertTrue(successProjArea.findElement(successfulProjectsLabel).isDisplayed());
+        return this;
+    }
+    public HomePage checkMoreSuccessfulProjectsButtonPresence(){
+        WebElement successProjArea = driver.findElement(successfulProjectsArea);
+        Assert.assertTrue(successProjArea.findElement(moreSuccessfulProjectsButton).isDisplayed());
+        return this;
+    }
 }
