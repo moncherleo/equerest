@@ -6,14 +6,10 @@ import com.equerest.pages.common.header.EntrepreneurInfoPage;
 import com.equerest.pages.common.header.InvestorInfoPage;
 import com.equerest.pages.common.registration.EntrepreneurContactsPage;
 import com.equerest.pages.common.registration.InvestorRegistrationContactsPage;
-import com.google.common.base.Verify;
-import org.jboss.netty.util.Version;
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -45,6 +41,7 @@ public class LoginPage extends AbstractPage {
     private By investorLabel = By.xpath(".//*[@id='registerBlock']//div[2]/label");
     private By getAccessText = By.xpath(".//*[@id='registerBlock']//div[2]/span[1]");
     private By investButton = By.xpath(".//*[@id='registerBlock']/div/div[2]/div/a");
+    private By forgotPasswordLink = By.xpath(".//*[@id='forgotPassword']");
 
 
 
@@ -225,5 +222,13 @@ public class LoginPage extends AbstractPage {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         Assert.assertTrue(wait.until(ExpectedConditions.presenceOfElementLocated(invalidInput)).isDisplayed());
         return this;
+    }
+
+    public LoginPage clickForgotPasswordLink(){
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(ExpectedConditions.elementToBeClickable(forgotPasswordLink));
+        WebElement link = driver.findElement(forgotPasswordLink);
+        link.click();
+        return new LoginPage(driver);
     }
 }
