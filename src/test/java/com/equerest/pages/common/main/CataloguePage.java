@@ -18,10 +18,16 @@ public class CataloguePage extends AbstractPage {
 
     public static final String pageURL = "https://dev.equerest.com/catalog#/";
     private By projectHeader = By.xpath("//*[@id='catalog']//h1[text()[contains(.,'Проекты')]]");
+    private By filter =By.className("catalog-filter");
 
     public CataloguePage checkNumberofProjectsShown(int expectedNumberOfProjects){
         List<WebElement> listOfElements = driver.findElements(By.xpath(".//*[@id='catalog-feed']//project-card"));
         Assert.assertEquals(expectedNumberOfProjects, listOfElements.size());
+        return this;
+    }
+    public CataloguePage checkFilterPresence(){
+        WebElement pageFilter = driver.findElement(filter);
+        Assert.assertTrue(pageFilter.isDisplayed());
         return this;
     }
 }

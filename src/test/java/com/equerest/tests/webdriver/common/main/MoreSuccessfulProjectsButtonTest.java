@@ -20,6 +20,8 @@ public class MoreSuccessfulProjectsButtonTest extends BaseTest {
                 .checkMoreSuccessfulProjectsButtonIsPresentAndActive()
                 .checkMoreSuccessfulProjectsButton();
         CataloguePage cataloguePage = new CataloguePage(driver);
-        cataloguePage.checkNumberofProjectsShown(6);
+        cataloguePage
+                .checkNumberofProjectsShown(6)
+                .checkFilterPresence();
     }
 }
