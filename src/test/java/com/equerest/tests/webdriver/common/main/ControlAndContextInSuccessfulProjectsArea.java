@@ -18,6 +18,6 @@ public class ControlAndContextInSuccessfulProjectsArea extends BaseTest {
                 .assertCurrentUrlIsEquerestHomepage()
                 .checkSuccessfulProjectsAreaPresence()
                 .checkSuccessfulProjectsLabelPresence()
-                .checkMoreSuccessfulProjectsButtonPresence();
+                .checkMoreSuccessfulProjectsButtonIsPresentAndActive();
     }
 }
