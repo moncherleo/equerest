@@ -12,11 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import ru.yandex.qatools.allure.annotations.Step;
 
-
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +22,7 @@ import java.util.List;
  */
 public class HomePage extends AbstractPage {
     private static final String LOGIN_PAGE_URL = "register#/";
+    private static final String REGAIN_PASSWORD_PAGE_URL = "index/regainPassword";
     private final By equerestLogo = By.xpath("/html/body/div[1]/header/div/nav/div[1]/div[1]//img[contains(@src, 'header_logo.svg')]");
     private final By worthItFooterLogo = By.cssSelector("#footer .link");
     //######################_locators for the 'Header' menu_######################
@@ -75,6 +73,12 @@ public class HomePage extends AbstractPage {
     @Step("Navigate to login page")
     public LoginPage navigateToLoginPage() {
         driver.navigate().to(url + LOGIN_PAGE_URL);
+        return new LoginPage(driver);
+    }
+
+    @Step("Navigate to regain password page")
+    public LoginPage navigateToRegainPasswordPage() {
+        driver.navigate().to(url + REGAIN_PASSWORD_PAGE_URL);
         return new LoginPage(driver);
     }
 
