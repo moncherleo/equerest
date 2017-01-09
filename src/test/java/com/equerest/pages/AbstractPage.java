@@ -5,9 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.ArrayList;
 
 /**
  * Created by cherleo on 9/19/16.
@@ -72,5 +73,17 @@ public class AbstractPage {
     }
     public void navigateBack(){
         driver.navigate().back();
+    }
+
+    public void visibilityOfTwo(By locator1, By locator2){
+        wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator1)));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator2)));
+    }
+
+    public void manageMultipleWindows(int indexOfPage){
+        ArrayList tabs = new ArrayList(driver.getWindowHandles()); //Get the list of window handles
+        driver.switchTo().window((String) tabs.get(indexOfPage)).manage().window().maximize(); //Use the list of window handles to switch between windows
+        //System.out.println(tabs.size()); // see the number of tabs
     }
 }
