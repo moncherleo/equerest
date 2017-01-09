@@ -150,7 +150,7 @@ public class HomePage extends AbstractPage {
     }
 
     //'Успешные проекты'
-    public SuccessfulProjectsPage moreSuccessfulProjectsButton() {
+    public SuccessfulProjectsPage checkMoreSuccessfulProjectsButton() {
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='complete']//*[text()[contains(.,'Успешные проекты')]]")).isEnabled());
         driver.findElement(moreSuccessfulProjectsButton).click();
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='catalog']//h1[text()[contains(.,'Проекты')]]")).isEnabled());
@@ -349,9 +349,9 @@ public class HomePage extends AbstractPage {
         Assert.assertTrue(successProjArea.findElement(successfulProjectsLabel).isDisplayed());
         return this;
     }
-    public HomePage checkMoreSuccessfulProjectsButtonPresence(){
+    public HomePage checkMoreSuccessfulProjectsButtonIsPresentAndActive(){
         WebElement successProjArea = driver.findElement(successfulProjectsArea);
-        Assert.assertTrue(successProjArea.findElement(moreSuccessfulProjectsButton).isDisplayed());
+        Assert.assertTrue(successProjArea.findElement(moreSuccessfulProjectsButton).isEnabled());
         return this;
     }
 }

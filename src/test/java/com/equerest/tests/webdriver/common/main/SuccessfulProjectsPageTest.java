@@ -18,7 +18,7 @@ public class SuccessfulProjectsPageTest extends BaseTest {
     public void moreSuccessfulProjectsClickButton(){
         HomePage clickButton = new SuccessfulProjectsPage(driver);
         clickButton
-                .moreSuccessfulProjectsButton()
+                .checkMoreSuccessfulProjectsButton()
                 .equerestLogoButton();
     }
 }
