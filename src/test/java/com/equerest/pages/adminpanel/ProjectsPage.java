@@ -2,6 +2,7 @@ package com.equerest.pages.adminpanel;
 
 import com.equerest.pages.adminpanel.projectpage.activesection.EditActiveProjectPage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.EditProjectPage;
+import com.equerest.pages.adminpanel.projectpage.moderatesection.InActivePage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.InArchivePage;
 import com.equerest.pages.adminpanel.projectpage.moderatesection.ToModeratePage;
 import org.junit.Assert;
@@ -20,6 +21,8 @@ public class ProjectsPage extends BaseAdminPanelPage {
     private By projectSearchFieldForNewStatus = By.xpath("//*[@id='wrapper']/main/div/div/div/div[2]/div/div[1]/div[1]/div[2]/*[@id='searchModerate']");
     //"Редактировать" button on 'Moderation' section
     private By editProjectButton = By.cssSelector(".btn.btn-primary");
+    //"Активировать" button on 'Moderation' section
+    private By activateProjectButton = By.cssSelector(".pull-right.activate-button.btn.btn-success");
 
     //added project-card at "В архив" button on 'Moderation' section
     private final By projectInArchiveButton = By.xpath("//*[@id='wrapper']/main/div/div/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[3]//*[text()[contains(.,'В архив')]]");
@@ -97,6 +100,13 @@ public class ProjectsPage extends BaseAdminPanelPage {
         searchProjectByName(projectName);
         driver.findElement(projectInArchiveButton).click();
         return new InArchivePage(driver);
+    }
+    //added project-card at "Активировать" button on 'Moderation' section
+    public ToModeratePage addedSelectedProjectToActive(String projectName){
+        selectModerationFilter();
+        searchProjectByName(projectName);
+        driver.findElement(activateProjectButton).click();
+        return new ToModeratePage(driver);
     }
 
     public ToModeratePage toModerateProject(String projectName){
