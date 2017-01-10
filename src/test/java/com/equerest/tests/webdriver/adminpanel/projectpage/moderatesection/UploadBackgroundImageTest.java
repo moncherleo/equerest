@@ -14,6 +14,7 @@ import ru.yandex.qatools.allure.annotations.Description;
 import ru.yandex.qatools.allure.annotations.Title;
 
 import java.awt.*;
+import java.io.File;
 
 /**
  * Created by Eduard Aliiev on 10/1/16;
@@ -29,7 +30,8 @@ public class UploadBackgroundImageTest extends BaseTest {
     @FileParameters("src/test/resources/login_project_info.csv")
     public void uploadBackgroundImageInProject(String login, String password, String projectName) throws AWTException, InterruptedException {
         EditProjectPage selectedProject = new EditProjectHelper(homePage).editProject(login, password, projectName);
-        selectedProject.uploadImage("C:\\IMG702.jpg");
+        File file = new File("src/test/resources/IMG702.jpg");
+        selectedProject.uploadImage(file.getAbsolutePath());
         Assert.assertTrue(driver.findElement(By.xpath(".//*[@id='file']//span[contains(.,'IMG702.jpg')]")).isEnabled());
     }
 }

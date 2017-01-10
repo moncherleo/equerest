@@ -129,12 +129,14 @@ public class EditProjectPage extends ProjectsPage {
     public UploadBackgroundImage uploadImage(String path) throws InterruptedException, AWTException {
         WebElement fileInput = driver.findElement(backgroundImageButton);
         fileInput.click();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
+
+        // put path to clipboard
         StringSelection ss = new StringSelection(path);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 
+        // pasting path from clipboard
         Robot robot = new Robot();
-        robot.delay(1000);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         robot.keyPress(KeyEvent.VK_CONTROL);
@@ -144,6 +146,7 @@ public class EditProjectPage extends ProjectsPage {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         robot.delay(1000);
+
         Assert.assertTrue(driver.findElement(projectSavedAlert).isEnabled());
         Assert.assertTrue(driver.findElement(fileUploadedAlert).isEnabled());
         return new UploadBackgroundImage(driver, this);
