@@ -5,9 +5,14 @@ import com.equerest.pages.adminpanel.projectpage.moderatesection.editprojectcard
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 
 /**
  * Created by aBulgakoff on 9/20/16.
@@ -31,6 +36,7 @@ public class EditProjectPage extends ProjectsPage {
     protected final By financeModelEditButton = By.xpath("//*[@id='anchor-fmodel']" + commonSmallEditButton);
     protected final By editorInputAreaWindows = By.cssSelector(".quick-editor.input-textarea-group");
     protected final By projectSavedAlert = By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Проект сохранен')]]");
+    protected final By fileUploadedAlert = By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Файл загружен')]]");
     protected final By projectDescriptionTextArea = By.id("anchor-full_description");
 
     /*left bar's buttons*/
@@ -120,16 +126,33 @@ public class EditProjectPage extends ProjectsPage {
     }
 
     //Upload background image
-    public UploadBackgroundImage uploadImage() {
-        driver.findElement(backgroundImageButton).click();
+    public UploadBackgroundImage uploadImage(String path) throws InterruptedException, AWTException {
+        WebElement fileInput = driver.findElement(backgroundImageButton);
+        fileInput.click();
+        Thread.sleep(5000);
+        StringSelection ss = new StringSelection(path);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 
-
+        Robot robot = new Robot();
+        robot.delay(1000);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.delay(1000);
+        Assert.assertTrue(driver.findElement(projectSavedAlert).isEnabled());
+        Assert.assertTrue(driver.findElement(fileUploadedAlert).isEnabled());
         return new UploadBackgroundImage(driver, this);
     }
 
     //Upload image to "Глерея"
     public UploadImagesToGallery uploadImagesToGallery() {
         driver.findElement(galleryImageButton).click();
+
 
 
         return new UploadImagesToGallery(driver, this);

@@ -5,11 +5,15 @@ import com.equerest.pages.helpers.adminpanel.EditProjectHelper;
 import com.equerest.tests.webdriver.BaseTest;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import ru.yandex.qatools.allure.annotations.Description;
 import ru.yandex.qatools.allure.annotations.Title;
+
+import java.awt.*;
 
 /**
  * Created by Eduard Aliiev on 10/1/16;
@@ -20,14 +24,12 @@ import ru.yandex.qatools.allure.annotations.Title;
 public class UploadBackgroundImageTest extends BaseTest {
 
     //Upload background image
-    // TODO: implement upload functionality
 
-    @Ignore
     @Test
     @FileParameters("src/test/resources/login_project_info.csv")
-    public void uploadBackgroundImageInProject(String login, String password, String projectName) {
+    public void uploadBackgroundImageInProject(String login, String password, String projectName) throws AWTException, InterruptedException {
         EditProjectPage selectedProject = new EditProjectHelper(homePage).editProject(login, password, projectName);
-
-        selectedProject.uploadImage();
+        selectedProject.uploadImage("C:\\IMG702.jpg");
+        Assert.assertTrue(driver.findElement(By.xpath(".//*[@id='file']//span[contains(.,'IMG702.jpg')]")).isEnabled());
     }
 }
