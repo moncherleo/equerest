@@ -34,10 +34,9 @@ public class EditInvestmentIncomeSectionTest extends BaseTest {
     public void editInvestmentIncomeInProject(String login, String password, String projectName) {
         EditActiveProjectPage selectedProject = editActiveProject(login, password, projectName);
 
-        selectedProject.investmentIncomeInProject("30", "200")
+        selectedProject.clickOnInvestmentIncome()
+                .editInvestmentIncome("30", "200")
                 .applyChanges()
                 .verifyProjectSavedAlertDisplayedActiveSection();
     }
-
-
 }

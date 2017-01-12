@@ -22,10 +22,6 @@ public class EditActiveProjectPage extends ProjectsPage {
 
     //locator: in the "Инвестиционный доход" section is edited values.
     private final By infoInvestmentIncomeEditButton = By.cssSelector(".project-roi>div>button.edit-btn");
-    private final By quickEditorFirstField = By.cssSelector("#roi1");
-    private final By quickEditorSecondField = By.cssSelector("#roi2");
-    private final By InvestIncomeCheckBoxForCheckifSelected = By.xpath("//*[@class=\"input-checkbox\"]//input[@type='checkbox']");
-    private final By InvestIncomeCheckBoxForClick = By.xpath("//*[@class=\"input-checkbox\"]");
 
     //locator: Alert massage "Проект сохранен" locator
     protected final By projectSavedAlert = By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Проект сохранен')]]");
@@ -48,25 +44,11 @@ public class EditActiveProjectPage extends ProjectsPage {
             return true;
         } catch (NoSuchElementException e) {
         return false;
-    }
-}
-
-    public EditInvestmentIncomeSection investmentIncomeInProject(String firstField, String secondField){
-        driver.findElement(infoInvestmentIncomeEditButton).click();
-
-        if ( driver.findElement(InvestIncomeCheckBoxForCheckifSelected).isSelected() )
-        {
-            driver.findElement(InvestIncomeCheckBoxForClick).click();
         }
+    }
 
-        driver.findElement(quickEditorFirstField).clear();
-        driver.findElement(quickEditorFirstField).sendKeys(firstField);
-        driver.findElement(quickEditorFirstField).click();
-
-        driver.findElement(quickEditorSecondField).clear();
-        driver.findElement(quickEditorSecondField).sendKeys(secondField);
-        driver.findElement(quickEditorSecondField).click();
-
+    public EditInvestmentIncomeSection clickOnInvestmentIncome() {
+        driver.findElement(infoInvestmentIncomeEditButton).click();
         return new EditInvestmentIncomeSection(driver, this);
     }
 

@@ -16,21 +16,24 @@ import ru.yandex.qatools.allure.annotations.Title;
 @Title("C57: Корректность работы кнопки [Отмена]")
 @Description("Пользователь[login]должен предварительно войти в систему, используя[password]")
 @RunWith(JUnitParamsRunner.class)
-public class CanselButtonInvestmentIncomeTest extends BaseTest{
+public class CancelButtonInvestmentIncomeTest extends BaseTest{
 
     @Test
     @FileParameters("src/test/resources/investment_income_cansel_button.csv")
-    public void checkCanselButtonInvestmentIncome(String login, String password) throws InterruptedException {
+    public void checkCancelButtonInvestmentIncome(String login, String password) throws InterruptedException {
     homePage.openLoginPage()
             .loginAs(login, password);
         EditActiveProjectPage selectedProject = new EditActiveProjectPage(driver);
-        selectedProject.investmentIncomeInProject("30", "200")
+        selectedProject.clickOnInvestmentIncome()
+                .editInvestmentIncome("30", "200")
                 .applyChanges()
                 .verifyProjectSavedAlertDisplayedActiveSection();
         Thread.sleep(6000);
-        selectedProject.investmentIncomeInProject("40", "96")
-        .discardChanges()
-        .chekDataAfterDiscard();
+
+        selectedProject.clickOnInvestmentIncome()
+                .editInvestmentIncome("40", "96")
+                .discardChanges()
+                .chekDataAfterDiscard();
         Assert.assertFalse(selectedProject.isAlertPresent());
     }
 }
