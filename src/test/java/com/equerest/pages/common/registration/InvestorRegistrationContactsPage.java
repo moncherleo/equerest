@@ -24,8 +24,8 @@ public class InvestorRegistrationContactsPage extends AbstractPage{
         return this;
     }
 
-    public InvestorRegisrationInvestmentsPage goToInvestments(){
+    public InvestorRegistrationInvestmentsPage goToInvestments(){
         click(goToInvestmentsButton);
-        return new InvestorRegisrationInvestmentsPage(driver);
+        return new InvestorRegistrationInvestmentsPage(driver);
     }
 }
