@@ -17,14 +17,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class EditActiveProjectPage extends ProjectsPage {
 
     //locator: for the "Инвестиционный доход" section on EditProjectPage.
-    private final By investmentIncomeTwoYears = By.xpath(".//*[@ng-bind-html=\"$ctrl.post.projects.roi.r1\"]");
-    private final By investmentIncomeFourYears = By.xpath(".//*[@ng-bind-html=\"$ctrl.post.projects.roi.r2\"]");
+    public final By investmentIncomeTwoYears = By.xpath(".//*[@ng-bind-html=\"$ctrl.post.projects.roi.r1\"]");
+    public final By investmentIncomeFourYears = By.xpath(".//*[@ng-bind-html=\"$ctrl.post.projects.roi.r2\"]");
 
     //locator: in the "Инвестиционный доход" section is edited values.
     private final By infoInvestmentIncomeEditButton = By.cssSelector(".project-roi>div>button.edit-btn");
 
     //locator: Alert massage "Проект сохранен" locator
-    protected final By projectSavedAlert = By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Проект сохранен')]]");
+    public final By projectSavedAlert = By.xpath("//*[@id='toast-container']//*[text()[contains(.,'Проект сохранен')]]");
 
 
     public EditActiveProjectPage(WebDriver driver) {
@@ -32,18 +32,18 @@ public class EditActiveProjectPage extends ProjectsPage {
     }
 
     //Alert massage "Проект сохранен"
-    public EditActiveProjectPage verifyProjectSavedAlertDisplayedActiveSection(){
+    public EditActiveProjectPage verifyProjectSavedAlertDisplayedActiveSection() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(projectSavedAlert)));
         return this;
     }
 
-    public boolean isAlertPresent() {
+    public boolean isElementPresent(By locator) {
         try {
-            new WebDriverWait(driver,3).until(ExpectedConditions.visibilityOf(driver.findElement(projectSavedAlert)));
+            new WebDriverWait(driver, 3).until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
             return true;
         } catch (NoSuchElementException e) {
-        return false;
+            return false;
         }
     }
 
@@ -52,9 +52,9 @@ public class EditActiveProjectPage extends ProjectsPage {
         return new EditInvestmentIncomeSection(driver, this);
     }
 
-
-    public void chekDataAfterDiscard() {
-        Assert.assertEquals(driver.findElement(investmentIncomeTwoYears).getText(), "30");
-        Assert.assertEquals(driver.findElement(investmentIncomeFourYears).getText(), "200");
+    public EditActiveProjectPage checkElementAbsent(By name) {
+        Assert.assertTrue(driver.findElements(name).size() < 1);
+        return this;
     }
+
 }

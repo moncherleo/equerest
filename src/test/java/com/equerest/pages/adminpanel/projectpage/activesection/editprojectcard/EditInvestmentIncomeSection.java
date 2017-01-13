@@ -1,8 +1,13 @@
 package com.equerest.pages.adminpanel.projectpage.activesection.editprojectcard;
 
 import com.equerest.pages.adminpanel.projectpage.activesection.EditActiveProjectPage;
+import com.equerest.pages.common.registration.InvestorRegistrationInvestmentsPage;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -17,7 +22,12 @@ public class EditInvestmentIncomeSection extends EditActiveProjectPage implement
     private final By InvestIncomeCheckBoxForClick = By.xpath("//*[@class=\"input-checkbox\"]");
 
     private final By applyChangesButton = By.xpath(".//*[@id='dashboard']/div[1]/project-edit/div/div/section[1]/div[2]/div/div[3]/div/div[2]/div[7]/div/div[3]/div[5]/button[2]");
+    private final By applyChangesButtonWhenCheckBoxChecked = By.xpath(".//*[@id='dashboard']/div[1]/project-edit/div/div/section[1]/div[2]/div/div[3]/div/div[2]/div[7]/div/div/div[5]/button[2]");
     private final By discardChangesButton = By.xpath(".//*[@id='dashboard']/div[1]/project-edit/div/div/section[1]/div[2]/div/div[3]/div/div[2]/div[7]/div/div[3]/div[5]/button[1]");
+
+    //locators for disabled fields when notSpecifyInvestmentIncome CheckBox checked
+    public static By investmentIncomeTwoYearsDisabled = By.xpath(".//div[@class='input-text-group']//*[@id='roi1'][@class[contains(.,'disabled')]]");
+    public static By investmentIncomeFourYearsDisabled = By.xpath(".//div[@class='input-text-group']//*[@id='roi2'][@class[contains(.,'disabled')]]");
 
     public EditInvestmentIncomeSection(WebDriver driver, EditActiveProjectPage editActiveProjectPage) {
         super(driver);
@@ -41,10 +51,24 @@ public class EditInvestmentIncomeSection extends EditActiveProjectPage implement
         return this;
     }
 
+    public EditInvestmentIncomeSection setNotSpecifyInvestmentIncomeCheckBox() {
+        if ( !driver.findElement(InvestIncomeCheckBoxForCheckIfSelected).isSelected() )
+        {
+            driver.findElement(InvestIncomeCheckBoxForClick).click();
+        }
+        return this;
+    }
+
     @Override
     public EditActiveProjectPage applyChanges() {
         scrollPage();
         driver.findElement(applyChangesButton).click();
+        return parentPage;
+    }
+
+     public EditActiveProjectPage applyChangesForCheckedCheckBox() {
+        scrollPage();
+        driver.findElement(applyChangesButtonWhenCheckBoxChecked).click();
         return parentPage;
     }
 
@@ -57,4 +81,10 @@ public class EditInvestmentIncomeSection extends EditActiveProjectPage implement
 
     private void scrollPage() {
     }
-}
+
+    public EditInvestmentIncomeSection checkFieldDisabled(By fieldName) {
+        Assert.assertTrue(driver.findElement(fieldName).isDisplayed());
+            return this;
+        }
+    }
+

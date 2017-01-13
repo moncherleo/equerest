@@ -19,7 +19,7 @@ import ru.yandex.qatools.allure.annotations.Title;
 public class CancelButtonInvestmentIncomeTest extends BaseTest{
 
     @Test
-    @FileParameters("src/test/resources/investment_income_cansel_button.csv")
+    @FileParameters("src/test/resources/investment_income_cancel_button.csv")
     public void checkCancelButtonInvestmentIncome(String login, String password) throws InterruptedException {
     homePage.openLoginPage()
             .loginAs(login, password);
@@ -32,8 +32,9 @@ public class CancelButtonInvestmentIncomeTest extends BaseTest{
 
         selectedProject.clickOnInvestmentIncome()
                 .editInvestmentIncome("40", "96")
-                .discardChanges()
-                .chekDataAfterDiscard();
-        Assert.assertFalse(selectedProject.isAlertPresent());
+                .discardChanges();
+        Assert.assertEquals(driver.findElement(selectedProject.investmentIncomeTwoYears).getText(), "30");
+        Assert.assertEquals(driver.findElement(selectedProject.investmentIncomeFourYears).getText(), "200");
+        Assert.assertFalse(selectedProject.isElementPresent(selectedProject.projectSavedAlert));
     }
 }
