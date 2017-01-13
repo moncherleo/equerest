@@ -40,4 +40,26 @@ public class DeleteNewUserHelper extends AbstractPage {
                 .confirmDeletionAlert();
         return this;
     }
+    public DeleteNewUserHelper deleteNewCreatedUserWithParams(String userEmail){
+
+        driver.findElement(forExit).click();
+
+        String login = "olegftzi@gmail.com";
+        String password = "Oleg1234";
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = homePage.openLoginPage();
+        ProjectsPage usersPage = loginPage.loginAs(login, password);
+
+        //ProjectsPage usersPage = homePage.openLoginPage().loginAs(login, password);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        usersPage.navigateToUserMenuPageViaMenuItem()
+                .searchUser(userEmail)
+                .deleteUser()
+                .confirmDeletionAlert();
+        return this;
+    }
 }
