@@ -14,6 +14,11 @@ import java.util.List;
  */
 public class EntrepreneurContactsPage extends HomePage {
 
+    private By fieldCityError = By.cssSelector("input#city~div[ng-messages='e_r_s_one.city.$error']>div");
+    private By telephoneFormatError = By.cssSelector("input#tel~div>div[ng-message='pattern']");
+    private By telephoneRequiredError = By.cssSelector("input#city~div>div[ng-message='required']");
+    private By telephoneError = By.cssSelector("input#tel~div[ng-messages='e_r_s_one.tel.$error']>div");
+
     public EntrepreneurContactsPage(WebDriver driver) {
         super(BASE_URL + "register#/entrepreneur", driver);
     }
@@ -38,12 +43,20 @@ public class EntrepreneurContactsPage extends HomePage {
     }
 
     public EntrepreneurContactsPage fillCity(String city){
-        driver.findElement(fieldCity).sendKeys(city);
+        WebElement field = driver.findElement(fieldCity);
+        field.clear();
+        field.sendKeys(city);
+        Assert.assertEquals(city, field.getAttribute("value"));
+        field.sendKeys(Keys.TAB);
         return this;
     }
 
     public EntrepreneurContactsPage fillTelephone(String telephone){
-        driver.findElement(fieldTelephone).sendKeys(telephone);
+        WebElement field = driver.findElement(fieldTelephone);
+        field.clear();
+        field.sendKeys(telephone);
+        Assert.assertEquals(telephone, field.getAttribute("value"));
+        field.sendKeys(Keys.TAB);
         return this;
     }
 
@@ -74,5 +87,32 @@ public class EntrepreneurContactsPage extends HomePage {
         Assert.assertEquals(isError, errorMessages.size()>0);
         return this;
     }
+
+    public EntrepreneurContactsPage assertCityError(boolean isError) {
+        List<WebElement> errorMessages = driver.findElements(fieldCityError);
+        Assert.assertEquals(isError, errorMessages.size()>0);
+        return this;
+    }
+
+    public EntrepreneurContactsPage assertTelephoneError(PhoneError errorType) {
+        List<WebElement> errorMessages;
+        switch (errorType) {
+            case NONE:
+                errorMessages = driver.findElements(telephoneError);
+                Assert.assertTrue(errorMessages.size()==0);
+                break;
+            case FORMAT:
+                errorMessages = driver.findElements(telephoneFormatError);
+                Assert.assertTrue(errorMessages.size()>0);
+                break;
+            case REQUIRED:
+                errorMessages = driver.findElements(telephoneRequiredError);
+                Assert.assertTrue(errorMessages.size()>0);
+                break;
+        }
+        return this;
+    }
+
+    public enum PhoneError {NONE, FORMAT, REQUIRED}
 
 }

@@ -9,6 +9,7 @@ import junitparams.JUnitParamsRunner;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import ru.yandex.qatools.properties.annotations.Resource;
 
 /**
  * Created by Oleg Nesterov on 10/4/16;
@@ -85,6 +86,52 @@ public class EntrepreneurRegistrationTest extends BaseTest {
                 .fillFio("Фамилия Имя Отчество").assertFioError(false)
                 .fillFio("Иванов-Петров Иван Иванович").assertFioError(false)
                 .fillFio("Ivanov Ivan Ivanovich").assertFioError(false);
+    }
+
+    @FileParameters("src/test/resources/entrepreneur_registr_invalid_fio.csv")
+    @Test
+    public void checkInvalidInputFIO(String input) { //C87
+        homePage.openRegisterProjectPage()
+                .enterButton()
+                .clickSubmitProject()
+                .fillFio(input).assertFioError(true);
+    }
+
+    @Test
+    public void checkValidInputCity() { //C88
+        homePage.openRegisterProjectPage()
+                .enterButton()
+                .clickSubmitProject()
+                .fillCity("Киев").assertCityError(false)
+                .fillCity("Каменец-Подольский").assertCityError(false)
+                .fillCity("Lviv").assertCityError(false);
+    }
+
+    @FileParameters("src/test/resources/entrepreneur_registr_invalid_city.csv")
+    @Test
+    public void checkInvalidInputCity(String input) { //C89
+        homePage.openRegisterProjectPage()
+                .enterButton()
+                .clickSubmitProject()
+                .fillCity(input).assertCityError(true);
+    }
+
+    @Test
+    public void checkValidInputTelephone() { //C90
+        homePage.openRegisterProjectPage()
+                .enterButton()
+                .clickSubmitProject()
+                .fillTelephone("+380664537897").assertTelephoneError(EntrepreneurContactsPage.PhoneError.NONE)
+                .fillTelephone("+380504535566").assertTelephoneError(EntrepreneurContactsPage.PhoneError.NONE);
+    }
+
+    @FileParameters("src/test/resources/entrepreneur_registr_invalid_phone.csv")
+    @Test
+    public void checkInvalidInputTelephone(String input, String errorType) { //C92
+        homePage.openRegisterProjectPage()
+                .enterButton()
+                .clickSubmitProject()
+                .fillTelephone(input).assertTelephoneError(EntrepreneurContactsPage.PhoneError.valueOf(errorType));
     }
 
     /*@After
