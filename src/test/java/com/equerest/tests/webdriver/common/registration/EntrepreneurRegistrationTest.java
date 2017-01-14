@@ -77,6 +77,14 @@ public class EntrepreneurRegistrationTest extends BaseTest {
         projectCreateComplete.navigateToProject();
     }
 
+    @Test
+    public void checkValidInputFIO() { //test case # C86
+        homePage.openRegisterProjectPage()
+                .enterButton()
+                .clickSubmitProject()
+                .fillFio("Фамилия Имя Отчество").assertFioError(false);
+    }
+
     /*@After
     public void deleteProjectAndUser(){
         DeleteProjectTest deleteProjectTest = new DeleteProjectTest();

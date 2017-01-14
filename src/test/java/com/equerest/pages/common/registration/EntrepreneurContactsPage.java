@@ -1,8 +1,12 @@
 package com.equerest.pages.common.registration;
 
 import com.equerest.pages.common.HomePage;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 /**
  * Created by Oleg Nesterov on 10/4/16;
@@ -20,10 +24,13 @@ public class EntrepreneurContactsPage extends HomePage {
     protected final By fieldPass = By.id("pass");
     protected final By fieldCheckBox = By.id("checkbox_1");
     protected final By buttonNextStep = By.cssSelector(".entrepreneur-reg-form .button.button-blue.button-next");
+    protected final By fieldFioError = By.cssSelector("input#fio~div[ng-messages='e_r_s_one.fio.$error']>div");
 
 
     public EntrepreneurContactsPage fillFio(String fio){
+        driver.findElement(fieldFio).clear();
         driver.findElement(fieldFio).sendKeys(fio);
+        Assert.assertEquals(fio, driver.findElement(fieldFio).getAttribute("value"));
         return this;
     }
 
@@ -57,6 +64,12 @@ public class EntrepreneurContactsPage extends HomePage {
     public EntrepreneurRegistrationProjectPage pressNextButton(){
         click(buttonNextStep);
         return new EntrepreneurRegistrationProjectPage(driver);
+    }
+
+    public EntrepreneurContactsPage assertFioError(boolean isError) {
+        List<WebElement> errorMessages = driver.findElements(fieldFioError);
+        Assert.assertEquals(isError, errorMessages.size()>0);
+        return this;
     }
 
 }

@@ -1,6 +1,7 @@
 package com.equerest.pages.common.registration;
 
 import com.equerest.pages.AbstractPage;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
