@@ -3,6 +3,7 @@ package com.equerest.pages.common.registration;
 import com.equerest.pages.common.HomePage;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -28,9 +29,11 @@ public class EntrepreneurContactsPage extends HomePage {
 
 
     public EntrepreneurContactsPage fillFio(String fio){
-        driver.findElement(fieldFio).clear();
-        driver.findElement(fieldFio).sendKeys(fio);
-        Assert.assertEquals(fio, driver.findElement(fieldFio).getAttribute("value"));
+        WebElement field = driver.findElement(fieldFio);
+        field.clear();
+        field.sendKeys(fio);
+        Assert.assertEquals(fio, field.getAttribute("value"));
+        field.sendKeys(Keys.TAB);
         return this;
     }
 

@@ -82,7 +82,9 @@ public class EntrepreneurRegistrationTest extends BaseTest {
         homePage.openRegisterProjectPage()
                 .enterButton()
                 .clickSubmitProject()
-                .fillFio("Фамилия Имя Отчество").assertFioError(false);
+                .fillFio("Фамилия Имя Отчество").assertFioError(false)
+                .fillFio("Иванов-Петров Иван Иванович").assertFioError(false)
+                .fillFio("Ivanov Ivan Ivanovich").assertFioError(false);
     }
 
     /*@After
