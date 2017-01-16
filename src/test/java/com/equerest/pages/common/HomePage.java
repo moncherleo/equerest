@@ -271,7 +271,7 @@ public class HomePage extends AbstractPage {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         Date thisElementDate = new Date();
         Date previousElementDate = new Date(0);
-        boolean dateSortisCorrect = false;
+        boolean dateSortisCorrect = true;
         for (int i = 0; i < listOfElements.size(); i++) {
             WebElement thisElement = listOfElements.get(i);
             String dateStr = thisElement.findElement(By.xpath(".//div[preceding-sibling::div[contains(.,'Подача проекта')]]/span")).getText();
@@ -281,8 +281,8 @@ public class HomePage extends AbstractPage {
                 e.printStackTrace();
             }
             if (i > 0) {
-                if (previousElementDate.compareTo(thisElementDate) >= 0) {
-                    dateSortisCorrect = true;
+                if (previousElementDate.compareTo(thisElementDate) <= 0) {
+                    dateSortisCorrect = false;
                 }
             }
             previousElementDate = thisElementDate;
