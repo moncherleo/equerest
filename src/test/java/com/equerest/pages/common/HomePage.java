@@ -37,9 +37,9 @@ public class HomePage extends AbstractPage {
     private final By moreSuccessfulProjectsButton = By.xpath("//*[@id='complete']//*[text()[contains(.,'Больше успешных проектов')]]");
     private final By missionEquerestButton = By.xpath("//*[@id='main']//*[text()[contains(.,'Миссия Equerest')]]");
     private final By moreNewProjectsButton = By.xpath("//*[@id='new_projects']//*[text()[contains(.,'Больше новых проектов')]]");
-    private final By moreNewProjectsLink = By.xpath("//*[@id='new_projects']//a[contains(.,'Больше новых проектов')]");
-    private final By moreNewProjectsArea = By.xpath("//*[@id='new_projects']//*[text()[contains(.,'Новые проекты')]]");
-    private By successfulProjectsArea = By.cssSelector("#complete");
+    public final By moreNewProjectsLink = By.xpath("//*[@id='new_projects']//a[contains(.,'Больше новых проектов')]");
+    public final By moreNewProjectsArea = By.xpath("//*[@id='new_projects']//*[text()[contains(.,'Новые проекты')]]");
+    public By successfulProjectsArea = By.cssSelector("#complete");
     private By successfulProjectsLabel = By.xpath("//*[@id='complete']//h2[contains(.,'Успешные проекты')]");
     //######################_locotors for the 'Footer' menu_######################
     private final By investorFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Инвестору')]]");
@@ -53,6 +53,12 @@ public class HomePage extends AbstractPage {
     //private final By partnersFooterButton = By.id("partners-link");
     private final By privacyPolicyFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Политика конфиденциальности')]]");
     private final By cookiesProcessingPolicyFooterButton = By.xpath("//*[@id='footer']//*[text()[contains(.,'Политика обработки cookies')]]");
+    //Projects area
+    public By newProjectsDivs = By.xpath("//*[@id='new_projects']//div[@class ='flex-row']//div[contains(@class,'new_project')]");
+    public By newProjectsDates = By.xpath(".//div[preceding-sibling::div[contains(.,'Подача проекта')]]/span");
+    public By successfulProjectsDivs = By.cssSelector("div.column.is-half.complete-project");
+    public By successfulProjectDate = By.xpath("(//section[@id='complete']//div[contains(@class, 'flex-row')]//span)[2]");
+    public By moreSuccessfulProjectsLink = By.linkText("Больше успешных проектов");
 
     public HomePage(String url, WebDriver driver) {
         super(driver);
@@ -255,26 +261,26 @@ public class HomePage extends AbstractPage {
         return new CookiesProcessingPolicyInfoFooterPage(driver);
     }
 
-    public HomePage checkNewProjectsAreaPresence() {
+    public HomePage checkAreaPresence(By element) {
         Assert.assertTrue(driver.findElement(moreNewProjectsArea).isEnabled());
         return this;
     }
 
-    public HomePage checkNumberofNewProjectsShown(int expectedNumofElements) {
-        List<WebElement> listOfElements = driver.findElements(By.xpath("//*[@id='new_projects']//div[@class ='flex-row']//div[contains(@class,'new_project')]"));
-        Assert.assertEquals(expectedNumofElements, listOfElements.size());
+    public HomePage checkNumberOfElementsShown(int expectedNumOfElements, By element) {
+        List<WebElement> listOfElements = driver.findElements(element);
+        Assert.assertEquals(expectedNumOfElements, listOfElements.size());
         return this;
     }
 
-    public HomePage checkThatNewProjectsSortedByDate() {
-        List<WebElement> listOfElements = driver.findElements(By.xpath("//*[@id='new_projects']//div[@class ='flex-row']//div[contains(@class,'new_project')]"));
+    public HomePage checkThatProjectsSortedByDate(By projectLocator, By projectDateLocator) {
+        List<WebElement> listOfElements = driver.findElements(projectLocator);
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         Date thisElementDate = new Date();
         Date previousElementDate = new Date(0);
         boolean dateSortisCorrect = true;
         for (int i = 0; i < listOfElements.size(); i++) {
             WebElement thisElement = listOfElements.get(i);
-            String dateStr = thisElement.findElement(By.xpath(".//div[preceding-sibling::div[contains(.,'Подача проекта')]]/span")).getText();
+            String dateStr = thisElement.findElement(projectDateLocator).getText();
             try {
                 thisElementDate = sdf.parse(dateStr);
             } catch (ParseException e) {
@@ -291,24 +297,25 @@ public class HomePage extends AbstractPage {
         return this;
     }
 
-    public HomePage checkMoreNewProjectsLinkIsPresent() {
-        WebElement moreProjLink = driver.findElement(moreNewProjectsLink);
-        Assert.assertTrue(moreProjLink.isEnabled());
-        return this;
-    }
+//    public HomePage checkMoreNewProjectsLinkIsPresent() {
+//        WebElement moreProjLink = driver.findElement(moreNewProjectsLink);
+//        Assert.assertTrue(moreProjLink.isEnabled());
+//        return this;
+//    }
 
-    public HomePage checkMoreNewProjectsLinkBehaviourOnMouseHovering() {
-        WebElement moreProjLink = driver.findElement(moreNewProjectsLink);
+    public HomePage checkLinkBehaviourOnMouseHovering(By link) {
+        WebElement theLink = driver.findElement(link);
+        Assert.assertTrue(theLink.isEnabled());
         Actions builder = new Actions(driver);
-        builder.moveToElement(moreProjLink);
+        builder.moveToElement(theLink);
         builder.build().perform();
-        Assert.assertEquals(moreProjLink.getCssValue("text-decoration"), "underline");
-        Assert.assertEquals(moreProjLink.getCssValue("cursor"), "pointer");
+        Assert.assertEquals(theLink.getCssValue("text-decoration"), "underline");
+        Assert.assertEquals(theLink.getCssValue("cursor"), "pointer");
         return this;
     }
 
-    public CataloguePage moveToCataloguePageByClickingOnMoreNewProjects() {
-        driver.findElement(moreNewProjectsLink).click();
+    public CataloguePage moveToProjectsCatalogue(By clickOnElement) {
+        driver.findElement(clickOnElement).click();
         Assert.assertEquals(driver.getCurrentUrl(), CataloguePage.pageURL);
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='catalog']//h1[text()[contains(.,'Проекты')]]")).isEnabled());
         return new CataloguePage(driver);
