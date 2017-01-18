@@ -46,7 +46,7 @@ public class CataloguePage extends AbstractPage {
         boolean isRight = true;
         if (elements.size() > 0) {
             for (int i = 0; i < elements.size(); i++) {
-                Assert.assertEquals(elements.get(i).getAttribute("value"), elementText);
+                Assert.assertEquals(elementText, elements.get(i).getText());
             }
         }
         return this;
@@ -55,6 +55,25 @@ public class CataloguePage extends AbstractPage {
     public CataloguePage setDropdownOption(By dropdownElement, String visibleText) {
         Select dropdown = new Select(driver.findElement(dropdownElement));
         dropdown.selectByVisibleText(visibleText);
+        return this;
+    }
+
+    public CataloguePage moveToPage(int pageNumberFromZero) {
+        List<WebElement> pages = driver.findElements(pageNumber);
+        pages.get(pageNumberFromZero).click();
+        return this;
+    }
+
+    public CataloguePage checkFilteredProjects(By elementForCheckingText, String text) {
+        int numberOfPages = this.getNumberOfPages();
+        if (numberOfPages > 1) {
+            for (int i = 0; i < this.getNumberOfPages(); i++) {
+                this.moveToPage(i)
+                        .checkFilteredProjectsOnPage(this.projectStatus, text);
+            }
+        } else {
+            this.checkFilteredProjectsOnPage(this.projectStatus, text);
+        }
         return this;
     }
 

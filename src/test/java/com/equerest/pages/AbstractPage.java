@@ -1,5 +1,6 @@
 package com.equerest.pages;
 
+import com.equerest.pages.common.main.CataloguePage;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by cherleo on 9/19/16.
  */
-public class AbstractPage {
+public class AbstractPage <T extends AbstractPage> {
     protected static final String BASE_URL = "https://dev.equerest.com/";
     public String url;
     protected WebDriver driver;
