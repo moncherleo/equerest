@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
@@ -86,4 +87,5 @@ public class AbstractPage {
         driver.switchTo().window((String) tabs.get(indexOfPage)).manage().window().maximize(); //Use the list of window handles to switch between windows
         //System.out.println(tabs.size()); // see the number of tabs
     }
+
 }

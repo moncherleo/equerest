@@ -29,7 +29,7 @@ public class HomePage extends AbstractPage {
     private final By forMission = By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Миссия')]]");
     private By forEntrepreneur = By.xpath("//*[@id='header']//*[text()[contains(.,'Предпринимателю')]]");
     private By forInvestor = By.xpath("//*[@id='header']//*[text()='Инвестору                                ']");
-    private final By forProjects = By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Проекты')]]");
+    public final By forProjects = By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Проекты')]]");
     private final By forEnter = By.xpath("/html/body/div[1]/header//*[text()[contains(.,'Войти')]]");
     //######################_locotors for the 'Main' menu_######################
     private By registerProjectButton = By.cssSelector("#main .button-green.bordered");
