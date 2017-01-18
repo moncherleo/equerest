@@ -1,12 +1,10 @@
 package com.equerest.pages.common.registration;
 
 import com.equerest.pages.AbstractPage;
+import com.equerest.pages.common.main.TermsOfUsePage;
 import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -23,8 +21,24 @@ public class InvestorRegistrationInvestmentsPage extends AbstractPage {
     private By disabledFinishReg = By.xpath(".//div[@class='form-controls']/button[@class[contains(.,'is-disabled')]]");
     private String radiobuttonPath = "//*[@class='input-radio-group']//*[@for='";
     private String radiobuttonPath2 = "']";
+
     @FindBy(how = How.XPATH, using = ".//div[@class='form-controls']/button[@class[contains(.,'is-disabled')]]")
     public static WebElement finishRegDisabled;
+    @FindBy(how = How.CSS, using = ".h2-style")
+    public static WebElement registrationHeader;
+    @FindBy(how = How.CSS, using = ".form-menu.investor")
+    WebElement formOfInvestorType;
+    @FindBy(how = How.XPATH, using = "//*[@class[contains(.,'form-menu')]]//a[contains(.,'Контакты')]")
+    public static WebElement contactsLabel;
+    @FindBy(how = How.XPATH, using = "//*[@class[contains(.,'form-menu')]]//a[contains(.,'Инвестиции')]")
+    public static WebElement investmentsLabel;
+    @FindBy(how = How.CLASS_NAME, using = "step-title")
+    public static WebElement radioButtonTextExplanation;
+    @FindBy(how = How.CLASS_NAME, using = "input-checkbox-group")
+    public static WebElement checkBoxGroup;
+    @FindBy(how = How.XPATH, using = "//a[contains(.,'Условиями и Правилами')]")
+    public static WebElement conditionsAndRules;
+
     //######################_locators for Radiobutton Groups_######################
     @FindBy(how = How.XPATH, using = "//label[contains(., 'Выберите роль')]/following-sibling::div[@class='radio-group']")
     public static WebElement chooseRoleRadioButtonGroup;
@@ -192,5 +206,79 @@ public class InvestorRegistrationInvestmentsPage extends AbstractPage {
             System.out.println("Wrong radiobutton group entered");
         }
         return this;
+    }
+
+    public InvestorRegistrationInvestmentsPage checkThatRegistrationHeaderIsPresent() {
+        Assert.assertTrue(registrationHeader.isDisplayed());
+        return this;
+    }
+
+    public InvestorRegistrationInvestmentsPage checkThatContactsAndInvestmentsLabelsArePResent() {
+        WebDriverWait wait = new WebDriverWait(driver, 3);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class[contains(.,'form-menu')]]//a[contains(.,'Контакты')]")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class[contains(.,'form-menu')]]//a[contains(.,'Инвестиции')]")));
+        return this;
+    }
+
+
+    public InvestorRegistrationInvestmentsPage checkThatInvestmentsLabelIsActive() {
+        WebDriverWait wait = new WebDriverWait(driver, 3);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".form-menu.investor")));
+        //Assert.assertTrue(formOfInvestorType.isDisplayed());
+        return this;
+    }
+
+    public InvestorRegistrationInvestmentsPage checkExplanationText() {
+        WebDriverWait wait = new WebDriverWait(driver, 3);
+        wait.until(ExpectedConditions.textToBePresentInElement(radioButtonTextExplanation, "Ваши ответы помогут нам выбрать только те"));
+        Assert.assertTrue(radioButtonTextExplanation.getText().contains("Ваши ответы помогут нам выбрать только те"));
+        Assert.assertTrue(radioButtonTextExplanation.getText().contains("проекты, которые вам будут интересны."));
+        return this;
+    }
+
+    public InvestorRegistrationInvestmentsPage checkRadioButtonGroupLabelPresence(WebElement radioButtonGroupLabel) {
+        Assert.assertTrue(radioButtonGroupLabel.isDisplayed());
+        return this;
+    }
+
+    public InvestorRegistrationInvestmentsPage checkThatChooseRoleGroupHasAllRadioButtons() {
+        Assert.assertTrue(intermediaryRole.isDisplayed());
+        Assert.assertTrue(privateInvestorRole.isDisplayed());
+        Assert.assertTrue(ventureFundRole.isDisplayed());
+        return this;
+    }
+
+    public InvestorRegistrationInvestmentsPage checkThatInvestmentSumGroupHasAllRadioButtons() {
+        Assert.assertTrue(lessThan50Investment.isDisplayed());
+        Assert.assertTrue(from50to100Investment.isDisplayed());
+        Assert.assertTrue(from100to500Investment.isDisplayed());
+        Assert.assertTrue(biggerThan500Investment.isDisplayed());
+        Assert.assertTrue(noneOfAboveInvestment.isDisplayed());
+        return this;
+    }
+
+    public InvestorRegistrationInvestmentsPage checkThatDealsGroupHasAllRadioButtons() {
+        Assert.assertTrue(from1to3DealQty.isDisplayed());
+        Assert.assertTrue(lessThan5DealQty.isDisplayed());
+        Assert.assertTrue(biggerThan5DealQty.isDisplayed());
+        Assert.assertTrue(noneOfAboveDealQty.isDisplayed());
+        return this;
+    }
+
+    public InvestorRegistrationInvestmentsPage checkCheckBoxPresence() {
+        Assert.assertTrue(checkBoxGroup.isDisplayed());
+        return this;
+    }
+
+    public InvestorRegistrationInvestmentsPage checkRegistrationButtonPresence() {
+        WebElement regB = driver.findElement(finishReg);
+        Assert.assertTrue(regB.isDisplayed());
+        return this;
+    }
+
+    public TermsOfUsePage clickOnRulesAndConditions() {
+        Assert.assertTrue(conditionsAndRules.isDisplayed());
+        conditionsAndRules.click();
+        return new TermsOfUsePage(driver);
     }
 }
