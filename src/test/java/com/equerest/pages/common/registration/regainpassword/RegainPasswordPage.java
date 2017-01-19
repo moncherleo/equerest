@@ -16,8 +16,9 @@ public class RegainPasswordPage extends AbstractPage {
     private By submitButtonFirstStep = By.xpath(".//*[@id='submit-block']/button");
     private By goToMailButton = By.xpath(".//*[@id='goToMailLink']");
     private By submitButtonLastStep = By.xpath(".//*[@id='submit-block']");
+    public static String regainPasswordPageUrl = "https://dev.equerest.com/index/regainPassword";
 
-    public RegainPasswordPage(WebDriver driver){
+    public RegainPasswordPage(WebDriver driver) {
         super(driver);
     }
 
@@ -45,5 +46,11 @@ public class RegainPasswordPage extends AbstractPage {
     public RegainPasswordPage checkSubmitButtonExist() {
         Assert.assertTrue(driver.findElement(submitButtonLastStep).isEnabled());
         return new RegainPasswordPage(driver);
+    }
+
+    public RegainPasswordPage checkUrl() {
+        WebDriverWait wait = new WebDriverWait(driver, 3);
+        wait.until(ExpectedConditions.urlToBe(regainPasswordPageUrl));
+        return this;
     }
 }
