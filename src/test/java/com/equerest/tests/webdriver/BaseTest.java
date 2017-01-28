@@ -77,6 +77,7 @@ public class BaseTest {
 
         if (REMOTE != null && REMOTE.equalsIgnoreCase("true")) {
             try {
+                this.driver.quit();
                 this.driver = new RemoteWebDriver(new URL(REMOTE_URL), capabilities);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
