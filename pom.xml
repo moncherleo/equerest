@@ -74,8 +74,9 @@
                     <argLine>-Xmx1024m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8 -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <!-- parallelization section start -->
-                    <parallel>methods</parallel>
+                    <parallel>classes</parallel>
                     <threadCount>1</threadCount>
+                    <perCoreThreadCount>false</perCoreThreadCount>
                     <!-- parallelization section end -->
                     <properties>
                         <property>
